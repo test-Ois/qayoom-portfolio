@@ -78,7 +78,6 @@
 /* ─── Base Layer ─────────────────────────────────────────── */
 @layer base {
   :root {
-    /* Light mode (barely used — kept for safety) */
     --background: 0 0% 4%;           /* #090909 */
     --foreground: 120 9% 81%;        /* #C1CFC1 Green Lily */
     --card:       270 6% 22%;        /* #3B353C Shiny Rubber */
@@ -304,7 +303,7 @@
   border-radius: 9999px;
 }
 
-/* ─── Chatbot Specific Inter Typography (ChatGPT/Claude Style) ─── */
+/* ─── Chatbot Specific Inter Typography ─── */
 .chatbot-drawer {
   font-family: 'Manrope', sans-serif;
 }
@@ -396,4 +395,36 @@
   color: #ffffff !important;
 }
 
+/* ─── Text-Only Shimmer Loop for Project CTA ────────────── */
+@keyframes cta-text-shimmer-loop {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
 
+.cta-shimmer-text {
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: cta-text-shimmer-loop 3.5s linear infinite;
+  will-change: background-position;
+}
+
+.group:hover .cta-shimmer-text,
+.cta-shimmer-text:hover,
+.cta-shimmer-text:focus-visible {
+  filter: drop-shadow(0 0 8px rgba(130, 84, 238, 0.5));
+  animation-duration: 2.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-shimmer-text {
+    animation: none !important;
+    background-position: 100% 0 !important;
+  }
+}

@@ -29,12 +29,16 @@ export const Navbar = () => {
           ? "py-3 border-b"
           : "py-5 bg-transparent"
       )}
-      style={isScrolled ? {
-        background: "rgba(9,9,9,0.85)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        borderBottomColor: "rgba(130,84,238,0.18)",
-      } : {}}
+      style={
+        isScrolled
+          ? {
+              background: "rgba(9,9,9,0.85)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              borderBottomColor: "rgba(130,84,238,0.18)",
+            }
+          : {}
+      }
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
@@ -59,15 +63,19 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-1">
+        <div className="hidden md:flex items-center space-x-2">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
               className="relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group"
               style={{ color: "#C1CFC1" }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = "#8254EE"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = "#C1CFC1"; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#8254EE";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#C1CFC1";
+              }}
             >
               {item.name}
               <span
@@ -76,24 +84,12 @@ export const Navbar = () => {
               />
             </a>
           ))}
-          <a
-            href="#contact"
-            className="ml-4 px-5 py-2 rounded-full text-sm font-semibold text-white transition-all duration-300"
-            style={{
-              background: "linear-gradient(135deg, #8254EE, #6d3fd4)",
-              boxShadow: "0 0 16px rgba(130,84,238,0.3)",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 28px rgba(130,84,238,0.55)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 0 16px rgba(130,84,238,0.3)"; }}
-          >
-            Hire Me
-          </a>
         </div>
 
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 z-50 transition-colors duration-300"
+          className="md:hidden p-2 z-50 transition-colors duration-300 cursor-pointer"
           style={{ color: isMenuOpen ? "#8254EE" : "#C1CFC1" }}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
@@ -112,7 +108,7 @@ export const Navbar = () => {
             WebkitBackdropFilter: "blur(24px)",
           }}
         >
-          {/* Purple ambient */}
+          {/* Ambient purple glow */}
           <div
             className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full pointer-events-none"
             style={{
