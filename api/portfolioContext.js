@@ -15,9 +15,9 @@ export const PORTFOLIO_CONTEXT = {
     experienceSummary: "Full Stack Engineer with 6+ months of experience building production web and AI-integrated applications combining React/Next.js frontends with Node.js/Express backends, LLM/RAG integrations, and scalable databases.",
     status: "Looking for Opportunities / Available for Full-Time Opportunities",
     stats: {
-      projectsBuilt: "15+",
-      aiIntegrations: "5+",
-      coreFocus: "Full Stack Development",
+      projectsBuilt: "20+",
+      experience: "8+ months",
+      coreFocus: "AI & Full Stack Development",
     },
   },
 
