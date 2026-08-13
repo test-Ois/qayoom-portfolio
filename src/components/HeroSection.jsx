@@ -147,7 +147,7 @@ export const HeroSection = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none"
+              className="text-4xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none"
             >
               <span
                 style={{
@@ -164,11 +164,11 @@ export const HeroSection = () => {
             {/* ── Smooth Rotating Role ── */}
             <motion.div
               variants={itemVariants}
-              className="text-xl sm:text-2xl md:text-3xl font-semibold flex items-center justify-center flex-wrap gap-2 sm:gap-3 pt-1"
+              className="text-lg sm:text-2xl md:text-3xl font-semibold flex items-center justify-center flex-wrap gap-1.5 sm:gap-3 pt-1"
             >
               <span style={{ color: "#82717B", fontWeight: 300 }}>I&apos;m a</span>
               <span
-                className="font-bold min-w-[270px] sm:min-w-[340px] md:min-w-[390px] text-left"
+                className="font-bold min-w-[210px] sm:min-w-[340px] md:min-w-[390px] text-left"
                 style={{
                   background: "linear-gradient(90deg, #8254EE, #00C2FF)",
                   WebkitBackgroundClip: "text",

@@ -73,7 +73,7 @@ const getSkillIcon = (iconName) => {
     Send,
   };
   const IconComponent = iconMap[iconName] || Sparkles;
-  return <IconComponent size={18} />;
+  return <IconComponent className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />;
 };
 
 // Dot color and style by realistic proficiency level
@@ -98,10 +98,10 @@ const SkillCard = ({ skill, isReduced }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: isReduced ? 1 : 0.96 }}
       transition={{ duration: isReduced ? 0.1 : 0.22, ease: "easeOut" }}
-      className="h-full"
+      className="h-full min-w-0"
     >
       <div
-        className="h-full flex flex-col justify-between p-5 rounded-2xl transition-all duration-300 select-none text-left group"
+        className="h-full flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 select-none text-left group min-w-0"
         style={{
           background: "rgba(59, 53, 60, 0.16)",
           border: "1px solid rgba(130, 84, 238, 0.14)",
@@ -123,9 +123,9 @@ const SkillCard = ({ skill, isReduced }) => {
       >
         <div>
           {/* Top Row: Icon Container & Realistic Proficiency Badge */}
-          <div className="flex items-center justify-between mb-3.5">
+          <div className="flex items-center justify-between mb-2 sm:mb-3.5 gap-1">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
               style={{
                 background: `${skill.accent}15`,
                 border: `1px solid ${skill.accent}33`,
@@ -136,27 +136,27 @@ const SkillCard = ({ skill, isReduced }) => {
             </div>
 
             {/* Realistic Level Indicator */}
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-medium rounded-full bg-black/60 border border-white/10 text-gray-300">
+            <span className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[11px] font-mono font-medium rounded-full bg-black/60 border border-white/10 text-gray-300 shrink-0">
               <span className={`w-1.5 h-1.5 rounded-full ${getLevelDotColor(skill.level)}`} />
               {skill.level}
             </span>
           </div>
 
           {/* Title & Role */}
-          <h3 className="text-base font-bold text-white mb-1 tracking-tight group-hover:text-white transition-colors">
+          <h3 className="text-xs sm:text-base font-bold text-white mb-0.5 sm:mb-1 tracking-tight leading-snug break-words group-hover:text-white transition-colors">
             {skill.name}
           </h3>
-          <p className="text-xs text-gray-400 mb-3.5 font-medium leading-relaxed" style={{ color: "#82717B" }}>
+          <p className="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3.5 font-medium leading-tight sm:leading-relaxed" style={{ color: "#82717B" }}>
             {skill.role}
           </p>
         </div>
 
         {/* Footer: Keywords */}
-        <div className="pt-3 border-t border-purple-900/20 flex flex-wrap gap-1.5">
+        <div className="pt-2 sm:pt-3 border-t border-purple-900/20 flex flex-wrap gap-1 sm:gap-1.5">
           {skill.keywords.map((kw, i) => (
             <span
               key={i}
-              className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-gray-300 border border-white/5"
+              className="text-[8.5px] sm:text-[10px] font-mono px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded sm:rounded-md bg-white/5 text-gray-300 border border-white/5"
             >
               {kw}
             </span>
@@ -352,7 +352,7 @@ export const SkillsSection = () => {
         {/* Skills Grid */}
         <motion.div
           layout={!isReduced}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 items-stretch"
         >
           <AnimatePresence mode="popLayout">
             {displayedSkills.map((skill) => (
