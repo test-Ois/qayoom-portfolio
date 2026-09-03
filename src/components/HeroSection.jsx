@@ -20,15 +20,15 @@ import {
 
 const techStack = [
   { name: "React", Icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#C1CFC1" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#a8adba" },
   { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
   { name: "Node.js", Icon: SiNodedotjs, color: "#68A063" },
   { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
   { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
   { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
-  { name: "Express", Icon: SiExpress, color: "#C1CFC1" },
-  { name: "Vercel", Icon: SiVercel, color: "#C1CFC1" },
-  { name: "GitHub", Icon: SiGithub, color: "#C1CFC1" },
+  { name: "Express", Icon: SiExpress, color: "#a8adba" },
+  { name: "Vercel", Icon: SiVercel, color: "#a8adba" },
+  { name: "GitHub", Icon: SiGithub, color: "#a8adba" },
 ];
 
 const stats = [
@@ -81,7 +81,7 @@ export const HeroSection = () => {
       <motion.div
         className="absolute top-[5%] left-[3%] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(130,84,238,0.18) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--orb-purple) 0%, transparent 70%)",
           filter: "blur(70px)",
           zIndex: 0,
         }}
@@ -91,7 +91,7 @@ export const HeroSection = () => {
       <motion.div
         className="absolute bottom-[10%] right-[3%] w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(0,194,255,0.09) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)",
           filter: "blur(70px)",
           zIndex: 0,
         }}
@@ -110,25 +110,25 @@ export const HeroSection = () => {
             <div
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
               style={{
-                border: "1px solid rgba(130,84,238,0.35)",
-                background: "rgba(130,84,238,0.08)",
+                border: "1px solid rgba(var(--purple-rgb), 0.35)",
+                background: "rgba(var(--purple-rgb), 0.08)",
                 backdropFilter: "blur(10px)",
-                boxShadow: "0 0 16px rgba(130,84,238,0.15)",
+                boxShadow: "0 0 16px rgba(var(--purple-rgb), 0.15)",
               }}
             >
               <span className="relative flex h-2 w-2">
                 <span
                   className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                  style={{ background: "#00C2FF" }}
+                  style={{ background: "var(--color-green)" }}
                 />
                 <span
                   className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ background: "#00C2FF" }}
+                  style={{ background: "var(--color-green)" }}
                 />
               </span>
               <span
                 className="text-xs font-mono font-bold tracking-wider uppercase"
-                style={{ color: "#c4a3ff" }}
+                style={{ color: "var(--color-purple)" }}
               >
                 Looking for opportunities
               </span>
@@ -140,7 +140,7 @@ export const HeroSection = () => {
             <motion.p
               variants={itemVariants}
               className="text-xs sm:text-sm tracking-[0.25em] uppercase font-mono font-medium"
-              style={{ color: "#82717B" }}
+              style={{ color: "var(--text-muted)" }}
             >
               Hello, I&apos;m
             </motion.p>
@@ -151,7 +151,7 @@ export const HeroSection = () => {
             >
               <span
                 style={{
-                  background: "linear-gradient(135deg, #c4a3ff 0%, #8254EE 40%, #00C2FF 100%)",
+                  background: "var(--grad-name)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -166,11 +166,11 @@ export const HeroSection = () => {
               variants={itemVariants}
               className="text-lg sm:text-2xl md:text-3xl font-semibold flex items-center justify-center flex-wrap gap-1.5 sm:gap-3 pt-1"
             >
-              <span style={{ color: "#82717B", fontWeight: 300 }}>I&apos;m a</span>
+              <span style={{ color: "var(--text-muted)", fontWeight: 300 }}>I&apos;m a</span>
               <span
                 className="font-bold min-w-[210px] sm:min-w-[340px] md:min-w-[390px] text-left"
                 style={{
-                  background: "linear-gradient(90deg, #8254EE, #00C2FF)",
+                  background: "var(--grad-role)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -197,13 +197,13 @@ export const HeroSection = () => {
             <motion.p
               variants={itemVariants}
               className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed pt-2"
-              style={{ color: "#82717B" }}
+              style={{ color: "var(--text-body)" }}
             >
               Building production-grade full-stack applications with{" "}
-              <span className="text-white font-medium">React</span>,{" "}
-              <span className="text-white font-medium">Next.js</span>,{" "}
-              <span className="text-white font-medium">Node.js</span>, and{" "}
-              <span style={{ color: "#00C2FF", fontWeight: 500 }}>AI/LLM systems</span>.
+              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>React</span>,{" "}
+              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>Next.js</span>,{" "}
+              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>Node.js</span>, and{" "}
+              <span style={{ color: "var(--text-accent-blue)", fontWeight: 500 }}>AI/LLM systems</span>.
               Focused on scalable architecture, intelligent products, and polished user experiences.
             </motion.p>
 
@@ -217,15 +217,15 @@ export const HeroSection = () => {
                   href="#projects"
                   className="group inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 rounded-full font-semibold text-white text-xs sm:text-sm transition-all duration-300"
                   style={{
-                    background: "linear-gradient(135deg, #8254EE, #6d3fd4)",
-                    boxShadow: "0 0 24px rgba(130,84,238,0.35)",
+                    background: "var(--grad-primary)",
+                    boxShadow: "0 0 24px rgba(var(--purple-rgb), 0.35)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = "0 0 40px rgba(130,84,238,0.6)";
+                    e.currentTarget.style.boxShadow = "0 0 40px rgba(var(--purple-rgb), 0.6)";
                     e.currentTarget.style.transform = "scale(1.02)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = "0 0 24px rgba(130,84,238,0.35)";
+                    e.currentTarget.style.boxShadow = "0 0 24px rgba(var(--purple-rgb), 0.35)";
                     e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
@@ -240,17 +240,17 @@ export const HeroSection = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300"
                   style={{
-                    border: "1px solid rgba(0,194,255,0.35)",
-                    background: "rgba(0,194,255,0.07)",
-                    color: "#00C2FF",
+                    border: "1px solid rgba(var(--blue-rgb), 0.35)",
+                    background: "rgba(var(--blue-rgb), 0.07)",
+                    color: "var(--color-blue)",
                     backdropFilter: "blur(10px)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(0,194,255,0.15)";
-                    e.currentTarget.style.boxShadow = "0 0 24px rgba(0,194,255,0.25)";
+                    e.currentTarget.style.background = "rgba(var(--blue-rgb), 0.15)";
+                    e.currentTarget.style.boxShadow = "0 0 24px rgba(var(--blue-rgb), 0.25)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(0,194,255,0.07)";
+                    e.currentTarget.style.background = "rgba(var(--blue-rgb), 0.07)";
                     e.currentTarget.style.boxShadow = "none";
                   }}
                 >
@@ -270,7 +270,7 @@ export const HeroSection = () => {
                 <span
                   className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-mono"
                   style={{
-                    background: "linear-gradient(135deg, #8254EE, #00C2FF)",
+                    background: "var(--grad-stats)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -278,7 +278,7 @@ export const HeroSection = () => {
                 >
                   {s.value}
                 </span>
-                <span className="text-xs tracking-wide" style={{ color: "#82717B" }}>
+                <span className="text-xs tracking-wide" style={{ color: "var(--text-muted)" }}>
                   {s.label}
                 </span>
               </div>
@@ -289,11 +289,11 @@ export const HeroSection = () => {
           <motion.div variants={itemVariants} className="w-full relative overflow-hidden py-3">
             <div
               className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #090909, transparent)" }}
+              style={{ background: "var(--grad-fade-l)" }}
             />
             <div
               className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, #090909, transparent)" }}
+              style={{ background: "var(--grad-fade-r)" }}
             />
             <div className="marquee-track flex gap-3 sm:gap-4 whitespace-nowrap">
               {[...techStack, ...techStack].map((tech, idx) => (
@@ -301,21 +301,23 @@ export const HeroSection = () => {
                   key={idx}
                   className="flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shrink-0 transition-all duration-300"
                   style={{
-                    background: "rgba(59,53,60,0.22)",
-                    border: "1px solid rgba(130,84,238,0.12)",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border-card)",
                     backdropFilter: "blur(8px)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(130,84,238,0.4)";
-                    e.currentTarget.style.boxShadow = "0 0 14px rgba(130,84,238,0.15)";
+                    e.currentTarget.style.background = "var(--bg-card-hover)";
+                    e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.4)";
+                    e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(130,84,238,0.12)";
+                    e.currentTarget.style.background = "var(--bg-card)";
+                    e.currentTarget.style.borderColor = "var(--border-card)";
                     e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <tech.Icon size={15} style={{ color: tech.color, opacity: 0.9 }} />
-                  <span className="text-xs sm:text-sm font-medium" style={{ color: "#C1CFC1" }}>
+                  <span className="text-xs sm:text-sm font-medium" style={{ color: "var(--text-body)" }}>
                     {tech.name}
                   </span>
                 </div>
@@ -329,7 +331,7 @@ export const HeroSection = () => {
       <div className="mt-8 sm:mt-12 flex flex-col items-center gap-1.5 z-10 select-none">
         <span
           className="text-[10px] sm:text-xs tracking-[0.25em] uppercase font-mono font-semibold"
-          style={{ color: "#82717B" }}
+          style={{ color: "var(--text-muted)" }}
         >
           Scroll
         </span>
@@ -337,13 +339,13 @@ export const HeroSection = () => {
           <motion.div
             className="flex items-center justify-center w-8 h-8 rounded-full"
             style={{
-              border: "1px solid rgba(130,84,238,0.3)",
-              background: "rgba(130,84,238,0.06)",
+              border: "1px solid rgba(var(--purple-rgb), 0.3)",
+              background: "rgba(var(--purple-rgb), 0.06)",
             }}
             animate={isReduced ? {} : { opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ArrowDown className="h-3.5 w-3.5" style={{ color: "#8254EE" }} />
+            <ArrowDown className="h-3.5 w-3.5" style={{ color: "var(--color-purple)" }} />
           </motion.div>
         </div>
       </div>

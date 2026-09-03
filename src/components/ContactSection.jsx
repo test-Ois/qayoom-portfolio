@@ -90,7 +90,7 @@ export const ContactSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(130,84,238,0.08), transparent)",
+          background: "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(168,85,247,0.08), transparent)",
         }}
       />
 
@@ -106,7 +106,7 @@ export const ContactSection = () => {
             Get In{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #8254EE, #00C2FF)",
+                background: "var(--grad-heading)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -115,7 +115,7 @@ export const ContactSection = () => {
               Touch
             </span>
           </h2>
-          <p className="text-center mb-14 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "#82717B" }}>
+          <p className="text-center mb-16 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Full Stack Engineer passionate about scalable applications, AI solutions, and modern web development.
           </p>
         </Reveal>
@@ -127,7 +127,7 @@ export const ContactSection = () => {
               <h3 className="text-xl sm:text-2xl font-bold mb-6 text-left tracking-tight">
                 Contact Information
               </h3>
-              <p className="text-sm leading-relaxed mb-8 text-left" style={{ color: "#82717B" }}>
+              <p className="text-sm leading-relaxed mb-8 text-left" style={{ color: "var(--text-body)" }}>
                 Whether you have a question about a project, a full-time engineering opportunity, or just want to connect, feel free to reach out.
               </p>
 
@@ -156,14 +156,14 @@ export const ContactSection = () => {
                     <div
                       className="p-3 rounded-xl shrink-0"
                       style={{
-                        background: "rgba(130,84,238,0.1)",
-                        border: "1px solid rgba(130,84,238,0.2)",
+                        background: "rgba(var(--purple-rgb), 0.12)",
+                        border: "1px solid rgba(var(--purple-rgb), 0.2)",
                       }}
                     >
-                      <Icon className="h-5 w-5" style={{ color: "#8254EE" }} />
+                      <Icon className="h-6 w-6" style={{ color: "var(--color-purple)" }} />
                     </div>
                     <div className="text-left">
-                      <h4 className="font-semibold text-xs tracking-wider uppercase mb-0.5" style={{ color: "#82717B" }}>
+                      <h4 className="font-semibold text-xs tracking-wider uppercase mb-0.5" style={{ color: "var(--text-muted)" }}>
                         {label}
                       </h4>
                       {href ? (
@@ -184,7 +184,7 @@ export const ContactSection = () => {
 
             {/* Social Links */}
             <div className="pt-6 text-left border-t border-purple-900/15">
-              <h4 className="font-semibold text-xs uppercase tracking-wider mb-4" style={{ color: "#82717B" }}>
+              <h4 className="font-semibold text-xs uppercase tracking-wider mb-4" style={{ color: "var(--text-muted)" }}>
                 Connect With Me
               </h4>
               <div className="flex space-x-3">
@@ -197,21 +197,24 @@ export const ContactSection = () => {
                     aria-label={label}
                     className="p-3 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
                     style={{
-                      background: "rgba(59,53,60,0.25)",
-                      border: "1px solid rgba(130,84,238,0.2)",
+                      background: "var(--bg-input)",
+                      border: "1px solid var(--border-input)",
+                      color: "var(--text-heading)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(130,84,238,0.6)";
-                      e.currentTarget.style.boxShadow = "0 0 16px rgba(130,84,238,0.3)";
+                      e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
+                      e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.2)";
+                      e.currentTarget.style.background = "var(--bg-body)";
                       e.currentTarget.style.transform = "translateY(-2px)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(130,84,238,0.2)";
+                      e.currentTarget.style.borderColor = "var(--border-input)";
                       e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.background = "var(--bg-input)";
                       e.currentTarget.style.transform = "translateY(0)";
                     }}
                   >
-                    <Icon size={18} style={{ color: "#8254EE" }} />
+                    <Icon size={18} style={{ color: "#a855f7" }} />
                   </a>
                 ))}
               </div>
@@ -227,11 +230,11 @@ export const ContactSection = () => {
               transition={{ duration: 0.4 }}
               className="relative rounded-2xl p-6 sm:p-8 text-left transition-all duration-300"
               style={{
-                background: "rgba(59, 53, 60, 0.16)",
-                border: "1px solid rgba(130, 84, 238, 0.18)",
+                background: "var(--bg-card)",
+                border: "1px solid rgba(var(--purple-rgb), 0.18)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.35)",
+                boxShadow: "var(--shadow-card)",
               }}
             >
               {/* Form Card Header */}
@@ -239,7 +242,7 @@ export const ContactSection = () => {
                 <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1.5">
                   Send a Message
                 </h3>
-                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "#82717B" }}>
+                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                   Have a project, opportunity, or question? I&apos;d love to hear from you.
                 </p>
               </div>
@@ -251,7 +254,7 @@ export const ContactSection = () => {
                   <label
                     htmlFor="contact-name"
                     className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#82717B" }}
+                    style={{ color: "#71717a" }}
                   >
                     Name
                   </label>
@@ -265,8 +268,8 @@ export const ContactSection = () => {
                     className={inputClass}
                     placeholder="Your name"
                     style={{
-                      background: "rgba(59,53,60,0.22)",
-                      borderColor: "rgba(130,84,238,0.18)",
+                      background: "var(--bg-input)",
+                      borderColor: "rgba(var(--purple-rgb), 0.18)",
                     }}
                   />
                 </div>
@@ -276,7 +279,7 @@ export const ContactSection = () => {
                   <label
                     htmlFor="contact-email"
                     className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#82717B" }}
+                    style={{ color: "#71717a" }}
                   >
                     Email
                   </label>
@@ -290,8 +293,8 @@ export const ContactSection = () => {
                     className={inputClass}
                     placeholder="your@email.com"
                     style={{
-                      background: "rgba(59,53,60,0.22)",
-                      borderColor: "rgba(130,84,238,0.18)",
+                      background: "var(--bg-input)",
+                      borderColor: "rgba(var(--purple-rgb), 0.18)",
                     }}
                   />
                 </div>
@@ -301,7 +304,7 @@ export const ContactSection = () => {
                   <label
                     htmlFor="contact-message"
                     className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#82717B" }}
+                    style={{ color: "#71717a" }}
                   >
                     Message
                   </label>
@@ -315,8 +318,8 @@ export const ContactSection = () => {
                     className={inputClass}
                     placeholder="Tell me about your project..."
                     style={{
-                      background: "rgba(59,53,60,0.22)",
-                      borderColor: "rgba(130,84,238,0.18)",
+                      background: "var(--bg-input)",
+                      borderColor: "rgba(var(--purple-rgb), 0.18)",
                     }}
                   />
                 </div>
@@ -328,7 +331,7 @@ export const ContactSection = () => {
                     disabled={isSubmitting}
                     className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm tracking-wide text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:shadow-purple-500/20 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
-                      background: "linear-gradient(135deg, #8254EE, #6d3fd4)",
+                      background: "var(--grad-primary)",
                     }}
                   >
                     <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
@@ -349,7 +352,7 @@ export const ContactSection = () => {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 flex flex-col items-center justify-center p-8 z-20 text-center rounded-2xl"
                   style={{
-                    background: "rgba(9, 9, 9, 0.95)",
+                    background: "var(--bg-overlay)",
                     backdropFilter: "blur(20px)",
                   }}
                 >
@@ -359,7 +362,7 @@ export const ContactSection = () => {
                   <h3 className="text-xl font-bold text-white mb-2">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-xs sm:text-sm max-w-xs mb-6 leading-relaxed" style={{ color: "#82717B" }}>
+                  <p className="text-xs sm:text-sm max-w-xs mb-6 leading-relaxed" style={{ color: "var(--text-body)" }}>
                     Thank you for reaching out. Your message has been delivered, and I will get back to you as soon as possible.
                   </p>
                   <button

@@ -86,7 +86,7 @@ export const ProjectsSection = () => {
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-72 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse, rgba(130,84,238,0.1), transparent 70%)",
+          background: "radial-gradient(ellipse, var(--orb-purple), transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -101,7 +101,7 @@ export const ProjectsSection = () => {
             Featured{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #8254EE, #00C2FF)",
+                background: "var(--grad-heading)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -110,7 +110,7 @@ export const ProjectsSection = () => {
               Projects &amp; Case Studies
             </span>
           </h2>
-          <p className="text-center mb-14 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "#82717B" }}>
+          <p className="text-center mb-14 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
             Explore my production-ready applications and ongoing platforms. Click{" "}
             <span className="text-purple-300 font-semibold">&ldquo;Explore Project&rdquo;</span> on any card below to expand the complete technical case study inline.
           </p>

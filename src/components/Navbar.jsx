@@ -32,10 +32,10 @@ export const Navbar = () => {
       style={
         isScrolled
           ? {
-              background: "rgba(9,9,9,0.85)",
+              background: "var(--bg-nav)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              borderBottomColor: "rgba(130,84,238,0.18)",
+              borderBottomColor: "rgba(var(--purple-rgb), 0.18)",
             }
           : {}
       }
@@ -50,7 +50,7 @@ export const Navbar = () => {
             <span
               className="text-glow"
               style={{
-                background: "linear-gradient(135deg, #8254EE, #b08af5)",
+                background: "var(--grad-heading)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -69,18 +69,18 @@ export const Navbar = () => {
               key={key}
               href={item.href}
               className="relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group"
-              style={{ color: "#C1CFC1" }}
+              style={{ color: "var(--text-body)" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#8254EE";
+                e.currentTarget.style.color = "var(--color-purple)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#C1CFC1";
+                e.currentTarget.style.color = "var(--text-body)";
               }}
             >
               {item.name}
               <span
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-3/4 transition-all duration-300 rounded-full"
-                style={{ background: "linear-gradient(90deg, #8254EE, #00C2FF)" }}
+                style={{ background: "linear-gradient(90deg, var(--color-purple), var(--color-blue))" }}
               />
             </a>
           ))}
@@ -90,7 +90,7 @@ export const Navbar = () => {
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="md:hidden p-2 z-50 transition-colors duration-300 cursor-pointer"
-          style={{ color: isMenuOpen ? "#8254EE" : "#C1CFC1" }}
+          style={{ color: isMenuOpen ? "var(--color-purple)" : "var(--text-body)" }}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -103,7 +103,7 @@ export const Navbar = () => {
             isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           )}
           style={{
-            background: "rgba(9,9,9,0.97)",
+            background: "var(--bg-nav-opaque)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
           }}
@@ -112,7 +112,7 @@ export const Navbar = () => {
           <div
             className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full pointer-events-none"
             style={{
-              background: "radial-gradient(circle, rgba(130,84,238,0.15), transparent 70%)",
+              background: "radial-gradient(circle, var(--orb-purple), transparent 70%)",
               filter: "blur(40px)",
             }}
           />
@@ -122,14 +122,14 @@ export const Navbar = () => {
                 key={key}
                 href={item.href}
                 className="text-2xl font-bold transition-all duration-300"
-                style={{ color: "#C1CFC1", fontFamily: "var(--font-space)" }}
+                style={{ color: "var(--text-body)", fontFamily: "var(--font-space)" }}
                 onClick={() => setIsMenuOpen(false)}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#8254EE";
-                  e.currentTarget.style.textShadow = "0 0 20px rgba(130,84,238,0.6)";
+                  e.currentTarget.style.color = "var(--color-purple)";
+                  e.currentTarget.style.textShadow = "0 0 20px rgba(var(--purple-rgb), 0.6)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "#C1CFC1";
+                  e.currentTarget.style.color = "var(--text-body)";
                   e.currentTarget.style.textShadow = "none";
                 }}
               >

@@ -79,7 +79,12 @@ const markdownComponents = {
     if (inline) {
       return (
         <code
-          className="px-1.5 py-0.5 rounded text-[11px] font-mono bg-purple-950/60 text-purple-300 border border-purple-800/40"
+          className="px-1.5 py-0.5 rounded text-[11px] font-mono"
+          style={{
+            background: "var(--bg-tag)",
+            border: "1px solid var(--border-tag)",
+            color: "var(--color-purple)",
+          }}
           {...props}
         >
           {children}
@@ -87,7 +92,14 @@ const markdownComponents = {
       );
     }
     return (
-      <pre className="p-3 my-2.5 rounded-xl bg-black/70 border border-purple-900/40 text-purple-200 font-mono text-xs overflow-x-auto">
+      <pre
+        className="p-3 my-2.5 rounded-xl font-mono text-xs overflow-x-auto"
+        style={{
+          background: "var(--bg-card)",
+          border: "1px solid var(--border-card)",
+          color: "var(--text-body)",
+        }}
+      >
         <code className={className} {...props}>
           {children}
         </code>
@@ -305,15 +317,15 @@ export const AIChat = () => {
               transition={{ duration: 0.2 }}
               className="group flex items-center gap-2 px-4 py-2.5 rounded-full cursor-pointer select-none transition-all duration-300"
               style={{
-                background: "linear-gradient(135deg, #8254EE 0%, #00C2FF 100%)",
-                boxShadow: "0 4px 20px rgba(130, 84, 238, 0.4)",
+                background: "linear-gradient(135deg, var(--color-purple) 0%, var(--color-blue) 100%)",
+                boxShadow: "0 4px 20px rgba(var(--purple-rgb), 0.4)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 6px 28px rgba(130, 84, 238, 0.6)";
+                e.currentTarget.style.boxShadow = "0 6px 28px rgba(var(--purple-rgb), 0.6)";
                 e.currentTarget.style.filter = "brightness(1.08)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "0 4px 20px rgba(130, 84, 238, 0.4)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(var(--purple-rgb), 0.4)";
                 e.currentTarget.style.filter = "none";
               }}
               aria-label="Open Ask Qayoom AI Assistant"
@@ -337,25 +349,25 @@ export const AIChat = () => {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:bottom-24 w-auto sm:w-[420px] h-[580px] max-h-[82vh] z-50 flex flex-col rounded-2xl overflow-hidden shadow-2xl chatbot-drawer"
             style={{
-              background: "rgba(10, 9, 14, 0.96)",
-              border: "1px solid rgba(130, 84, 238, 0.25)",
+              background: "var(--bg-ai-drawer)",
+              border: "1px solid var(--border-ai-drawer)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.8), 0 0 32px rgba(130, 84, 238, 0.18)",
+              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 32px rgba(var(--purple-rgb), 0.12)",
             }}
           >
             {/* ── Clean Header (No Model Information) ── */}
             <div
               className="px-4 py-3.5 flex items-center justify-between border-b relative select-none shrink-0"
               style={{
-                background: "linear-gradient(135deg, rgba(130, 84, 238, 0.18), rgba(0, 194, 255, 0.08))",
-                borderColor: "rgba(130, 84, 238, 0.18)",
+                background: "var(--bg-ai-header)",
+                borderColor: "var(--border-ai)",
               }}
             >
               <div className="flex items-center gap-3">
                 <div
                   className="p-2 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #8254EE, #00C2FF)" }}
+                  style={{ background: "linear-gradient(135deg, var(--color-purple), var(--color-blue))" }}
                 >
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
@@ -363,7 +375,7 @@ export const AIChat = () => {
                   <h3 className="font-bold text-sm text-white tracking-wide">
                     Ask Qayoom AI
                   </h3>
-                  <div className="text-[11px] font-normal" style={{ color: "#82717B" }}>
+                  <div className="text-[11px] font-normal" style={{ color: "var(--text-muted)" }}>
                     Your guide to Qayoom&apos;s work, projects &amp; skills
                   </div>
                 </div>
@@ -400,8 +412,8 @@ export const AIChat = () => {
                       <div
                         className="max-w-[80%] p-3.5 rounded-2xl rounded-tr-none text-left text-xs sm:text-sm text-white shadow-md"
                         style={{
-                          background: "linear-gradient(135deg, #8254EE, #6d3fd4)",
-                          boxShadow: "0 2px 14px rgba(130, 84, 238, 0.3)",
+                          background: "linear-gradient(135deg, var(--color-purple), #7c3aed)",
+                          boxShadow: "0 2px 14px rgba(var(--purple-rgb), 0.3)",
                         }}
                       >
                         <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
@@ -430,7 +442,7 @@ export const AIChat = () => {
                             {msg.content}
                           </ReactMarkdown>
                         </div>
-                        <span className="block text-[10px] mt-2 opacity-40 font-mono" style={{ color: "#82717B" }}>
+                        <span className="block text-[10px] mt-2 opacity-40 font-mono" style={{ color: "var(--text-muted)" }}>
                           {msg.timestamp}
                         </span>
                       </div>
@@ -469,7 +481,12 @@ export const AIChat = () => {
             {showScrollBottom && (
               <button
                 onClick={() => scrollToBottom("smooth")}
-                className="absolute bottom-20 right-6 p-2 rounded-full bg-purple-900/80 text-white shadow-lg border border-purple-500/40 hover:bg-purple-800 transition-colors z-10 cursor-pointer"
+                className="absolute bottom-20 right-6 p-2 rounded-full shadow-lg transition-colors z-10 cursor-pointer"
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-purple)",
+                  color: "var(--color-purple)",
+                }}
                 title="Scroll to latest response"
               >
                 <ArrowDown size={14} />
@@ -478,24 +495,30 @@ export const AIChat = () => {
 
             {/* ── Suggested Prompts ── */}
             {messages.length <= 1 && !isLoading && (
-              <div className="px-4 py-2.5 flex flex-wrap gap-1.5 border-t border-purple-900/20 bg-black/40 shrink-0">
+              <div
+                className="px-4 py-2.5 flex flex-wrap gap-1.5 border-t shrink-0"
+                style={{
+                  background: "var(--bg-card)",
+                  borderColor: "var(--border-card)",
+                }}
+              >
                 {SUGGESTED_QUESTIONS.map((q, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSendMessage(q)}
                     className="text-[11px] px-2.5 py-1 rounded-full text-left transition-all duration-200 cursor-pointer"
                     style={{
-                      background: "rgba(130, 84, 238, 0.12)",
-                      border: "1px solid rgba(130, 84, 238, 0.25)",
-                      color: "#C1CFC1",
+                      background: "rgba(var(--purple-rgb), 0.12)",
+                      border: "1px solid rgba(var(--purple-rgb), 0.25)",
+                      color: "var(--text-body)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(130, 84, 238, 0.28)";
-                      e.currentTarget.style.color = "#FFFFFF";
+                      e.currentTarget.style.background = "rgba(var(--purple-rgb), 0.28)";
+                      e.currentTarget.style.color = "var(--text-heading)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(130, 84, 238, 0.12)";
-                      e.currentTarget.style.color = "#C1CFC1";
+                      e.currentTarget.style.background = "rgba(var(--purple-rgb), 0.12)";
+                      e.currentTarget.style.color = "var(--text-body)";
                     }}
                   >
                     ✦ {q}
@@ -508,8 +531,8 @@ export const AIChat = () => {
             <div
               className="p-3 border-t relative shrink-0"
               style={{
-                background: "rgba(9, 9, 9, 0.95)",
-                borderColor: "rgba(130, 84, 238, 0.2)",
+                background: "var(--bg-ai-input-bar)",
+                borderColor: "rgba(var(--purple-rgb), 0.2)",
               }}
             >
               <form
@@ -527,7 +550,12 @@ export const AIChat = () => {
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Qayoom..."
                   disabled={isLoading}
-                  className="flex-1 bg-white/5 border border-purple-900/30 focus:border-purple-500/60 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none transition-colors"
+                  className="flex-1 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none transition-colors"
+                  style={{
+                    background: "var(--bg-input)",
+                    border: "1px solid var(--border-input)",
+                    color: "var(--text-heading)",
+                  }}
                 />
                 <button
                   type="submit"
@@ -536,8 +564,8 @@ export const AIChat = () => {
                   style={{
                     background:
                       inputValue.trim() && !isLoading
-                        ? "linear-gradient(135deg, #8254EE, #00C2FF)"
-                        : "rgba(59, 53, 60, 0.4)",
+                        ? "linear-gradient(135deg, var(--color-purple), var(--color-blue))"
+                        : "var(--bg-card)",
                     color: "#FFFFFF",
                   }}
                 >

@@ -34,28 +34,29 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       className="fixed max-sm:hidden top-5 right-5 z-50 p-2.5 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
       style={{
-        background: "rgba(59,53,60,0.4)",
+        background: "var(--bg-card)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid rgba(130,84,238,0.25)",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.4)",
+        border: "1px solid var(--border-card)",
+        boxShadow: "var(--shadow-toggle)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 16px rgba(130,84,238,0.4)";
-        e.currentTarget.style.borderColor = "rgba(130,84,238,0.5)";
+        e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.4)";
+        e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
         e.currentTarget.style.transform = "scale(1.1)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.4)";
-        e.currentTarget.style.borderColor = "rgba(130,84,238,0.25)";
+        e.currentTarget.style.boxShadow = "var(--shadow-toggle)";
+        e.currentTarget.style.borderColor = "var(--border-card)";
         e.currentTarget.style.transform = "scale(1)";
       }}
-      aria-label="Toggle Theme"
+      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDarkMode ? (
-        <Sun className="h-5 w-5" style={{ color: "#00C2FF" }} />
+        <Moon className="h-5 w-5" style={{ color: "var(--color-blue)" }} />
       ) : (
-        <Moon className="h-5 w-5" style={{ color: "#8254EE" }} />
+        <Sun className="h-5 w-5" style={{ color: "var(--color-purple)" }} />
       )}
     </button>
   );

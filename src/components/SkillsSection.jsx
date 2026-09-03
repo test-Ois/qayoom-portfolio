@@ -80,9 +80,9 @@ const getSkillIcon = (iconName) => {
 const getLevelDotColor = (level) => {
   switch (level) {
     case "Advanced":
-      return "bg-cyan-400 shadow-[0_0_8px_rgba(0,194,255,0.6)]";
+      return "bg-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]";
     case "Proficient":
-      return "bg-purple-400 shadow-[0_0_8px_rgba(130,84,238,0.6)]";
+      return "bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]";
     case "Intermediate":
       return "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]";
     default:
@@ -103,21 +103,22 @@ const SkillCard = ({ skill, isReduced }) => {
       <div
         className="h-full flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 select-none text-left group min-w-0"
         style={{
-          background: "rgba(59, 53, 60, 0.16)",
-          border: "1px solid rgba(130, 84, 238, 0.14)",
+          background: "var(--bg-card)",
+          border: "1px solid var(--border-card)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
-          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04)",
+          boxShadow: "var(--shadow-card)",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = `${skill.accent}55`;
-          e.currentTarget.style.boxShadow = `0 10px 32px ${skill.accent}22, 0 2px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)`;
+          e.currentTarget.style.background = "var(--bg-card-hover)";
+          e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
           e.currentTarget.style.transform = "translateY(-3px)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "rgba(130, 84, 238, 0.14)";
-          e.currentTarget.style.boxShadow =
-            "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04)";
+          e.currentTarget.style.borderColor = "var(--border-card)";
+          e.currentTarget.style.background = "var(--bg-card)";
+          e.currentTarget.style.boxShadow = "var(--shadow-card)";
           e.currentTarget.style.transform = "translateY(0)";
         }}
       >
@@ -136,7 +137,14 @@ const SkillCard = ({ skill, isReduced }) => {
             </div>
 
             {/* Realistic Level Indicator */}
-            <span className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[11px] font-mono font-medium rounded-full bg-black/60 border border-white/10 text-gray-300 shrink-0">
+            <span
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[11px] font-mono font-medium rounded-full shrink-0"
+              style={{
+                background: "rgba(var(--purple-rgb), 0.12)",
+                border: "1px solid rgba(var(--purple-rgb), 0.25)",
+                color: "var(--text-body)",
+              }}
+            >
               <span className={`w-1.5 h-1.5 rounded-full ${getLevelDotColor(skill.level)}`} />
               {skill.level}
             </span>
@@ -146,7 +154,7 @@ const SkillCard = ({ skill, isReduced }) => {
           <h3 className="text-xs sm:text-base font-bold text-white mb-0.5 sm:mb-1 tracking-tight leading-snug break-words group-hover:text-white transition-colors">
             {skill.name}
           </h3>
-          <p className="text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3.5 font-medium leading-tight sm:leading-relaxed" style={{ color: "#82717B" }}>
+          <p className="text-[10px] sm:text-xs mb-2 sm:mb-3.5 font-medium leading-tight sm:leading-relaxed" style={{ color: "var(--text-muted)" }}>
             {skill.role}
           </p>
         </div>
@@ -209,7 +217,7 @@ export const SkillsSection = () => {
       <div
         className="absolute top-1/2 right-0 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(0,194,255,0.06), transparent 70%)",
+          background: "radial-gradient(circle, var(--orb-blue), transparent 70%)",
           filter: "blur(70px)",
           transform: "translateY(-50%)",
         }}
@@ -217,7 +225,7 @@ export const SkillsSection = () => {
       <div
         className="absolute bottom-0 left-0 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(130,84,238,0.06), transparent 70%)",
+          background: "radial-gradient(circle, var(--orb-purple), transparent 70%)",
           filter: "blur(70px)",
         }}
       />
@@ -234,7 +242,7 @@ export const SkillsSection = () => {
             My{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #8254EE, #00C2FF)",
+                background: "var(--grad-heading)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -247,17 +255,27 @@ export const SkillsSection = () => {
           {/* Supporting Subtitle */}
           <p
             className="text-center mb-7 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base"
-            style={{ color: "#82717B" }}
+            style={{ color: "var(--text-muted)" }}
           >
             Technologies I use to build modern full-stack applications.
           </p>
 
           {/* Compact, Expandable "Currently working with" Bar (Max 2 rows collapsed) */}
-          <div className="max-w-3xl mx-auto mb-10 p-3.5 sm:p-4 rounded-2xl bg-black/40 border border-purple-900/20 backdrop-blur-md transition-all duration-300">
+          <div
+            className="max-w-3xl mx-auto mb-10 p-3.5 sm:p-4 rounded-2xl backdrop-blur-md transition-all duration-300"
+            style={{
+              background: "var(--bg-card)",
+              border: "1px solid var(--border-card)",
+              boxShadow: "var(--shadow-card)",
+            }}
+          >
             <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5">
               {/* Header Label */}
-              <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-purple-300 font-semibold shrink-0">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <div
+                className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-semibold shrink-0"
+                style={{ color: "var(--color-purple)" }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "var(--color-blue)" }} />
                 Currently working with:
               </div>
 
@@ -271,7 +289,12 @@ export const SkillsSection = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.18 }}
-                      className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-purple-950/50 text-purple-200 border border-purple-800/30"
+                      className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium"
+                      style={{
+                        background: "rgba(var(--purple-rgb), 0.12)",
+                        border: "1px solid rgba(var(--purple-rgb), 0.25)",
+                        color: "var(--color-purple)",
+                      }}
                     >
                       {tech}
                     </motion.span>
@@ -285,7 +308,12 @@ export const SkillsSection = () => {
                 onClick={() => setIsWorkingWithExpanded(!isWorkingWithExpanded)}
                 aria-expanded={isWorkingWithExpanded}
                 aria-label={isWorkingWithExpanded ? "Show fewer active technologies" : "Show all active technologies"}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono text-cyan-300 hover:text-cyan-200 bg-cyan-950/30 hover:bg-cyan-900/40 border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-200 cursor-pointer shrink-0"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono transition-all duration-200 cursor-pointer shrink-0"
+                style={{
+                  background: "rgba(var(--blue-rgb), 0.10)",
+                  border: "1px solid rgba(var(--blue-rgb), 0.25)",
+                  color: "var(--color-blue)",
+                }}
               >
                 <span>{isWorkingWithExpanded ? "Less" : `+${CURRENTLY_WORKING_WITH_ALL.length - CURRENTLY_WORKING_WITH_PRIMARY.length}`}</span>
                 {isWorkingWithExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -317,28 +345,30 @@ export const SkillsSection = () => {
                   style={
                     isActive
                       ? {
-                          background: "linear-gradient(135deg, #8254EE, #6d3fd4)",
+                          background: "linear-gradient(135deg, var(--color-purple), #7c3aed)",
                           color: "#ffffff",
-                          boxShadow: "0 0 16px rgba(130,84,238,0.35)",
-                          border: "1px solid rgba(130,84,238,0.5)",
+                          boxShadow: "0 0 16px rgba(var(--purple-rgb), 0.35)",
+                          border: "1px solid rgba(var(--purple-rgb), 0.5)",
                         }
                       : {
-                          background: "rgba(59,53,60,0.2)",
-                          color: "#82717B",
-                          border: "1px solid rgba(130,84,238,0.12)",
+                          background: "var(--bg-card)",
+                          color: "var(--text-muted)",
+                          border: "1px solid var(--border-card)",
                           backdropFilter: "blur(8px)",
                         }
                   }
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = "#C1CFC1";
-                      e.currentTarget.style.borderColor = "rgba(130,84,238,0.3)";
+                      e.currentTarget.style.color = "var(--text-body)";
+                      e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.3)";
+                      e.currentTarget.style.background = "var(--bg-card-hover)";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = "#82717B";
-                      e.currentTarget.style.borderColor = "rgba(130,84,238,0.12)";
+                      e.currentTarget.style.color = "var(--text-muted)";
+                      e.currentTarget.style.borderColor = "var(--border-card)";
+                      e.currentTarget.style.background = "var(--bg-card)";
                     }
                   }}
                 >
@@ -384,7 +414,13 @@ export const SkillsSection = () => {
                 }
                 setIsAllExpanded(!isAllExpanded);
               }}
-              className="px-6 py-2.5 rounded-full text-xs font-semibold font-mono tracking-wide text-purple-200 border border-purple-500/30 bg-purple-950/40 hover:bg-purple-900/50 hover:border-purple-400/50 transition-all duration-300 flex items-center gap-2 shadow-lg backdrop-blur-md cursor-pointer hover:shadow-[0_0_20px_rgba(130,84,238,0.3)]"
+              className="px-6 py-2.5 rounded-full text-xs font-semibold font-mono tracking-wide transition-all duration-300 flex items-center gap-2 shadow-lg backdrop-blur-md cursor-pointer"
+              style={{
+                background: "var(--bg-tag)",
+                border: "1px solid var(--border-tag)",
+                color: "var(--tag-text)",
+                boxShadow: "var(--shadow-card)",
+              }}
             >
               <span>
                 {isAllExpanded

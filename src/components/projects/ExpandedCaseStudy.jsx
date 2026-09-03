@@ -42,7 +42,14 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
   return (
     <div className="w-full text-left text-white" id={`project-case-study-${project.id}`}>
       {/* ── 1. PROJECT HERO ── */}
-      <div className="relative rounded-2xl overflow-hidden border border-purple-900/30 bg-black/40 shadow-2xl mb-10">
+      <div
+        className="relative rounded-2xl overflow-hidden mb-10 transition-all duration-300"
+        style={{
+          background: "var(--bg-card)",
+          border: "1px solid var(--border-card)",
+          boxShadow: "var(--shadow-card)",
+        }}
+      >
         {/* Top Accent Line */}
         <div
           className="absolute top-0 left-0 right-0 h-[3px] z-20"
@@ -52,7 +59,10 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
         />
 
         {/* Hero Cover Image (Main prominent cover ONLY - NO screenshot gallery) */}
-        <div className="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden bg-black/60">
+        <div
+          className="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden"
+          style={{ background: "var(--bg-img-frame)" }}
+        >
           <img
             src={project.image}
             alt={project.title}
@@ -60,10 +70,10 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
           />
           {/* Subtle vignette / gradient overlays */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none case-study-vignette"
             style={{
               background:
-                "linear-gradient(to top, rgba(9, 9, 9, 0.95) 0%, rgba(9, 9, 9, 0.6) 45%, rgba(9, 9, 9, 0.2) 100%)",
+                "linear-gradient(to top, var(--bg-card) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
             }}
           />
           <div
@@ -84,16 +94,17 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
             aria-label="Collapse case study"
             className="absolute top-4 right-4 z-30 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md cursor-pointer transition-all duration-300 shadow-lg"
             style={{
-              background: "rgba(9, 9, 9, 0.85)",
-              border: `1px solid ${project.accent}40`,
+              background: "var(--bg-card)",
+              border: `1px solid var(--border-card)`,
               color: project.accent,
+              boxShadow: "var(--shadow-card)",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = `${project.accent}25`;
               e.currentTarget.style.transform = "translateY(-1px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(9, 9, 9, 0.85)";
+              e.currentTarget.style.background = "rgba(13, 15, 26, 0.85)";
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
@@ -124,17 +135,17 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
               </span>
             )}
 
-            <span className="text-xs font-mono text-gray-400">Featured Case Study 0{project.id}</span>
+            <span className="text-xs font-mono" style={{ color: "var(--text-muted)" }}>Featured Case Study 0{project.id}</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2" style={{ color: "var(--text-heading)" }}>
             {project.title}
           </h2>
           <h3 className="text-sm sm:text-base font-medium mb-4" style={{ color: project.accent }}>
             {project.subtitle}
           </h3>
 
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-4xl mb-6">
+          <p className="text-sm sm:text-base leading-relaxed max-w-4xl mb-6" style={{ color: "var(--text-body)" }}>
             {project.summary}
           </p>
 
@@ -147,7 +158,7 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
                 rel="noopener noreferrer"
                 className="gold-button text-xs sm:text-sm font-semibold inline-flex items-center gap-2"
                 style={{
-                  background: `linear-gradient(135deg, ${project.accent}, #00C2FF)`,
+                  background: `linear-gradient(135deg, ${project.accent}, #3b82f6)`,
                   color: "#ffffff",
                   boxShadow: `0 0 20px ${project.accent}40`,
                 }}
@@ -178,17 +189,17 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
               }}
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ml-auto"
               style={{
-                background: "rgba(130, 84, 238, 0.08)",
-                border: "1px solid rgba(130, 84, 238, 0.2)",
-                color: "#82717B",
+                background: "var(--bg-tag)",
+                border: "1px solid var(--border-tag)",
+                color: "var(--text-muted)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "rgba(130, 84, 238, 0.4)";
+                e.currentTarget.style.color = "var(--color-purple)";
+                e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.4)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#82717B";
-                e.currentTarget.style.borderColor = "rgba(130, 84, 238, 0.2)";
+                e.currentTarget.style.color = "var(--text-muted)";
+                e.currentTarget.style.borderColor = "var(--border-tag)";
               }}
             >
               <ChevronUp size={16} />
@@ -217,57 +228,61 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
           <div
             className="p-5 rounded-xl border transition-all duration-300"
             style={{
-              background: "rgba(59, 53, 60, 0.14)",
-              borderColor: "rgba(130, 84, 238, 0.15)",
+              background: "var(--bg-card)",
+              borderColor: "var(--border-card)",
+              boxShadow: "var(--shadow-card)",
             }}
           >
-            <h5 className="text-xs font-mono uppercase tracking-wider text-purple-300 mb-2 font-semibold flex items-center gap-1.5">
+            <h5 className="text-xs font-mono uppercase tracking-wider text-purple-400 mb-2 font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
               What It Is &amp; Purpose
             </h5>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{project.overview.about}</p>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{project.overview.about}</p>
           </div>
 
           <div
             className="p-5 rounded-xl border transition-all duration-300"
             style={{
-              background: "rgba(59, 53, 60, 0.14)",
-              borderColor: "rgba(130, 84, 238, 0.15)",
+              background: "var(--bg-card)",
+              borderColor: "var(--border-card)",
+              boxShadow: "var(--shadow-card)",
             }}
           >
-            <h5 className="text-xs font-mono uppercase tracking-wider text-cyan-300 mb-2 font-semibold flex items-center gap-1.5">
+            <h5 className="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-2 font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
               The Core Problem
             </h5>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{project.overview.problem}</p>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{project.overview.problem}</p>
           </div>
 
           <div
             className="p-5 rounded-xl border transition-all duration-300"
             style={{
-              background: "rgba(59, 53, 60, 0.14)",
-              borderColor: "rgba(130, 84, 238, 0.15)",
+              background: "var(--bg-card)",
+              borderColor: "var(--border-card)",
+              boxShadow: "var(--shadow-card)",
             }}
           >
-            <h5 className="text-xs font-mono uppercase tracking-wider text-emerald-300 mb-2 font-semibold flex items-center gap-1.5">
+            <h5 className="text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2 font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               Engineered Solution
             </h5>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{project.overview.solution}</p>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{project.overview.solution}</p>
           </div>
 
           <div
             className="p-5 rounded-xl border transition-all duration-300"
             style={{
-              background: "rgba(59, 53, 60, 0.14)",
-              borderColor: "rgba(130, 84, 238, 0.15)",
+              background: "var(--bg-card)",
+              borderColor: "var(--border-card)",
+              boxShadow: "var(--shadow-card)",
             }}
           >
-            <h5 className="text-xs font-mono uppercase tracking-wider text-amber-300 mb-2 font-semibold flex items-center gap-1.5">
+            <h5 className="text-xs font-mono uppercase tracking-wider text-amber-400 mb-2 font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
               Key Value &amp; Impact
             </h5>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{project.overview.value}</p>
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{project.overview.value}</p>
           </div>
         </div>
       </div>
@@ -293,31 +308,34 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
               key={idx}
               className="p-5 rounded-xl border transition-all duration-300 flex flex-col justify-between group"
               style={{
-                background: "rgba(59, 53, 60, 0.12)",
-                borderColor: "rgba(130, 84, 238, 0.12)",
+                background: "var(--bg-card)",
+                borderColor: "var(--border-card)",
+                boxShadow: "var(--shadow-card)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = `${project.accent}44`;
-                e.currentTarget.style.background = "rgba(59, 53, 60, 0.22)";
+                e.currentTarget.style.borderColor = "var(--border-card-hover)";
+                e.currentTarget.style.background = "var(--bg-card-hover)";
+                e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(130, 84, 238, 0.12)";
-                e.currentTarget.style.background = "rgba(59, 53, 60, 0.12)";
+                e.currentTarget.style.borderColor = "var(--border-card)";
+                e.currentTarget.style.background = "var(--bg-card)";
+                e.currentTarget.style.boxShadow = "var(--shadow-card)";
               }}
             >
               <div>
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center mb-3.5 transition-transform duration-300 group-hover:scale-110"
                   style={{
-                    background: `${project.accent}15`,
-                    color: project.accent,
-                    border: `1px solid ${project.accent}33`,
+                    background: "var(--bg-icon)",
+                    color: "var(--color-purple)",
+                    border: "1px solid var(--border-purple)",
                   }}
                 >
                   {getIcon(feat.icon)}
                 </div>
-                <h5 className="text-sm font-bold text-white mb-2 leading-snug">{feat.title}</h5>
-                <p className="text-xs text-gray-300 leading-relaxed">{feat.description}</p>
+                <h5 className="text-sm font-bold mb-2 leading-snug" style={{ color: "var(--text-heading)" }}>{feat.title}</h5>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-body)" }}>{feat.description}</p>
               </div>
             </div>
           ))}
@@ -339,7 +357,14 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl border bg-black/40 border-purple-900/20 space-y-5">
+        <div
+          className="p-6 rounded-2xl border space-y-5"
+          style={{
+            background: "var(--bg-card)",
+            borderColor: "var(--border-card)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
           {Object.entries(project.techStack).map(([categoryKey, techList]) => {
             const formattedCategory =
               {
@@ -354,9 +379,9 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
             return (
               <div
                 key={categoryKey}
-                className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 pb-4 border-b border-white/5 last:border-0 last:pb-0"
+                className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 pb-4 border-b border-purple-900/10 last:border-0 last:pb-0"
               >
-                <span className="text-xs font-mono font-semibold text-gray-400 sm:w-48 shrink-0 flex items-center gap-2">
+                <span className="text-xs font-mono font-semibold sm:w-48 shrink-0 flex items-center gap-2" style={{ color: "var(--text-muted)" }}>
                   <Code2 size={13} style={{ color: project.accent }} />
                   {formattedCategory}
                 </span>
@@ -366,9 +391,9 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
                       key={tech}
                       className="px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200"
                       style={{
-                        background: "rgba(130, 84, 238, 0.08)",
-                        border: "1px solid rgba(130, 84, 238, 0.18)",
-                        color: "#e2e8f0",
+                        background: "var(--bg-tag)",
+                        border: "1px solid var(--border-tag)",
+                        color: "var(--tag-text)",
                       }}
                     >
                       {tech}
@@ -397,42 +422,54 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-5 rounded-xl border bg-black/30 border-purple-900/20">
-            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-purple-300">
+          <div
+            className="p-5 rounded-xl border transition-all duration-300"
+            style={{ background: "var(--bg-card)", borderColor: "var(--border-card)", boxShadow: "var(--shadow-card)" }}
+          >
+            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-purple-400">
               <Terminal size={14} />
               <span>CLIENT-SIDE ARCHITECTURE</span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>
               {project.architecture.client}
             </p>
           </div>
 
-          <div className="p-5 rounded-xl border bg-black/30 border-purple-900/20">
-            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-cyan-300">
+          <div
+            className="p-5 rounded-xl border transition-all duration-300"
+            style={{ background: "var(--bg-card)", borderColor: "var(--border-card)", boxShadow: "var(--shadow-card)" }}
+          >
+            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-cyan-400">
               <Server size={14} />
               <span>BACKEND &amp; API PIPELINE</span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>
               {project.architecture.backend}
             </p>
           </div>
 
-          <div className="p-5 rounded-xl border bg-black/30 border-purple-900/20">
-            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-emerald-300">
+          <div
+            className="p-5 rounded-xl border transition-all duration-300"
+            style={{ background: "var(--bg-card)", borderColor: "var(--border-card)", boxShadow: "var(--shadow-card)" }}
+          >
+            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-emerald-400">
               <Database size={14} />
               <span>DATA STORAGE &amp; AI INTEGRATION</span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>
               {project.architecture.dataAndAi}
             </p>
           </div>
 
-          <div className="p-5 rounded-xl border bg-black/30 border-purple-900/20">
-            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-amber-300">
+          <div
+            className="p-5 rounded-xl border transition-all duration-300"
+            style={{ background: "var(--bg-card)", borderColor: "var(--border-card)", boxShadow: "var(--shadow-card)" }}
+          >
+            <div className="flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-amber-400">
               <ShieldCheck size={14} />
               <span>SECURITY &amp; REAL-TIME TRANSPORT</span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>
               {project.architecture.realtimeOrSecurity}
             </p>
           </div>
@@ -460,11 +497,12 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
               key={idx}
               className="p-5 rounded-xl border transition-all duration-300"
               style={{
-                background: "rgba(59, 53, 60, 0.12)",
-                borderColor: "rgba(130, 84, 238, 0.15)",
+                background: "var(--bg-card)",
+                borderColor: "var(--border-card)",
+                boxShadow: "var(--shadow-card)",
               }}
             >
-              <h5 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
+              <h5 className="text-sm font-bold mb-3 flex items-center gap-2" style={{ color: "var(--text-heading)" }}>
                 <span className="w-2 h-2 rounded-full" style={{ background: project.accent }} />
                 {item.title}
               </h5>
@@ -473,13 +511,13 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
                   <span className="block text-[11px] font-mono font-bold text-red-400 mb-1 uppercase tracking-wider">
                     Technical Challenge
                   </span>
-                  <p className="text-gray-300 leading-relaxed">{item.challenge}</p>
+                  <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>{item.challenge}</p>
                 </div>
                 <div className="p-3.5 rounded-lg bg-emerald-950/20 border border-emerald-900/30">
                   <span className="block text-[11px] font-mono font-bold text-emerald-400 mb-1 uppercase tracking-wider">
                     Engineered Solution
                   </span>
-                  <p className="text-gray-300 leading-relaxed">{item.solution}</p>
+                  <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>{item.solution}</p>
                 </div>
               </div>
             </div>
@@ -506,15 +544,20 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
           {project.highlights.map((highlight, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-xl border flex items-center gap-3 bg-black/40 border-purple-900/20"
+              className="p-4 rounded-xl border flex items-center gap-3 transition-all duration-300"
+              style={{
+                background: "var(--bg-card)",
+                borderColor: "var(--border-card)",
+                boxShadow: "var(--shadow-card)",
+              }}
             >
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
-                style={{ background: `${project.accent}20`, color: project.accent }}
+                style={{ background: "var(--bg-icon)", color: "var(--color-purple)" }}
               >
                 <CheckCircle2 size={16} />
               </div>
-              <span className="text-xs sm:text-sm font-medium text-gray-200">{highlight}</span>
+              <span className="text-xs sm:text-sm font-medium" style={{ color: "var(--text-body)" }}>{highlight}</span>
             </div>
           ))}
         </div>
@@ -524,8 +567,9 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
       <div
         className="p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4"
         style={{
-          background: "linear-gradient(135deg, rgba(130, 84, 238, 0.12), rgba(0, 194, 255, 0.08))",
-          borderColor: "rgba(130, 84, 238, 0.25)",
+          background: "var(--grad-cta-panel)",
+          borderColor: "var(--border-purple)",
+          boxShadow: "var(--shadow-card)",
         }}
       >
         <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">

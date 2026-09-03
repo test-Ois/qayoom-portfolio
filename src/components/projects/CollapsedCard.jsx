@@ -21,20 +21,21 @@ export const CollapsedCard = ({ project, onExpand }) => {
       aria-label={`View ${project.title} Case Study`}
       className="group relative h-full flex flex-col rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 select-none text-left focus:outline-none focus:ring-2 focus:ring-purple-500/50"
       style={{
-        background: "rgba(59, 53, 60, 0.18)",
-        border: "1px solid rgba(130, 84, 238, 0.14)",
+        background: "var(--bg-card)",
+        border: "1px solid var(--border-card)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
-        boxShadow: "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04)",
+        boxShadow: "var(--shadow-card)",
       }}
       onMouseEnter={(e) => {
+        e.currentTarget.style.background = "var(--bg-card-hover)";
         e.currentTarget.style.borderColor = `${project.accent}55`;
-        e.currentTarget.style.boxShadow = `0 10px 36px ${project.accent}22, 0 2px 10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)`;
+        e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(130, 84, 238, 0.14)";
-        e.currentTarget.style.boxShadow =
-          "0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04)";
+        e.currentTarget.style.background = "var(--bg-card)";
+        e.currentTarget.style.borderColor = "var(--border-card)";
+        e.currentTarget.style.boxShadow = "var(--shadow-card)";
       }}
     >
       {/* Top accent gradient line */}
@@ -45,48 +46,63 @@ export const CollapsedCard = ({ project, onExpand }) => {
         }}
       />
 
-      {/* Project Cover Image */}
-      <div className="h-52 sm:h-56 w-full overflow-hidden relative bg-black/40">
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(9, 9, 9, 0.85) 0%, rgba(9, 9, 9, 0.2) 60%, transparent 100%)",
-          }}
-        />
-
-        {/* Category Pill on Image (Left) */}
-        <div className="absolute top-3 left-3 z-10">
-          <span
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-medium rounded-full backdrop-blur-md"
+      {/* Framed Project Preview Image Container */}
+      <div
+        className="p-2 sm:p-2.5 m-2.5 mb-0 rounded-xl relative transition-all duration-300"
+        style={{
+          background: "var(--bg-img-frame)",
+          border: "1px solid var(--border-img-frame)",
+        }}
+      >
+        <div className="h-44 sm:h-48 w-full overflow-hidden relative rounded-lg">
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
             style={{
-              background: "rgba(9, 9, 9, 0.8)",
-              border: `1px solid ${project.accent}40`,
-              color: project.accent,
+              background:
+                "linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, transparent 60%)",
             }}
-          >
-            <Sparkles size={11} className="shrink-0" />
-            {project.category}
-          </span>
-        </div>
+          />
 
-        {/* Status Badge (Ongoing) or Number identifier (Right) */}
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
-          {project.isOngoing && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase shadow-lg backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-              Ongoing Project
+          {/* Category Pill on Image (Left) */}
+          <div className="absolute top-2.5 left-2.5 z-10">
+            <span
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-medium rounded-full backdrop-blur-md"
+              style={{
+                background: "var(--bg-currently)",
+                border: `1px solid ${project.accent}40`,
+                color: project.accent,
+              }}
+            >
+              <Sparkles size={11} className="shrink-0" />
+              {project.category}
             </span>
-          )}
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-black/70 text-gray-400 border border-white/10 backdrop-blur-md">
-            0{project.id}
-          </span>
+          </div>
+
+          {/* Status Badge (Ongoing) or Number identifier (Right) */}
+          <div className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5">
+            {project.isOngoing && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase shadow-lg backdrop-blur-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                Ongoing Project
+              </span>
+            )}
+            <span
+              className="text-[11px] font-mono px-2 py-0.5 rounded-md backdrop-blur-md"
+              style={{
+                background: "var(--bg-currently)",
+                color: "var(--text-muted)",
+                border: "1px solid var(--border-card)",
+              }}
+            >
+              0{project.id}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -96,7 +112,7 @@ export const CollapsedCard = ({ project, onExpand }) => {
           <h3 className="text-lg font-bold text-white mb-1.5 tracking-tight group-hover:text-white transition-colors">
             {project.title}
           </h3>
-          <p className="text-xs text-gray-400 leading-relaxed font-medium" style={{ color: "#82717B" }}>
+          <p className="text-xs leading-relaxed font-medium" style={{ color: "var(--text-muted)" }}>
             {project.subtitle}
           </p>
         </div>
@@ -123,7 +139,7 @@ export const CollapsedCard = ({ project, onExpand }) => {
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 pointer-events-none select-none"
             style={{
-              background: "rgba(130, 84, 238, 0.08)",
+              background: "rgba(var(--purple-rgb), 0.08)",
               border: `1px solid ${project.accent}33`,
               color: project.accent,
             }}

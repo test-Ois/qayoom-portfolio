@@ -1,0 +1,186 @@
+/* ═══════════════════════════════════════════════════════════════
+   light-mode.css  —  Light-mode–specific overrides
+   Applied via html:not(.dark) selectors for Tailwind classes and
+   hard-to-reach elements that can't use CSS vars via inline styles.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Smooth theme-toggle transition ── */
+html {
+  /* Triggers on every class-toggle between :root and .dark */
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+body {
+  transition:
+    background-color 0.4s ease,
+    color            0.3s ease;
+}
+
+/* Apply a light transition to all major structural regions */
+.glass-card,
+nav,
+footer,
+[class*="section"] {
+  transition:
+    background-color 0.35s ease,
+    border-color     0.25s ease,
+    box-shadow       0.35s ease,
+    color            0.25s ease;
+}
+
+
+/* ── Light-mode heading text override ──────────────────────────
+   Many headings carry the Tailwind 'text-white' class, which wins
+   over the base h1-h6 rule.  Override them in light mode.          */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  color: var(--text-heading) !important;
+}
+
+/* "text-white" fragments used as emphasis inside paragraphs */
+html:not(.dark) .text-white {
+  color: var(--text-heading) !important;
+}
+
+
+/* ── Star background — tint dots for light mode ─────────────── */
+html:not(.dark) .star {
+  background: rgba(100, 60, 180, 0.35) !important;
+  box-shadow: 0 0 6px 1px rgba(100, 60, 180, 0.15) !important;
+}
+
+html:not(.dark) .meteor {
+  background: linear-gradient(to right, rgba(100, 60, 180, 0.4),
+    rgba(100, 60, 180, 0.15), transparent) !important;
+}
+
+
+/* ── ExpandedCaseStudy light-mode overrides ─────────────────── */
+
+/* Hero image overlay — lighten the dark vignette */
+html:not(.dark) .case-study-vignette {
+  background: linear-gradient(
+    to top,
+    rgba(246, 246, 249, 0.95) 0%,
+    rgba(246, 246, 249, 0.50) 45%,
+    rgba(246, 246, 249, 0.10) 100%
+  ) !important;
+}
+
+/* Main hero card */
+html:not(.dark) [id^="project-case-study-"] > div:first-child {
+  background: var(--bg-card) !important;
+  border-color: var(--border-card) !important;
+}
+
+/* bg-black/40 cards inside case study */
+html:not(.dark) [id^="project-case-study-"] .bg-black\/40,
+html:not(.dark) [id^="project-case-study-"] .bg-black\/30 {
+  background: var(--bg-card) !important;
+}
+
+/* Small "case study number" label */
+html:not(.dark) [id^="project-case-study-"] .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+/* Tech tags inside case study */
+html:not(.dark) [id^="project-case-study-"] .text-gray-300,
+html:not(.dark) [id^="project-case-study-"] .text-gray-200 {
+  color: var(--text-body) !important;
+}
+
+/* "text-white" in case study (summary, section headers) */
+html:not(.dark) [id^="project-case-study-"] .text-white {
+  color: var(--text-heading) !important;
+}
+
+/* Architecture grid cards */
+html:not(.dark) [id^="project-case-study-"] .border-purple-900\/20 {
+  border-color: var(--border-card) !important;
+  background: var(--bg-card) !important;
+}
+
+/* Highlights row */
+html:not(.dark) [id^="project-case-study-"] .border-purple-900\/20.bg-black\/40 {
+  background: var(--bg-card) !important;
+}
+
+
+/* ── AI Chat overrides ─────────────────────────────────────── */
+
+/* Message area */
+html:not(.dark) .chatbot-drawer {
+  border-color: var(--border-ai-drawer) !important;
+}
+
+html:not(.dark) .assistant-content {
+  color: var(--text-body) !important;
+}
+
+html:not(.dark) .assistant-content p,
+html:not(.dark) .assistant-content li {
+  color: var(--text-body) !important;
+}
+
+html:not(.dark) .assistant-content h1,
+html:not(.dark) .assistant-content h2,
+html:not(.dark) .assistant-content h3,
+html:not(.dark) .assistant-content strong {
+  color: var(--text-heading) !important;
+}
+
+
+/* ── Gradient text — ensure vibrant on light bg ─────────────── */
+html:not(.dark) .gradient-text {
+  background: var(--grad-heading) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ── Section label — ensure purple tint on light bg ─────────── */
+html:not(.dark) .section-label {
+  background: var(--bg-pill) !important;
+  border-color: var(--border-purple) !important;
+  color: var(--color-purple) !important;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* ── CTA shimmer drop-shadow ───────────────────────────────── */
+html:not(.dark) .group:hover .cta-shimmer-text,
+html:not(.dark) .cta-shimmer-text:hover {
+  filter: var(--cta-shimmer-shadow);
+}
+
+/* ── Tailwind purple-300 / cyan-300 colour corrections ──────── */
+html:not(.dark) .text-purple-300 { color: #7c3aed !important; }
+html:not(.dark) .text-cyan-300   { color: #2563eb !important; }
+html:not(.dark) .text-emerald-300 { color: #16a34a !important; }
+html:not(.dark) .text-amber-300  { color: #b45309 !important; }
+html:not(.dark) .text-red-400    { color: #dc2626 !important; }
+html:not(.dark) .text-emerald-400 { color: #16a34a !important; }
+html:not(.dark) .text-purple-400 { color: #7c3aed !important; }
+html:not(.dark) .text-cyan-400   { color: #0ea5e9 !important; }
+
+/* bg-purple-950/20 etc. inside case study challenges */
+html:not(.dark) .bg-red-950\/20  { background: rgba(220, 38, 38, 0.06) !important; }
+html:not(.dark) .bg-emerald-950\/20 { background: rgba(22, 163, 74, 0.06) !important; }
+html:not(.dark) .border-red-900\/30  { border-color: rgba(220, 38, 38, 0.20) !important; }
+html:not(.dark) .border-emerald-900\/30 { border-color: rgba(22, 163, 74, 0.20) !important; }
+
+/* Skill proficiency dots in light mode */
+html:not(.dark) .shadow-\[0_0_8px_rgba\(59\,130\,246\,0\.6\)\]  { box-shadow: 0 0 6px rgba(37, 99, 235, 0.50) !important; }
+html:not(.dark) .shadow-\[0_0_8px_rgba\(168\,85\,247\,0\.6\)\]  { box-shadow: 0 0 6px rgba(147, 51, 234, 0.50) !important; }

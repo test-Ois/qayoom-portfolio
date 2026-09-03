@@ -25,7 +25,7 @@ export const AboutSection = () => {
     <section id="about" className="py-28 px-4 relative overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(130,84,238,0.1), transparent 70%)", filter: "blur(60px)", transform: "translateY(-50%)" }}
+        style={{ background: "radial-gradient(circle, var(--orb-purple), transparent 70%)", filter: "blur(60px)", transform: "translateY(-50%)" }}
       />
 
       <Reveal className="container mx-auto max-w-5xl">
@@ -33,28 +33,28 @@ export const AboutSection = () => {
         <div className="flex justify-center mb-4">
           <span className="section-label">About Me</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight text-white">
-          Who I <span style={{ background: "linear-gradient(135deg, #8254EE, #00C2FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Am</span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
+          Who I <span style={{ background: "var(--grad-heading)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Am</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
           {/* Left text */}
           <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-2xl font-bold tracking-tight" style={{ color: "#f5f5f7" }}>
               Passionate Full Stack AI Engineer
             </h3>
 
-            <p className="leading-relaxed" style={{ color: "#82717B" }}>
+            <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>
               Full Stack AI Engineer with{" "}
-              <span style={{ color: "#C1CFC1" }}>6+ months of experience</span> building production
+              <span style={{ color: "var(--text-heading)" }}>6+ months of experience</span> building production
               AI-integrated web applications combining React/Next.js frontends with Node.js/Express backends,
               multi-provider LLM integration, and RAG pipelines.
             </p>
 
-            <p className="leading-relaxed" style={{ color: "#82717B" }}>
+            <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>
               Experienced in designing{" "}
-              <span style={{ color: "#8254EE", fontWeight: 500 }}>real-time streaming interfaces (SSE)</span>,{" "}
-              <span style={{ color: "#00C2FF", fontWeight: 500 }}>Qdrant vector databases</span>, and secure REST APIs
+              <span style={{ color: "var(--color-purple)", fontWeight: 500 }}>real-time streaming interfaces (SSE)</span>,{" "}
+              <span style={{ color: "var(--color-blue)", fontWeight: 500 }}>Qdrant vector databases</span>, and secure REST APIs
               while pursuing B.Tech in Computer Science Engineering at Chandigarh University.
             </p>
 
@@ -80,13 +80,13 @@ export const AboutSection = () => {
                 className="glass-card glass-card-hover p-6 flex items-start gap-4 group"
               >
                 <div className="p-3 rounded-xl shrink-0 transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(130,84,238,0.12)", border: "1px solid rgba(130,84,238,0.2)" }}
+                  style={{ background: "rgba(var(--purple-rgb), 0.12)", border: "1px solid rgba(var(--purple-rgb), 0.2)" }}
                 >
-                  <Icon className="h-5 w-5" style={{ color: "#8254EE" }} />
+                  <Icon className="h-5 w-5" style={{ color: "var(--color-purple)" }} />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-bold text-base text-white mb-1">{title}</h4>
-                  <p className="text-sm leading-relaxed" style={{ color: "#82717B" }}>{body}</p>
+                  <h4 className="font-bold text-base mb-1" style={{ color: "var(--text-heading)" }}>{title}</h4>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{body}</p>
                 </div>
               </div>
             ))}

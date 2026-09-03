@@ -12,7 +12,7 @@ import { AIChat } from "@/components/AIChat";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: "#090909", color: "#C1CFC1" }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: "var(--bg-page)", color: "var(--text-body)" }}>
       <ThemeToggle />
       <StarBackground />
       <Navbar />

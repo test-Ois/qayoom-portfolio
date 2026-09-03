@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════════════════════
+   themes.css  —  Design-token CSS variables for both light & dark
+   Light mode is the :root default.  Dark mode overrides in .dark.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ────────────────────────────────────────────────────────────
+   LIGHT MODE  (default — no .dark class on <html>)
+──────────────────────────────────────────────────────────── */
+:root {
+  /* ── Backgrounds ── */
+  --bg-page:           #f2f2f6;
+  --bg-card:           #fbfbfd;
+  --bg-card-hover:     #f3f0fb;
+  --bg-nav:            rgba(242, 242, 246, 0.80);
+  --bg-nav-opaque:     rgba(242, 242, 246, 0.96);
+  --bg-input:          #fbfbfd;
+  --bg-overlay:        rgba(242, 242, 246, 0.97);
+  --bg-pill:           #f3f0fb;
+  --bg-icon:           #f3f0fb;
+  --bg-ai-drawer:      #fbfbfd;
+  --bg-ai-header:      #f3f0fb;
+  --bg-ai-input-bar:   #fbfbfd;
+  --bg-tag:            #f3f0fb;
+  --bg-currently:      rgba(251, 251, 253, 0.90);
+  --bg-collapse-btn:   #f2f2f6;
+  --bg-img-frame:      #e4e4e7;
+
+  /* ── Borders ── */
+  --border-card:       rgba(0, 0, 0, 0.10);
+  --border-card-hover: rgba(124, 58, 237, 0.35);
+  --border-purple:     rgba(124, 58, 237, 0.25);
+  --border-purple-h:   rgba(124, 58, 237, 0.60);
+  --border-blue:       rgba(37,  99, 235, 0.35);
+  --border-input:      rgba(0, 0, 0, 0.10);
+  --border-section:    rgba(0, 0, 0, 0.06);
+  --border-ai:         rgba(124, 58, 237, 0.18);
+  --border-ai-drawer:  rgba(124, 58, 237, 0.20);
+  --border-img-frame:  rgba(0, 0, 0, 0.10);
+  --border-tag:        rgba(124, 58, 237, 0.15);
+
+  /* ── Accent RGB triplets (for rgba(var(--purple-rgb), opacity) pattern) ── */
+  --purple-rgb:        124, 58, 237;
+  --blue-rgb:          37,  99, 235;
+
+  /* ── Accent Solids ── */
+  --color-purple:      #7c3aed;
+  --color-blue:        #2563eb;
+  --color-green:       #16a34a;
+
+  /* ── Text ── */
+  --text-heading:      #111114;
+  --text-body:         #4b4b55;
+  --text-muted:        #71717a;
+  --text-strong:       #111114;
+  --text-accent-blue:  #2563eb;
+  --tag-text:          #7c3aed;
+
+  /* ── Shadows ── */
+  --shadow-card:       0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --shadow-btn:        0 0 16px rgba(124, 58, 237, 0.20);
+  --shadow-btn-hover:  0 0 28px rgba(124, 58, 237, 0.38);
+  --shadow-toggle:     0 2px 12px rgba(0, 0, 0, 0.12);
+
+  /* ── Gradients ── */
+  --grad-page:         radial-gradient(ellipse 80% 50% at 50% -10%,
+                         rgba(124, 58, 237, 0.04) 0%, transparent 60%);
+  --grad-name:         linear-gradient(135deg, #7c3aed 0%, #6d28d9 40%, #2563eb 100%);
+  --grad-heading:      linear-gradient(135deg, #7c3aed, #2563eb);
+  --grad-role:         linear-gradient(90deg, #7c3aed, #2563eb);
+  --grad-stats:        linear-gradient(135deg, #7c3aed, #2563eb);
+  --grad-primary:      linear-gradient(135deg, #7c3aed, #6d28d9);
+  --grad-primary-h:    linear-gradient(135deg, #8b5cf6, #7c3aed);
+  --grad-footer-bar:   linear-gradient(to right, transparent, #7c3aed, #2563eb, #7c3aed, transparent);
+  --grad-cta-panel:    linear-gradient(135deg,
+                         rgba(124, 58, 237, 0.08), rgba(37, 99, 235, 0.06));
+  --grad-fade-l:       linear-gradient(to right, #f2f2f6, transparent);
+  --grad-fade-r:       linear-gradient(to left,  #f2f2f6, transparent);
+
+  /* ── Ambient orbs ── */
+  --orb-purple:        rgba(124, 58, 237, 0.06);
+  --orb-blue:          rgba(37,  99, 235, 0.05);
+
+  /* ── Misc ── */
+  --scrollbar-track:   #f2f2f6;
+  --scrollbar-thumb:   #7c3aed;
+  --color-green-dot:   #16a34a;
+  --text-glow-shadow:  0 0 14px rgba(124, 58, 237, 0.35);
+  --cta-shimmer-shadow: drop-shadow(0 0 8px rgba(124, 58, 237, 0.4));
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   DARK MODE  (.dark class on <html>)
+──────────────────────────────────────────────────────────── */
+.dark {
+  /* ── Backgrounds ── */
+  --bg-page:           #0d0f1a;
+  --bg-card:           #151824;
+  --bg-card-hover:     #1c1f2e;
+  --bg-nav:            rgba(13, 15, 26, 0.85);
+  --bg-nav-opaque:     rgba(13, 15, 26, 0.98);
+  --bg-input:          #151824;
+  --bg-overlay:        rgba(13, 15, 26, 0.97);
+  --bg-pill:           rgba(168, 85, 247, 0.08);
+  --bg-icon:           rgba(168, 85, 247, 0.12);
+  --bg-ai-drawer:      rgba(13, 12, 18, 0.96);
+  --bg-ai-header:      rgba(168, 85, 247, 0.18);
+  --bg-ai-input-bar:   rgba(13, 15, 26, 0.97);
+  --bg-tag:            rgba(168, 85, 247, 0.08);
+  --bg-currently:      rgba(0, 0, 0, 0.40);
+  --bg-collapse-btn:   rgba(13, 15, 26, 0.85);
+  --bg-img-frame:      #1a1d2c;
+
+  /* ── Borders ── */
+  --border-card:       rgba(255, 255, 255, 0.08);
+  --border-card-hover: rgba(168, 85, 247, 0.35);
+  --border-purple:     rgba(168, 85, 247, 0.25);
+  --border-purple-h:   rgba(168, 85, 247, 0.60);
+  --border-blue:       rgba(59, 130, 246, 0.35);
+  --border-input:      rgba(168, 85, 247, 0.18);
+  --border-section:    rgba(168, 85, 247, 0.10);
+  --border-ai:         rgba(168, 85, 247, 0.18);
+  --border-ai-drawer:  rgba(168, 85, 247, 0.25);
+  --border-img-frame:  rgba(255, 255, 255, 0.08);
+
+  /* ── Accent RGB triplets ── */
+  --purple-rgb:        168, 85, 247;
+  --blue-rgb:          59, 130, 246;
+
+  /* ── Accent Solids ── */
+  --color-purple:      #a855f7;
+  --color-blue:        #3b82f6;
+  --color-green:       #22c55e;
+
+  /* ── Text ── */
+  --text-heading:      #f5f5f7;
+  --text-body:         #a8adba;
+  --text-muted:        #71717a;
+  --text-strong:       #ffffff;
+  --text-accent-blue:  #3b82f6;
+
+  /* ── Shadows ── */
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.40),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-card-hover: 0 0 20px rgba(168, 85, 247, 0.15),
+                       0 2px 8px rgba(0, 0, 0, 0.50),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-btn:        0 0 20px rgba(168, 85, 247, 0.30);
+  --shadow-btn-hover:  0 0 36px rgba(168, 85, 247, 0.55);
+  --shadow-toggle:     0 2px 12px rgba(0, 0, 0, 0.40);
+
+  /* ── Gradients ── */
+  --grad-page:         radial-gradient(ellipse 80% 50% at 50% -10%,
+                         rgba(168, 85, 247, 0.10) 0%, transparent 60%);
+  --grad-name:         linear-gradient(135deg, #c084fc 0%, #a855f7 40%, #3b82f6 100%);
+  --grad-heading:      linear-gradient(135deg, #a855f7, #3b82f6);
+  --grad-role:         linear-gradient(90deg, #a855f7, #3b82f6);
+  --grad-stats:        linear-gradient(135deg, #a855f7, #3b82f6);
+  --grad-primary:      linear-gradient(135deg, #a855f7, #7c3aed);
+  --grad-primary-h:    linear-gradient(135deg, #b878f8, #a855f7);
+  --grad-footer-bar:   linear-gradient(to right, transparent, #a855f7, #3b82f6, #a855f7, transparent);
+  --grad-cta-panel:    linear-gradient(135deg,
+                         rgba(168, 85, 247, 0.12), rgba(59, 130, 246, 0.08));
+  --grad-fade-l:       linear-gradient(to right, #0d0f1a, transparent);
+  --grad-fade-r:       linear-gradient(to left,  #0d0f1a, transparent);
+
+  /* ── Ambient orbs ── */
+  --orb-purple:        rgba(168, 85, 247, 0.10);
+  --orb-blue:          rgba(59, 130, 246, 0.09);
+
+  /* ── Misc ── */
+  --scrollbar-track:   #0d0f1a;
+  --scrollbar-thumb:   #a855f7;
+  --color-green-dot:   #22c55e;
+  --text-glow-shadow:  0 0 14px rgba(168, 85, 247, 0.55);
+  --cta-shimmer-shadow: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
+}
