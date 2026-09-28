@@ -113,7 +113,7 @@ export default async function handler(req, res) {
 
     // Enable streaming response with Server-Sent Events (SSE)
     const completion = await openai.chat.completions.create({
-      model: "meta/muse-glimmer-30b",
+      model: "moonshotai/kimi-k3",
       messages: messages,
       temperature: 0.6,
       top_p: 0.95,
