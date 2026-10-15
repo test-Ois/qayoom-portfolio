@@ -78,7 +78,7 @@ export const ContactSection = () => {
       label: "GitHub",
     },
     {
-      href: "https://www.instagram.com/qayoom.akhtar",
+      href: "https://www.instagram.com/entropy404x/",
       Icon: Instagram,
       label: "Instagram",
     },
