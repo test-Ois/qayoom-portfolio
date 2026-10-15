@@ -308,4 +308,112 @@ export const PROJECTS_DATA = [
       "Active live production deployment at game-galaxy-hub.vercel.app",
     ],
   },
+  {
+    id: 4,
+    title: "AI Career Agent",
+    subtitle: "AI-Powered Career & Resume Intelligence Platform",
+    category: "AI Career Platform",
+    status: "Ongoing Project",
+    isOngoing: true,
+    image: "/projects/inboxAI.png",
+    accent: "#8254EE",
+    githubUrl: "https://github.com/test-Ois/ai-career-agent",
+    demoUrl: null,
+    summary:
+      "A full-stack AI-powered career platform designed to help users improve their resumes, analyze job descriptions, optimize applications, generate tailored career documents, manage job applications, and streamline their job-search workflow.",
+    overview: {
+      about:
+        "AI Career Agent is an end-to-end career intelligence and application management platform. It combines resume parsing, visual and semantic ATS analysis, AI-powered bullet point recommendations, job description matching, AI-generated cover letters, and an interactive career assistant into one unified dashboard.",
+      problem:
+        "Job seekers face low application response rates due to generic resumes, non-ATS-compliant formatting, tedious manual tailoring for every individual job posting, and chaotic application tracking across dozens of job boards.",
+      solution:
+        "Engineered a specialized multi-model AI architecture utilizing dedicated LLMs for distinct tasks: NVIDIA Muse Glimmer 30B for deep resume optimization and tailoring, GLM 5.2 for structured data extraction, Google Gemini for interactive career coaching, and Inkling v1 for visual ATS analysis.",
+      value:
+        "Dramatically improves interview conversion rates by ensuring resumes beat ATS parsers, cuts tailoring time from hours to seconds, and centralizes the entire job application lifecycle.",
+    },
+    keyFeatures: [
+      {
+        title: "Resume Parsing & ATS Scoring",
+        description:
+          "Extracts structured data from multi-format resumes and evaluates them against industry ATS criteria with actionable visual scorecards.",
+        icon: "ShieldCheck",
+      },
+      {
+        title: "AI Resume Optimization & Tailoring",
+        description:
+          "Powered by NVIDIA meta/muse-glimmer-30b to refine bullet points, integrate impactful action verbs, and dynamically align skills to specific job descriptions.",
+        icon: "Sparkles",
+      },
+      {
+        title: "Job Description Analysis & Cover Letters",
+        description:
+          "Extracts core requirements and candidate gaps from job postings and generates targeted, role-specific cover letters.",
+        icon: "Workflow",
+      },
+      {
+        title: "Ask AI Career Assistant",
+        description:
+          "Interactive conversational career coach powered by Gemini 1.5 Flash for salary negotiation tips, mock interview prep, and career strategy.",
+        icon: "Cpu",
+      },
+      {
+        title: "Job & Application Tracking Pipeline",
+        description:
+          "Kanban-style job management system tracking application statuses, interviews, offer letters, follow-up deadlines, and company notes.",
+        icon: "Layers",
+      },
+      {
+        title: "Dashboard & Google Authentication",
+        description:
+          "Secure Google OAuth session management with responsive dashboard views for Resumes, Jobs, Applications, Automation, and Settings.",
+        icon: "Database",
+      },
+    ],
+    techStack: {
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
+      backend: ["Node.js", "Express.js", "Prisma ORM", "/api/v1 REST Architecture", "TypeScript"],
+      aiMl: [
+        "NVIDIA meta/muse-glimmer-30b (Optimization & Tailoring)",
+        "GLM glm-5.2 (Structured Extraction)",
+        "Google Gemini gemini-1.5-flash (Ask AI Chat)",
+        "Inkling inkling-v1 (Visual ATS Analysis)",
+        "Prompt Engineering",
+      ],
+      database: ["PostgreSQL", "Neon PostgreSQL", "Prisma ORM", "Relational Indexing"],
+      authSecurity: ["Google OAuth", "JWT Token Verification", "CORS Protection", "Validation Middleware"],
+      deployment: ["Vercel", "Git & GitHub"],
+    },
+    architecture: {
+      client:
+        "Next.js frontend featuring dedicated product modules for Dashboard, Resumes, Jobs, Applications, AI Assistant, Automation Workflows, Companies, Profile, and Settings.",
+      backend:
+        "Modular Node.js and Express backend structured around clean `/api/v1` routes with controller/service decoupling and Prisma ORM data access layers.",
+      dataAndAi:
+        "PostgreSQL on Neon with relational schemas linking Users, Resumes, TargetJobs, Applications, and AISuggestions. Asynchronous task queue routes specific tasks to 4 dedicated AI models.",
+      realtimeOrSecurity:
+        "Google OAuth session verification, strict payload validation pipes, and sanitized HTML sanitization for resume rendering.",
+    },
+    challenges: [
+      {
+        title: "Multi-Model AI Task Routing & Orchestration",
+        challenge:
+          "Using a single LLM for all tasks caused high latency for simple chat and inconsistent JSON formatting during complex resume extraction.",
+        solution:
+          "Separated responsibilities: routed deep reasoning and tailoring to NVIDIA Muse Glimmer 30B, structured extraction to GLM 5.2, fast chat to Gemini 1.5 Flash, and visual ATS checks to Inkling v1.",
+      },
+      {
+        title: "Complex Multi-Section Resume Schema Evolution",
+        challenge:
+          "Varying user resume formats (experience, education, projects, skills, certifications) required flexible yet strictly typed database modeling.",
+        solution:
+          "Designed a normalized PostgreSQL schema with Prisma ORM migrations and JSONB flexibility for custom user-defined sections.",
+      },
+    ],
+    highlights: [
+      "Multi-model AI architecture routing 4 specialized LLMs (NVIDIA, GLM, Gemini, Inkling)",
+      "Full-stack Next.js + Express + PostgreSQL (Neon) + Prisma ORM",
+      "End-to-end career suite: Resumes, ATS Scoring, Job Tracker & AI Coach",
+      "Enterprise Google OAuth authentication with `/api/v1` architecture",
+    ],
+  },
 ];
