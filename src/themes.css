@@ -104,13 +104,13 @@
   --bg-overlay:        rgba(11, 13, 12, 0.97);
   --bg-pill:           rgba(183, 243, 107, 0.08);
   --bg-icon:           rgba(183, 243, 107, 0.12);
-  --bg-ai-drawer:      rgba(13, 12, 18, 0.96);
+  --bg-ai-drawer:      rgba(17, 20, 18, 0.96);
   --bg-ai-header:      rgba(183, 243, 107, 0.18);
   --bg-ai-input-bar:   rgba(11, 13, 12, 0.97);
   --bg-tag:            rgba(183, 243, 107, 0.08);
   --bg-currently:      rgba(0, 0, 0, 0.40);
   --bg-collapse-btn:   rgba(11, 13, 12, 0.85);
-  --bg-img-frame:      #1a1d2c;
+  --bg-img-frame:      #151915;
 
   /* ── Borders ── */
   --border-card:       rgba(255, 255, 255, 0.08);
