@@ -85,7 +85,7 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" ref={sectionRef} className="py-28 px-4 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
       {/* Ambient background glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-72 pointer-events-none"
@@ -114,7 +114,7 @@ export const ProjectsSection = () => {
               Projects &amp; Case Studies
             </span>
           </h2>
-          <p className="text-center mb-14 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
+          <p className="text-center mb-9 sm:mb-11 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
             Explore my production-ready applications and ongoing platforms. Click{" "}
             <span className="text-purple-300 font-semibold">&ldquo;Explore Project&rdquo;</span> on any card below to expand the complete technical case study inline.
           </p>
@@ -124,7 +124,7 @@ export const ProjectsSection = () => {
         <LayoutGroup>
           <motion.div
             layout={!isReduced}
-            className="grid grid-cols-1 md:grid-cols-2 gap-7 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 items-start"
           >
             {PROJECTS_DATA.map((project) => (
               <ProjectCard
@@ -140,7 +140,7 @@ export const ProjectsSection = () => {
         </LayoutGroup>
 
         {/* Bottom GitHub CTA */}
-        <Reveal delay={0.2} className="text-center mt-14">
+        <Reveal delay={0.2} className="text-center mt-10 sm:mt-12">
           <a
             className="cosmic-button inline-flex items-center gap-2 mx-auto"
             target="_blank"
