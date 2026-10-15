@@ -54,7 +54,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["Groq", "NVIDIA NIM", "Gemini", "Multi-Provider"],
     icon: "Bot",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "RAG Pipelines",
@@ -63,7 +63,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["PDF Parsing", "Text Chunking", "Semantic Search"],
     icon: "BrainCircuit",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Vector Embeddings",
@@ -72,7 +72,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Dense Vectors", "Cosine Metric", "Similarity Search"],
     icon: "Binary",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Multi-Model LLM Routing",
@@ -81,7 +81,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Automated Failover", "Rate Limiting", "Throughput"],
     icon: "Network",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Prompt Engineering",
@@ -90,7 +90,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Zero/Few-Shot", "Chain-of-Thought", "Guardrails"],
     icon: "Terminal",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
 
   // ── FRONTEND ──
@@ -101,7 +101,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["Components", "Hooks", "SPA Architecture"],
     icon: "Atom",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Next.js",
@@ -110,7 +110,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["App Router", "SSR", "Server Actions"],
     icon: "Globe",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "TypeScript",
@@ -119,7 +119,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["Type Safety", "Interfaces", "Generics"],
     icon: "FileCode2",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "JavaScript",
@@ -128,7 +128,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["ES6+", "Async/Await", "DOM", "Web APIs"],
     icon: "FileCode",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "HTML5",
@@ -137,7 +137,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Semantic HTML", "Accessibility", "Forms", "SEO"],
     icon: "Layout",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "CSS3",
@@ -146,7 +146,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Responsive Design", "Flexbox", "CSS Grid", "Animations"],
     icon: "Palette",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Tailwind CSS",
@@ -155,7 +155,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Design Systems", "Glassmorphism", "Tailwind v3/v4"],
     icon: "Palette",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
 
   // ── BACKEND ──
@@ -166,7 +166,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["Event Loop", "Async I/O", "Server REST"],
     icon: "Server",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Express.js",
@@ -175,7 +175,7 @@ export const SKILLS_DATA = [
     level: "Advanced",
     keywords: ["Middleware", "Routing", "MVC Architecture"],
     icon: "Workflow",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "RESTful APIs",
@@ -184,7 +184,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["JSON Endpoints", "Status Codes", "Rate Limiting"],
     icon: "Activity",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Server-Sent Events (SSE)",
@@ -193,7 +193,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Token Streaming", "Event Stream", "Sub-100ms"],
     icon: "Radio",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Socket.io / WebSockets",
@@ -202,7 +202,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Live Rooms", "Low Latency", "Board State Sync"],
     icon: "Wifi",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
 
   // ── DATABASE ──
@@ -213,7 +213,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["SQL Queries", "Relational Indexing", "Neon Cloud"],
     icon: "Database",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "MongoDB",
@@ -222,7 +222,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Collections", "Mongoose ODM", "Text Indexing"],
     icon: "Layers",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Prisma ORM",
@@ -231,7 +231,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Schema Migrations", "Relations", "Type-Safe Queries"],
     icon: "Boxes",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Qdrant (Vector DB)",
@@ -240,7 +240,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Vector Indexing", "HNSW", "Cosine Search"],
     icon: "Compass",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Redis",
@@ -249,7 +249,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Key-Value Caching", "Session Store", "TTL"],
     icon: "Zap",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
 
   // ── TOOLS & INFRASTRUCTURE ──
@@ -260,7 +260,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Branching", "Code Reviews", "CI/CD Actions"],
     icon: "GitBranch",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Docker",
@@ -269,7 +269,7 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Containers", "Images", "Environment Isolation"],
     icon: "Box",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Vercel & Render",
@@ -278,7 +278,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Edge Network", "Continuous Deployment", "Serverless"],
     icon: "Cloud",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
   {
     name: "Firebase Auth",
@@ -287,7 +287,7 @@ export const SKILLS_DATA = [
     level: "Proficient",
     keywords: ["Google OAuth", "Admin SDK", "JWT Verification"],
     icon: "ShieldCheck",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
   },
   {
     name: "Postman",
@@ -296,6 +296,6 @@ export const SKILLS_DATA = [
     level: "Intermediate",
     keywords: ["Endpoint Testing", "Collections", "Mock Responses"],
     icon: "Send",
-    accent: "#8254EE",
+    accent: "#8bcf42",
   },
 ];
