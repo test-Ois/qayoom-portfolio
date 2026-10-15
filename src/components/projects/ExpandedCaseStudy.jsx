@@ -65,7 +65,9 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
         >
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} project cover`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-top opacity-90"
           />
           {/* Subtle vignette / gradient overlays */}
