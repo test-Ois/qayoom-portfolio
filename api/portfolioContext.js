@@ -163,6 +163,26 @@ export const PORTFOLIO_CONTEXT = {
       githubUrl: "https://github.com/test-Ois/Game-Galaxy-Hub",
       demoUrl: "https://game-galaxy-hub.vercel.app/",
       accent: "#00C2FF",
-    },
+    },,
+    {
+      id: 4,
+      title: "04 — AI Career Agent",
+      category: "AI Career Platform",
+      status: "Ongoing Project",
+      isOngoing: true,
+      description: "An AI-powered career platform designed to help users improve resumes, analyze job descriptions, optimize applications, generate career documents, manage job applications, and streamline the job-search workflow.",
+      technologies: ["Next.js", "React", "Node.js", "Express", "PostgreSQL", "Neon", "Prisma", "Google OAuth"],
+      features: [
+        "Resume upload, multi-format parsing, and visual ATS scoring evaluation.",
+        "Bullet-point optimization and job-specific resume tailoring.",
+        "Job description requirement extraction and personalized cover letter generation.",
+        "Ask AI career assistant for salary, interview preparation, and strategy.",
+        "Kanban-style job application tracker, company notes, and automated workflows.",
+        "Full-stack Next.js + Express /api/v1 architecture with PostgreSQL (Neon) and Prisma ORM.",
+      ],
+      githubUrl: "https://github.com/test-Ois/ai-career-agent",
+      demoUrl: null,
+      accent: "#8254EE",
+    
   ],
 };
