@@ -75,7 +75,7 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 pt-28 pb-10 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-8 sm:pb-10 overflow-hidden"
     >
       {/* ── Ambient Orbs ── */}
       <motion.div
@@ -103,7 +103,7 @@ export const HeroSection = () => {
         <Reveal
           triggerOnLoad
           staggerChildren={0.1}
-          className="container mx-auto flex flex-col items-center justify-center text-center z-10 max-w-5xl space-y-8 sm:space-y-9"
+          className="container mx-auto flex flex-col items-center justify-center text-center z-10 max-w-5xl space-y-6 sm:space-y-8 md:space-y-9"
         >
           {/* ── Status Indicator: LOOKING FOR OPPORTUNITIES ── */}
           <motion.div variants={itemVariants}>
@@ -328,7 +328,7 @@ export const HeroSection = () => {
       </div>
 
       {/* ── Scroll Indicator (Safely Positioned Below Tech Row with Zero Overlap) ── */}
-      <div className="mt-8 sm:mt-12 flex flex-col items-center gap-1.5 z-10 select-none">
+      <div className="mt-6 sm:mt-10 flex flex-col items-center gap-1.5 z-10 select-none">
         <span
           className="text-[10px] sm:text-xs tracking-[0.25em] uppercase font-mono font-semibold"
           style={{ color: "var(--text-muted)" }}
