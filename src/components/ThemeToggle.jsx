@@ -37,7 +37,7 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="fixed top-20 right-4 sm:top-5 sm:right-5 z-30 p-3 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 cursor-pointer"
+      className="fixed top-4 right-[4.5rem] sm:top-5 sm:right-5 z-50 p-3 rounded-full transition-[background-color,border-color,box-shadow,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 cursor-pointer"
       style={{
         background: "var(--bg-card)",
         backdropFilter: "blur(12px)",
@@ -46,8 +46,8 @@ export const ThemeToggle = () => {
         boxShadow: "var(--shadow-toggle)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.4)";
-        e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
+        e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.28)";
+        e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.38)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "var(--shadow-toggle)";
