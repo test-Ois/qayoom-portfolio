@@ -235,11 +235,13 @@ export const AIChat = () => {
         const decoder = new TextDecoder("utf-8");
         let buffer = "";
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+        let streamDone = false;
+        while (!streamDone) {
+          const result = await reader.read();
+          streamDone = result.done;
+          if (streamDone) break;
 
-          buffer += decoder.decode(value, { stream: true });
+          buffer += decoder.decode(result.value, { stream: true });
           const lines = buffer.split("\n\n");
           buffer = lines.pop() || "";
 
