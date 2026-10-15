@@ -19,14 +19,12 @@ const storeTheme = (theme) => {
 };
 
 export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => getStoredTheme() !== "light");
 
   useEffect(() => {
-    const shouldUseDarkMode = getStoredTheme() !== "light";
-    setIsDarkMode(shouldUseDarkMode);
-    document.documentElement.classList.toggle("dark", shouldUseDarkMode);
-    if (shouldUseDarkMode) storeTheme("dark");
-  }, []);
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    if (getStoredTheme() === null) storeTheme(isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
     const nextIsDarkMode = !isDarkMode;
