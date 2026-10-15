@@ -90,7 +90,7 @@ export const HeroSection = () => {
         className="absolute bottom-[10%] right-[3%] w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)",
-          filter: "blur(70px)",
+          filter: "blur(40px)",
           zIndex: 0,
         }}
       />
