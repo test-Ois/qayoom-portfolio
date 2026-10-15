@@ -11,6 +11,7 @@ export const ProjectsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const isReduced = useReducedMotion();
   const sectionRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -19,7 +20,10 @@ export const ProjectsSection = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  useEffect(() => () => window.clearTimeout(scrollTimeoutRef.current), []);
+
   const handleToggleProject = (id) => {
+    window.clearTimeout(scrollTimeoutRef.current);
     const navbarHeight = 85;
 
     if (expandedProjectId === id) {
@@ -47,7 +51,7 @@ export const ProjectsSection = () => {
         });
 
         // 4. Post-collapse verification check after exit animation completes
-        setTimeout(() => {
+        scrollTimeoutRef.current = window.setTimeout(() => {
           const postEl = document.getElementById(`project-${id}`);
           if (postEl) {
             const postRect = postEl.getBoundingClientRect();
@@ -66,7 +70,7 @@ export const ProjectsSection = () => {
       // ── USER IS EXPANDING PROJECT `id` ──
       setExpandedProjectId(id);
 
-      setTimeout(() => {
+      scrollTimeoutRef.current = window.setTimeout(() => {
         const targetCardEl = document.getElementById(`project-${id}`);
         if (targetCardEl) {
           const cardRect = targetCardEl.getBoundingClientRect();
