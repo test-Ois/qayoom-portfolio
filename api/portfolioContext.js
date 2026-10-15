@@ -163,7 +163,7 @@ export const PORTFOLIO_CONTEXT = {
       githubUrl: "https://github.com/test-Ois/Game-Galaxy-Hub",
       demoUrl: "https://game-galaxy-hub.vercel.app/",
       accent: "#00C2FF",
-    },,
+    },
     {
       id: 4,
       title: "04 — AI Career Agent",
