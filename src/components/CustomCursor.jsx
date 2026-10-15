@@ -85,7 +85,7 @@ export const CustomCursor = () => {
       document.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [isMobile]);
+  }, [isMobile, mouseX, mouseY, opacity, scale]);
 
   if (isMobile) return null;
 
