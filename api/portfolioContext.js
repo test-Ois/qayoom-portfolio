@@ -183,6 +183,6 @@ export const PORTFOLIO_CONTEXT = {
       githubUrl: "https://github.com/test-Ois/ai-career-agent",
       demoUrl: null,
       accent: "#8254EE",
-    
+    },
   ],
 };
