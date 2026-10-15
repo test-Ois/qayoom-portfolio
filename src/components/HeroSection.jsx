@@ -79,24 +79,20 @@ export const HeroSection = () => {
     >
       {/* ── Ambient Orbs ── */}
       <motion.div
-        className="absolute top-[5%] left-[3%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-[5%] left-[3%] w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, var(--orb-purple) 0%, transparent 70%)",
-          filter: "blur(70px)",
+          filter: "blur(44px)",
           zIndex: 0,
         }}
-        animate={{ x: [0, 50, -30, 0], y: [0, -50, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[10%] right-[3%] w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute bottom-[10%] right-[3%] w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)",
           filter: "blur(70px)",
           zIndex: 0,
         }}
-        animate={{ x: [0, -40, 30, 0], y: [0, 40, -30, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="w-full flex-1 flex flex-col items-center justify-center">
