@@ -330,11 +330,11 @@ export const AIChat = () => {
                 e.currentTarget.style.boxShadow = "0 4px 20px rgba(var(--purple-rgb), 0.4)";
                 e.currentTarget.style.filter = "none";
               }}
-              aria-label="Open Ask Qayoom AI Assistant"
+              aria-label="Open Ask Q-AI Assistant"
             >
               <Sparkles className="w-4 h-4 text-white" />
               <span className="text-sm font-semibold text-white tracking-wide">
-                Ask Qayoom AI
+                Ask Q-AI
               </span>
             </motion.button>
           )}
@@ -375,7 +375,7 @@ export const AIChat = () => {
                 </div>
                 <div className="text-left">
                   <h3 className="font-bold text-sm text-white tracking-wide">
-                    Ask Qayoom AI
+                    Ask Q-AI
                   </h3>
                   <div className="text-[11px] font-normal" style={{ color: "var(--text-muted)" }}>
                     Your guide to Qayoom&apos;s work, projects &amp; skills

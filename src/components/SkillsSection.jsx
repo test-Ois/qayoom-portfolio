@@ -80,11 +80,11 @@ const getSkillIcon = (iconName) => {
 const getLevelDotColor = (level) => {
   switch (level) {
     case "Advanced":
-      return "bg-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]";
+      return "bg-[#8bcf42] shadow-[0_0_8px_rgba(139,207,66,0.45)]";
     case "Proficient":
-      return "bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]";
+      return "bg-[#8bcf42] shadow-[0_0_8px_rgba(139,207,66,0.45)]";
     case "Intermediate":
-      return "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]";
+      return "bg-[#8bcf42] shadow-[0_0_8px_rgba(139,207,66,0.45)]";
     default:
       return "bg-gray-400";
   }

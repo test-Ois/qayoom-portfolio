@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const getStarCount = () => {
   const area = window.innerWidth * window.innerHeight;
   // Keep the ambience subtle on mobile and avoid hundreds of animated nodes on large screens.
-  return Math.min(72, Math.max(24, Math.floor(area / 18000)));
+  return Math.min(36, Math.max(14, Math.floor(area / 30000)));
 };
 
 export const StarBackground = () => {
@@ -47,7 +47,7 @@ export const StarBackground = () => {
       {stars.map((star) => (
         <div
           key={star.id}
-          className="star animate-pulse-subtle"
+          className="star"
           style={{
             width: `${star.size}px`,
             height: `${star.size}px`,

@@ -10,7 +10,7 @@ export const PROJECTS_DATA = [
     status: "Completed",
     isOngoing: false,
     image: "/projects/inboxAI.png",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
     githubUrl: "https://github.com/test-Ois/InboxIQ-AI",
     demoUrl: null,
     summary:
@@ -112,7 +112,7 @@ export const PROJECTS_DATA = [
     status: "Completed",
     isOngoing: false,
     image: "/projects/Qyro.png",
-    accent: "#8254EE",
+    accent: "#8bcf42",
     githubUrl: "https://github.com/test-Ois/qyro-ecommerce",
     demoUrl: null,
     summary:
@@ -214,7 +214,7 @@ export const PROJECTS_DATA = [
     status: "Completed",
     isOngoing: false,
     image: "/projects/gameGalaxy.png",
-    accent: "#00C2FF",
+    accent: "#8bcf42",
     githubUrl: "https://github.com/test-Ois/Game-Galaxy-Hub",
     demoUrl: "https://game-galaxy-hub.vercel.app/",
     summary:
@@ -316,7 +316,7 @@ export const PROJECTS_DATA = [
     status: "Ongoing Project",
     isOngoing: true,
     image: "/projects/inboxAI.png",
-    accent: "#8254EE",
+    accent: "#8bcf42",
     githubUrl: "https://github.com/test-Ois/ai-career-agent",
     demoUrl: null,
     summary:

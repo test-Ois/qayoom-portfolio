@@ -75,35 +75,31 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-8 sm:pb-10 overflow-hidden"
+      className="relative min-h-[100svh] flex flex-col justify-center items-center px-4 sm:px-6 pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-10 overflow-hidden"
     >
       {/* ── Ambient Orbs ── */}
       <motion.div
-        className="absolute top-[5%] left-[3%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-[5%] left-[3%] w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, var(--orb-purple) 0%, transparent 70%)",
-          filter: "blur(70px)",
+          filter: "blur(44px)",
           zIndex: 0,
         }}
-        animate={{ x: [0, 50, -30, 0], y: [0, -50, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[10%] right-[3%] w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute bottom-[10%] right-[3%] w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)",
-          filter: "blur(70px)",
+          filter: "blur(40px)",
           zIndex: 0,
         }}
-        animate={{ x: [0, -40, 30, 0], y: [0, 40, -30, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="w-full flex-1 flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center">
         <Reveal
           triggerOnLoad
           staggerChildren={0.1}
-          className="container mx-auto flex flex-col items-center justify-center text-center z-10 max-w-5xl space-y-6 sm:space-y-8 md:space-y-9"
+          className="container mx-auto flex flex-col items-center justify-center text-center z-10 max-w-6xl space-y-5 sm:space-y-7 lg:space-y-8"
         >
           {/* ── Status Indicator: LOOKING FOR OPPORTUNITIES ── */}
           <motion.div variants={itemVariants}>
@@ -136,7 +132,7 @@ export const HeroSection = () => {
           </motion.div>
 
           {/* ── Greeting + Name + Animated Role + Description ── */}
-          <div className="flex flex-col items-center space-y-3 sm:space-y-4 max-w-4xl">
+          <div className="flex flex-col items-center space-y-3 sm:space-y-4 max-w-4xl w-full">
             <motion.p
               variants={itemVariants}
               className="text-xs sm:text-sm tracking-[0.25em] uppercase font-mono font-medium"
@@ -147,7 +143,7 @@ export const HeroSection = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none"
+              className="text-4xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[1.08] max-w-full"
             >
               <span
                 style={{
@@ -263,10 +259,10 @@ export const HeroSection = () => {
           {/* ── Defensible Portfolio Stats ── */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center gap-7 sm:gap-12 pt-2"
+            className="flex items-start justify-center gap-5 sm:gap-12 pt-2 sm:pt-4 w-full max-w-2xl"
           >
             {stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center gap-1">
+              <div key={i} className="flex flex-col items-center gap-1 min-w-0 flex-1 text-center">
                 <span
                   className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-mono"
                   style={{

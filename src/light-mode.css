@@ -49,7 +49,7 @@ html:not(.dark) .text-white {
 
 /* ── Star background — tint dots for light mode ─────────────── */
 html:not(.dark) .star {
-  background: rgba(100, 60, 180, 0.35) !important;
+  background: rgba(101, 156, 45, 0.35) !important;
   box-shadow: 0 0 6px 1px rgba(100, 60, 180, 0.15) !important;
 }
 
@@ -166,8 +166,8 @@ html:not(.dark) .cta-shimmer-text:hover {
 }
 
 /* ── Tailwind purple-300 / cyan-300 colour corrections ──────── */
-html:not(.dark) .text-purple-300 { color: #7c3aed !important; }
-html:not(.dark) .text-cyan-300   { color: #2563eb !important; }
+html:not(.dark) .text-purple-300 { color: #659c2d !important; }
+html:not(.dark) .text-cyan-300   { color: #659c2d !important; }
 html:not(.dark) .text-emerald-300 { color: #16a34a !important; }
 html:not(.dark) .text-amber-300  { color: #b45309 !important; }
 html:not(.dark) .text-red-400    { color: #dc2626 !important; }
