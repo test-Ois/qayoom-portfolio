@@ -85,7 +85,7 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-28 px-4 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -115,14 +115,14 @@ export const ContactSection = () => {
               Touch
             </span>
           </h2>
-          <p className="text-center mb-16 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+          <p className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Full Stack Engineer passionate about scalable applications, AI solutions, and modern web development.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* ── Left Column: Contact Information ── */}
-          <Reveal className="md:col-span-5 space-y-8 flex flex-col justify-between h-full">
+          <Reveal className="md:col-span-5 space-y-6 sm:space-y-8 flex flex-col justify-between h-full">
             <div>
               <h3 className="text-xl sm:text-2xl font-bold mb-6 text-left tracking-tight">
                 Contact Information
