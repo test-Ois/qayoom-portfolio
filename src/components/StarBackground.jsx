@@ -1,65 +1,60 @@
 // src/components/StarBackground.jsx
 import { useEffect, useState } from "react";
 
-// id, size, x, y, opacity, animationDuration
-// id, size, x, y, delay, animationDuration
+const getStarCount = () => {
+  const area = window.innerWidth * window.innerHeight;
+  // Keep the ambience subtle on mobile and avoid hundreds of animated nodes on large screens.
+  return Math.min(72, Math.max(24, Math.floor(area / 18000)));
+};
 
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
-    generateStars();
-
-    let timeoutId = null;
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        generateStars();
-      }, 150);
+    const generateStars = () => {
+      const count = getStarCount();
+      const nextStars = Array.from({ length: count }, (_, id) => ({
+        id,
+        size: Math.random() * 2 + 1,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        opacity: Math.random() * 0.45 + 0.25,
+        animationDuration: Math.random() * 4 + 3,
+      }));
+      setStars(nextStars);
     };
 
-    window.addEventListener("resize", handleResize);
+    generateStars();
 
+    let timeoutId;
+    const handleResize = () => {
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(generateStars, 180);
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
     return () => {
       window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
+      window.clearTimeout(timeoutId);
     };
   }, []);
 
-  const generateStars = () => {
-    const numberOfStars = Math.floor(
-      (window.innerWidth * window.innerHeight) / 10000
-    );
-
-    const newStars = [];
-
-    for (let i = 0; i < numberOfStars; i++) {
-      newStars.push({
-        id: i,
-        size: Math.random() * 3 + 1,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.5,
-        animationDuration: Math.random() * 4 + 2,
-      });
-    }
-
-    setStars(newStars);
-  };
-
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+      aria-hidden="true"
+    >
       {stars.map((star) => (
         <div
           key={star.id}
           className="star animate-pulse-subtle"
           style={{
-            width: star.size + "px",
-            height: star.size + "px",
-            left: star.x + "%",
-            top: star.y + "%",
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            left: `${star.x}%`,
+            top: `${star.y}%`,
             opacity: star.opacity,
-            animationDuration: star.animationDuration + "s",
+            animationDuration: `${star.animationDuration}s`,
           }}
         />
       ))}
