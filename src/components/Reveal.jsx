@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
  * Reusable helper variants for child items to participate in staggered layouts.
  * If the user prefers reduced motion, transitions are simplified to simple fades.
  */
+// This shared variant helper is imported by multiple UI components.
+// eslint-disable-next-line react-refresh/only-export-components
 export const revealItemVariants = (isReduced) => ({
   hidden: {
     opacity: 0,

@@ -212,7 +212,7 @@ export const SkillsSection = () => {
     : CURRENTLY_WORKING_WITH_PRIMARY;
 
   return (
-    <section id="skills" className="py-28 px-4 relative overflow-hidden">
+    <section id="skills" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/2 right-0 w-96 h-96 rounded-full pointer-events-none"
@@ -254,7 +254,7 @@ export const SkillsSection = () => {
 
           {/* Supporting Subtitle */}
           <p
-            className="text-center mb-7 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base"
+            className="text-center mb-6 sm:mb-7 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base"
             style={{ color: "var(--text-muted)" }}
           >
             Technologies I use to build modern full-stack applications.
@@ -262,7 +262,7 @@ export const SkillsSection = () => {
 
           {/* Compact, Expandable "Currently working with" Bar (Max 2 rows collapsed) */}
           <div
-            className="max-w-3xl mx-auto mb-10 p-3.5 sm:p-4 rounded-2xl backdrop-blur-md transition-all duration-300"
+            className="max-w-3xl mx-auto mb-8 sm:mb-10 p-3.5 sm:p-4 rounded-2xl backdrop-blur-md transition-all duration-300"
             style={{
               background: "var(--bg-card)",
               border: "1px solid var(--border-card)",
@@ -325,7 +325,7 @@ export const SkillsSection = () => {
           <div
             role="tablist"
             aria-label="Technology Categories"
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10"
           >
             {SKILL_CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
@@ -382,7 +382,7 @@ export const SkillsSection = () => {
         {/* Skills Grid */}
         <motion.div
           layout={!isReduced}
-          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 items-stretch"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 items-stretch"
         >
           <AnimatePresence mode="popLayout">
             {displayedSkills.map((skill) => (

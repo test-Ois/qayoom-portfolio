@@ -4,114 +4,6 @@
 export const PROJECTS_DATA = [
   {
     id: 1,
-    title: "AI Career Agent",
-    subtitle: "AI-Powered Career & Resume Intelligence Platform",
-    category: "AI Career Platform",
-    status: "Ongoing Project",
-    isOngoing: true,
-    image: "/projects/project2.png",
-    accent: "#8254EE",
-    githubUrl: "https://github.com/test-Ois",
-    demoUrl: null,
-    summary:
-      "A full-stack AI-powered career platform designed to help users improve their resumes, analyze job descriptions, optimize applications, generate tailored career documents, manage job applications, and streamline their job-search workflow.",
-    overview: {
-      about:
-        "AI Career Agent is an end-to-end career intelligence and application management platform. It combines resume parsing, visual and semantic ATS analysis, AI-powered bullet point recommendations, job description matching, AI-generated cover letters, and an interactive career assistant into one unified dashboard.",
-      problem:
-        "Job seekers face low application response rates due to generic resumes, non-ATS-compliant formatting, tedious manual tailoring for every individual job posting, and chaotic application tracking across dozens of job boards.",
-      solution:
-        "Engineered a specialized multi-model AI architecture utilizing dedicated LLMs for distinct tasks: NVIDIA Muse Glimmer 30B for deep resume optimization and tailoring, GLM 5.2 for structured data extraction, Google Gemini for interactive career coaching, and Inkling v1 for visual ATS analysis.",
-      value:
-        "Dramatically improves interview conversion rates by ensuring resumes beat ATS parsers, cuts tailoring time from hours to seconds, and centralizes the entire job application lifecycle.",
-    },
-    keyFeatures: [
-      {
-        title: "Resume Parsing & ATS Scoring",
-        description:
-          "Extracts structured data from multi-format resumes and evaluates them against industry ATS criteria with actionable visual scorecards.",
-        icon: "ShieldCheck",
-      },
-      {
-        title: "AI Resume Optimization & Tailoring",
-        description:
-          "Powered by NVIDIA meta/muse-glimmer-30b to refine bullet points, integrate impactful action verbs, and dynamically align skills to specific job descriptions.",
-        icon: "Sparkles",
-      },
-      {
-        title: "Job Description Analysis & Cover Letters",
-        description:
-          "Extracts core requirements and candidate gaps from job postings and generates targeted, role-specific cover letters.",
-        icon: "Workflow",
-      },
-      {
-        title: "Ask AI Career Assistant",
-        description:
-          "Interactive conversational career coach powered by Gemini 1.5 Flash for salary negotiation tips, mock interview prep, and career strategy.",
-        icon: "Cpu",
-      },
-      {
-        title: "Job & Application Tracking Pipeline",
-        description:
-          "Kanban-style job management system tracking application statuses, interviews, offer letters, follow-up deadlines, and company notes.",
-        icon: "Layers",
-      },
-      {
-        title: "Dashboard & Google Authentication",
-        description:
-          "Secure Google OAuth session management with responsive dashboard views for Resumes, Jobs, Applications, Automation, and Settings.",
-        icon: "Database",
-      },
-    ],
-    techStack: {
-      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
-      backend: ["Node.js", "Express.js", "Prisma ORM", "/api/v1 REST Architecture", "TypeScript"],
-      aiMl: [
-        "NVIDIA meta/muse-glimmer-30b (Optimization & Tailoring)",
-        "GLM glm-5.2 (Structured Extraction)",
-        "Google Gemini gemini-1.5-flash (Ask AI Chat)",
-        "Inkling inkling-v1 (Visual ATS Analysis)",
-        "Prompt Engineering",
-      ],
-      database: ["PostgreSQL", "Neon PostgreSQL", "Prisma ORM", "Relational Indexing"],
-      authSecurity: ["Google OAuth", "JWT Token Verification", "CORS Protection", "Validation Middleware"],
-      deployment: ["Vercel", "Git & GitHub"],
-    },
-    architecture: {
-      client:
-        "Next.js frontend featuring dedicated product modules for Dashboard, Resumes, Jobs, Applications, AI Assistant, Automation Workflows, Companies, Profile, and Settings.",
-      backend:
-        "Modular Node.js and Express backend structured around clean `/api/v1` routes with controller/service decoupling and Prisma ORM data access layers.",
-      dataAndAi:
-        "PostgreSQL on Neon with relational schemas linking Users, Resumes, TargetJobs, Applications, and AISuggestions. Asynchronous task queue routes specific tasks to 4 dedicated AI models.",
-      realtimeOrSecurity:
-        "Google OAuth session verification, strict payload validation pipes, and sanitized HTML sanitization for resume rendering.",
-    },
-    challenges: [
-      {
-        title: "Multi-Model AI Task Routing & Orchestration",
-        challenge:
-          "Using a single LLM for all tasks caused high latency for simple chat and inconsistent JSON formatting during complex resume extraction.",
-        solution:
-          "Separated responsibilities: routed deep reasoning and tailoring to NVIDIA Muse Glimmer 30B, structured extraction to GLM 5.2, fast chat to Gemini 1.5 Flash, and visual ATS checks to Inkling v1.",
-      },
-      {
-        title: "Complex Multi-Section Resume Schema Evolution",
-        challenge:
-          "Varying user resume formats (experience, education, projects, skills, certifications) required flexible yet strictly typed database modeling.",
-        solution:
-          "Designed a normalized PostgreSQL schema with Prisma ORM migrations and JSONB flexibility for custom user-defined sections.",
-      },
-    ],
-    highlights: [
-      "Multi-model AI architecture routing 4 specialized LLMs (NVIDIA, GLM, Gemini, Inkling)",
-      "Full-stack Next.js + Express + PostgreSQL (Neon) + Prisma ORM",
-      "End-to-end career suite: Resumes, ATS Scoring, Job Tracker & AI Coach",
-      "Enterprise Google OAuth authentication with `/api/v1` architecture",
-    ],
-  },
-  {
-    id: 2,
     title: "InboxIQ AI",
     subtitle: "AI-Powered Email Intelligence Platform",
     category: "AI & Full-Stack",
@@ -119,7 +11,7 @@ export const PROJECTS_DATA = [
     isOngoing: false,
     image: "/projects/inboxAI.png",
     accent: "#00C2FF",
-    githubUrl: "https://github.com/test-Ois/inboxiq-ai",
+    githubUrl: "https://github.com/test-Ois/InboxIQ-AI",
     demoUrl: null,
     summary:
       "A full-stack email intelligence platform designed to eliminate inbox overload through automated thread summarization, priority scoring, semantic categorization, and real-time spam/fraud anomaly detection powered by Gemini AI and PostgreSQL/Prisma.",
@@ -213,116 +105,7 @@ export const PROJECTS_DATA = [
     ],
   },
   {
-    id: 3,
-    title: "Xynox AI",
-    subtitle: "AI Assistant Platform",
-    category: "AI & Full-Stack",
-    status: "Completed",
-    isOngoing: false,
-    image: "/projects/project3.png",
-    accent: "#8254EE",
-    githubUrl: "https://github.com/test-Ois/xynox-ai",
-    demoUrl: null,
-    summary:
-      "A production-grade AI assistant platform featuring multi-provider AI model routing (Groq, NVIDIA, Cerebras), real-time token streaming via Server-Sent Events (SSE), and a Retrieval-Augmented Generation (RAG) pipeline powered by Qdrant vector database.",
-    overview: {
-      about:
-        "Xynox AI is a full-stack conversational intelligence platform engineered to provide low-latency, multi-model AI reasoning combined with deep document understanding. Users can chat with cutting-edge open-source and proprietary LLMs, upload contextual documents (PDFs), and receive verifiable, cited answers grounded in their custom knowledge base.",
-      problem:
-        "Most consumer AI chat applications lock users into a single provider, suffer from high first-token latency, lack transparent document search integration, and struggle with session memory across complex engineering prompts.",
-      solution:
-        "Built a resilient multi-provider routing layer that balances queries across Groq, NVIDIA NIM, and Cerebras APIs. Integrated a custom RAG pipeline with high-precision text chunking and Qdrant vector search to ground responses with sub-second retrieval times.",
-      value:
-        "Eliminates vendor lock-in, ensures high availability with automatic failover, and delivers ultra-fast streaming responses with enterprise-grade document grounding.",
-    },
-    keyFeatures: [
-      {
-        title: "Multi-Provider LLM Routing",
-        description:
-          "Intelligently routes prompts across Groq, NVIDIA NIM, and Cerebras endpoints with automatic fallback to maximize throughput and uptime.",
-        icon: "Cpu",
-      },
-      {
-        title: "High-Precision RAG Pipeline",
-        description:
-          "Parses PDFs, extracts text chunks, computes vector embeddings, and performs cosine similarity search via Qdrant Vector Database.",
-        icon: "Database",
-      },
-      {
-        title: "Real-Time SSE Streaming",
-        description:
-          "Engineered ChatGPT/Claude-like token-by-token streaming using Server-Sent Events with incremental markdown rendering and auto-scroll.",
-        icon: "Zap",
-      },
-      {
-        title: "Secure Google & Firebase Auth",
-        description:
-          "Firebase Authentication integration with Firebase Admin SDK verification on Express endpoints using cryptographic JWT verification.",
-        icon: "ShieldCheck",
-      },
-      {
-        title: "Context Memory & Prompt Library",
-        description:
-          "Maintains multi-turn conversation context history, follow-up intent classification, and curated developer prompt templates.",
-        icon: "Sparkles",
-      },
-      {
-        title: "Optimized Frontend Architecture",
-        description:
-          "React memoization, virtualized stream buffers, and responsive dark-mode UI styled with modern Tailwind CSS glassmorphism.",
-        icon: "Layers",
-      },
-    ],
-    techStack: {
-      frontend: ["React.js", "Vite", "Tailwind CSS", "Framer Motion", "Lucide React", "React Markdown"],
-      backend: ["Node.js", "Express.js", "Server-Sent Events (SSE)", "RESTful APIs"],
-      aiMl: ["Groq Cloud API", "NVIDIA NIM API", "Cerebras API", "Vector Embeddings", "RAG Pipeline", "Prompt Engineering"],
-      database: ["Qdrant Vector Database"],
-      authSecurity: ["Firebase Authentication", "Firebase Admin SDK", "JWT Tokens", "Rate Limiting"],
-      deployment: ["Vercel", "Render", "Git & GitHub"],
-    },
-    architecture: {
-      client:
-        "React/Vite single-page application utilizing custom SSE ReadableStream readers, responsive token rendering, and memoized Markdown components to prevent unnecessary DOM re-renders during high-frequency token updates.",
-      backend:
-        "Modular Express.js server providing authenticated REST endpoints, client IP rate limiting, input sanitization, and resilient orchestration between AI provider APIs.",
-      dataAndAi:
-        "Document ingestion engine that cleans PDF text, applies sliding-window chunking (500 tokens with 10% overlap), generates dense embeddings, and queries Qdrant vector collections via cosine metric.",
-      realtimeOrSecurity:
-        "Server-Sent Events (text/event-stream) delivering sub-100ms time-to-first-token. Firebase token validation middleware safeguards all chat completions and document stores.",
-    },
-    challenges: [
-      {
-        title: "UI Jitter & Streaming Re-render Thrashing",
-        challenge:
-          "High-frequency token chunks delivered via SSE caused continuous full-component re-renders in React, creating visible typing stutter on mobile devices.",
-        solution:
-          "Implemented local chunk buffering and optimized React state updates using selective component memoization and requestAnimationFrame synchronization.",
-      },
-      {
-        title: "RAG Context Truncation & Hallucination",
-        challenge:
-          "Arbitrary document chunk boundaries often cut off essential sentences, leading to incomplete context retrieval during vector queries.",
-        solution:
-          "Adopted semantic sliding-window chunking with sentence boundary preservation and configured a top-k similarity threshold to filter irrelevant chunks.",
-      },
-      {
-        title: "Upstream Provider Rate Limit Failures",
-        challenge:
-          "Single-provider rate limits and quota spikes could interrupt ongoing user conversations without graceful recovery.",
-        solution:
-          "Architected an abstract provider adapter with exponential backoff and automated secondary provider failover (Groq -> NVIDIA -> Cerebras).",
-      },
-    ],
-    highlights: [
-      "Sub-100ms time-to-first-token streaming via SSE",
-      "End-to-end RAG architecture with Qdrant vector database",
-      "Multi-provider failover across 3 enterprise AI cloud backends",
-      "Production Firebase JWT authentication and security headers",
-    ],
-  },
-  {
-    id: 4,
+    id: 2,
     title: "Qyro",
     subtitle: "Full Stack E-Commerce Platform",
     category: "Full-Stack",
@@ -424,7 +207,7 @@ export const PROJECTS_DATA = [
     ],
   },
   {
-    id: 5,
+    id: 3,
     title: "Game Galaxy Hub",
     subtitle: "Real-Time Multiplayer Gaming Platform",
     category: "Full-Stack & WebSockets",
@@ -432,7 +215,7 @@ export const PROJECTS_DATA = [
     isOngoing: false,
     image: "/projects/gameGalaxy.png",
     accent: "#00C2FF",
-    githubUrl: "https://github.com/test-Ois/game-galaxy-hub",
+    githubUrl: "https://github.com/test-Ois/Game-Galaxy-Hub",
     demoUrl: "https://game-galaxy-hub.vercel.app/",
     summary:
       "A high-octane real-time multiplayer gaming hub for Tic-Tac-Toe and Ludo with low-latency WebSocket rooms, live state synchronization, interactive in-game chat using Socket.io, and smart fallback AI logic.",
@@ -523,6 +306,114 @@ export const PROJECTS_DATA = [
       "Authoritative server state validation preventing game desynchronization",
       "Solo AI mode powered by Minimax algorithmic decision engine",
       "Active live production deployment at game-galaxy-hub.vercel.app",
+    ],
+  },
+  {
+    id: 4,
+    title: "AI Career Agent",
+    subtitle: "AI-Powered Career & Resume Intelligence Platform",
+    category: "AI Career Platform",
+    status: "Ongoing Project",
+    isOngoing: true,
+    image: "/projects/inboxAI.png",
+    accent: "#8254EE",
+    githubUrl: "https://github.com/test-Ois/ai-career-agent",
+    demoUrl: null,
+    summary:
+      "A full-stack AI-powered career platform designed to help users improve their resumes, analyze job descriptions, optimize applications, generate tailored career documents, manage job applications, and streamline their job-search workflow.",
+    overview: {
+      about:
+        "AI Career Agent is an end-to-end career intelligence and application management platform. It combines resume parsing, visual and semantic ATS analysis, AI-powered bullet point recommendations, job description matching, AI-generated cover letters, and an interactive career assistant into one unified dashboard.",
+      problem:
+        "Job seekers face low application response rates due to generic resumes, non-ATS-compliant formatting, tedious manual tailoring for every individual job posting, and chaotic application tracking across dozens of job boards.",
+      solution:
+        "Engineered a specialized multi-model AI architecture utilizing dedicated LLMs for distinct tasks: NVIDIA Muse Glimmer 30B for deep resume optimization and tailoring, GLM 5.2 for structured data extraction, Google Gemini for interactive career coaching, and Inkling v1 for visual ATS analysis.",
+      value:
+        "Dramatically improves interview conversion rates by ensuring resumes beat ATS parsers, cuts tailoring time from hours to seconds, and centralizes the entire job application lifecycle.",
+    },
+    keyFeatures: [
+      {
+        title: "Resume Parsing & ATS Scoring",
+        description:
+          "Extracts structured data from multi-format resumes and evaluates them against industry ATS criteria with actionable visual scorecards.",
+        icon: "ShieldCheck",
+      },
+      {
+        title: "AI Resume Optimization & Tailoring",
+        description:
+          "Powered by NVIDIA meta/muse-glimmer-30b to refine bullet points, integrate impactful action verbs, and dynamically align skills to specific job descriptions.",
+        icon: "Sparkles",
+      },
+      {
+        title: "Job Description Analysis & Cover Letters",
+        description:
+          "Extracts core requirements and candidate gaps from job postings and generates targeted, role-specific cover letters.",
+        icon: "Workflow",
+      },
+      {
+        title: "Ask AI Career Assistant",
+        description:
+          "Interactive conversational career coach powered by Gemini 1.5 Flash for salary negotiation tips, mock interview prep, and career strategy.",
+        icon: "Cpu",
+      },
+      {
+        title: "Job & Application Tracking Pipeline",
+        description:
+          "Kanban-style job management system tracking application statuses, interviews, offer letters, follow-up deadlines, and company notes.",
+        icon: "Layers",
+      },
+      {
+        title: "Dashboard & Google Authentication",
+        description:
+          "Secure Google OAuth session management with responsive dashboard views for Resumes, Jobs, Applications, Automation, and Settings.",
+        icon: "Database",
+      },
+    ],
+    techStack: {
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
+      backend: ["Node.js", "Express.js", "Prisma ORM", "/api/v1 REST Architecture", "TypeScript"],
+      aiMl: [
+        "NVIDIA meta/muse-glimmer-30b (Optimization & Tailoring)",
+        "GLM glm-5.2 (Structured Extraction)",
+        "Google Gemini gemini-1.5-flash (Ask AI Chat)",
+        "Inkling inkling-v1 (Visual ATS Analysis)",
+        "Prompt Engineering",
+      ],
+      database: ["PostgreSQL", "Neon PostgreSQL", "Prisma ORM", "Relational Indexing"],
+      authSecurity: ["Google OAuth", "JWT Token Verification", "CORS Protection", "Validation Middleware"],
+      deployment: ["Vercel", "Git & GitHub"],
+    },
+    architecture: {
+      client:
+        "Next.js frontend featuring dedicated product modules for Dashboard, Resumes, Jobs, Applications, AI Assistant, Automation Workflows, Companies, Profile, and Settings.",
+      backend:
+        "Modular Node.js and Express backend structured around clean `/api/v1` routes with controller/service decoupling and Prisma ORM data access layers.",
+      dataAndAi:
+        "PostgreSQL on Neon with relational schemas linking Users, Resumes, TargetJobs, Applications, and AISuggestions. Asynchronous task queue routes specific tasks to 4 dedicated AI models.",
+      realtimeOrSecurity:
+        "Google OAuth session verification, strict payload validation pipes, and sanitized HTML sanitization for resume rendering.",
+    },
+    challenges: [
+      {
+        title: "Multi-Model AI Task Routing & Orchestration",
+        challenge:
+          "Using a single LLM for all tasks caused high latency for simple chat and inconsistent JSON formatting during complex resume extraction.",
+        solution:
+          "Separated responsibilities: routed deep reasoning and tailoring to NVIDIA Muse Glimmer 30B, structured extraction to GLM 5.2, fast chat to Gemini 1.5 Flash, and visual ATS checks to Inkling v1.",
+      },
+      {
+        title: "Complex Multi-Section Resume Schema Evolution",
+        challenge:
+          "Varying user resume formats (experience, education, projects, skills, certifications) required flexible yet strictly typed database modeling.",
+        solution:
+          "Designed a normalized PostgreSQL schema with Prisma ORM migrations and JSONB flexibility for custom user-defined sections.",
+      },
+    ],
+    highlights: [
+      "Multi-model AI architecture routing 4 specialized LLMs (NVIDIA, GLM, Gemini, Inkling)",
+      "Full-stack Next.js + Express + PostgreSQL (Neon) + Prisma ORM",
+      "End-to-end career suite: Resumes, ATS Scoring, Job Tracker & AI Coach",
+      "Enterprise Google OAuth authentication with `/api/v1` architecture",
     ],
   },
 ];

@@ -22,7 +22,7 @@ const cards = [
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-28 px-4 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, var(--orb-purple), transparent 70%)", filter: "blur(60px)", transform: "translateY(-50%)" }}
@@ -33,11 +33,11 @@ export const AboutSection = () => {
         <div className="flex justify-center mb-4">
           <span className="section-label">About Me</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 sm:mb-12 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
           Who I <span style={{ background: "var(--grad-heading)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Am</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left text */}
           <div className="space-y-6 text-left">
             <h3 className="text-2xl font-bold tracking-tight" style={{ color: "#f5f5f7" }}>
@@ -73,7 +73,7 @@ export const AboutSection = () => {
           </div>
 
           {/* Right cards */}
-          <div className="grid grid-cols-1 gap-5">
+          <div className="grid grid-cols-1 gap-4 sm:gap-5">
             {cards.map(({ Icon, title, body }, i) => (
               <div
                 key={i}

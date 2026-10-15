@@ -2,37 +2,44 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
+const getStoredTheme = () => {
+  try {
+    return window.localStorage.getItem("theme");
+  } catch {
+    return null;
+  }
+};
+
+const storeTheme = (theme) => {
+  try {
+    window.localStorage.setItem("theme", theme);
+  } catch {
+    // The theme still works for this session when storage is unavailable.
+  }
+};
+
 export const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+    const shouldUseDarkMode = getStoredTheme() !== "light";
+    setIsDarkMode(shouldUseDarkMode);
+    document.documentElement.classList.toggle("dark", shouldUseDarkMode);
+    if (shouldUseDarkMode) storeTheme("dark");
   }, []);
 
   const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
-    }
+    const nextIsDarkMode = !isDarkMode;
+    document.documentElement.classList.toggle("dark", nextIsDarkMode);
+    storeTheme(nextIsDarkMode ? "dark" : "light");
+    setIsDarkMode(nextIsDarkMode);
   };
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
-      className="fixed max-sm:hidden top-5 right-5 z-50 p-2.5 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
+      className="fixed top-20 right-4 sm:top-5 sm:right-5 z-30 p-3 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 cursor-pointer"
       style={{
         background: "var(--bg-card)",
         backdropFilter: "blur(12px)",
@@ -43,20 +50,18 @@ export const ThemeToggle = () => {
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.4)";
         e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
-        e.currentTarget.style.transform = "scale(1.1)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "var(--shadow-toggle)";
         e.currentTarget.style.borderColor = "var(--border-card)";
-        e.currentTarget.style.transform = "scale(1)";
       }}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDarkMode ? (
-        <Moon className="h-5 w-5" style={{ color: "var(--color-blue)" }} />
+        <Moon className="h-5 w-5" aria-hidden="true" style={{ color: "var(--color-blue)" }} />
       ) : (
-        <Sun className="h-5 w-5" style={{ color: "var(--color-purple)" }} />
+        <Sun className="h-5 w-5" aria-hidden="true" style={{ color: "var(--color-purple)" }} />
       )}
     </button>
   );
