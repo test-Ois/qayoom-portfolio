@@ -1,7 +1,6 @@
 // src/components/projects/ProjectCard.jsx
 import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
-import { Tilt } from "react-tilt";
 import { CollapsedCard } from "./CollapsedCard";
 import { ExpandedCaseStudy } from "./ExpandedCaseStudy";
 
@@ -9,14 +8,13 @@ export const ProjectCard = ({
   project,
   isExpanded,
   onToggle,
-  isMobile,
   isReduced,
 }) => {
   return (
     <motion.div
       layout={!isReduced}
       transition={{
-        duration: isReduced ? 0.1 : 0.4,
+        duration: isReduced ? 0.1 : 0.3,
         ease: [0.25, 1, 0.5, 1],
       }}
       className={`w-full transition-all duration-300 ${
@@ -28,11 +26,11 @@ export const ProjectCard = ({
         {isExpanded ? (
           <motion.div
             key="expanded"
-            initial={{ opacity: 0, y: isReduced ? 0 : 15 }}
+            initial={{ opacity: 0, y: isReduced ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: isReduced ? 0 : -15 }}
+            exit={{ opacity: 0, y: isReduced ? 0 : -12 }}
             transition={{
-              duration: isReduced ? 0.15 : 0.35,
+              duration: isReduced ? 0.15 : 0.25,
               ease: "easeInOut",
             }}
             className="w-full"
@@ -45,16 +43,10 @@ export const ProjectCard = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: isReduced ? 0.1 : 0.25 }}
+            transition={{ duration: isReduced ? 0.1 : 0.2 }}
             className="h-full"
           >
-            {isMobile || isReduced ? (
-              <CollapsedCard project={project} onExpand={onToggle} />
-            ) : (
-              <Tilt options={{ max: 8, scale: 1.01, speed: 300 }} className="h-full">
-                <CollapsedCard project={project} onExpand={onToggle} />
-              </Tilt>
-            )}
+            <CollapsedCard project={project} onExpand={onToggle} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -66,6 +58,6 @@ ProjectCard.propTypes = {
   project: PropTypes.object.isRequired,
   isExpanded: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
-  isMobile: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool,
   isReduced: PropTypes.bool,
 };

@@ -1,6 +1,6 @@
 // src/components/ProjectsSection.jsx
 import { useEffect, useState, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { useReducedMotion, motion, LayoutGroup } from "framer-motion";
 import { Reveal } from "./Reveal";
 import { ProjectCard } from "./projects/ProjectCard";
@@ -27,8 +27,6 @@ export const ProjectsSection = () => {
     const navbarHeight = 85;
 
     if (expandedProjectId === id) {
-      // ── USER IS COLLAPSING THE ACTIVE PROJECT ──
-      // 1. Measure the card's anchor position before the height shrinks
       const targetCardEl = document.getElementById(`project-${id}`);
       let targetScrollY = null;
 
@@ -40,23 +38,19 @@ export const ProjectsSection = () => {
         targetScrollY = sectionRect.top + window.scrollY - navbarHeight;
       }
 
-      // 2. Trigger collapse
       setExpandedProjectId(null);
 
-      // 3. Prevent browser from clamping scroll to footer by immediately guiding viewport
       if (targetScrollY !== null) {
         window.scrollTo({
           top: Math.max(0, targetScrollY),
           behavior: isReduced ? "auto" : "smooth",
         });
 
-        // 4. Post-collapse verification check after exit animation completes
         scrollTimeoutRef.current = window.setTimeout(() => {
           const postEl = document.getElementById(`project-${id}`);
           if (postEl) {
             const postRect = postEl.getBoundingClientRect();
             const actualY = postRect.top + window.scrollY - navbarHeight;
-            // If viewport drifted away from the card, gently re-center
             if (Math.abs(window.scrollY - actualY) > 60) {
               window.scrollTo({
                 top: Math.max(0, actualY),
@@ -67,7 +61,6 @@ export const ProjectsSection = () => {
         }, 360);
       }
     } else {
-      // ── USER IS EXPANDING PROJECT `id` ──
       setExpandedProjectId(id);
 
       scrollTimeoutRef.current = window.setTimeout(() => {
@@ -85,42 +78,21 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-72 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, var(--orb-purple), transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-
+    <section id="projects" ref={sectionRef} className="py-20 sm:py-24 px-4 sm:px-6 relative">
       <div className="container mx-auto max-w-5xl">
-        {/* Section Heading */}
         <Reveal>
-          <div className="flex justify-center mb-4">
-            <span className="section-label">Projects</span>
+          <div className="flex justify-center mb-3">
+            <span className="section-label">Work</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center tracking-tight text-white">
-            Featured{" "}
-            <span
-              style={{
-                background: "var(--grad-heading)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Projects &amp; Case Studies
-            </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
+            Featured Projects
           </h2>
-          <p className="text-center mb-9 sm:mb-11 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
-            Explore my production-ready applications and ongoing platforms. Click{" "}
-            <span className="text-purple-300 font-semibold">&ldquo;Explore Project&rdquo;</span> on any card below to expand the complete technical case study inline.
+          <p className="text-center mb-9 sm:mb-11 max-w-xl mx-auto leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-muted)" }}>
+            Technical case studies covering system design, database schemas, and implementation challenges.
+            Click any card to read the complete breakdown.
           </p>
         </Reveal>
 
-        {/* Project Cards Grid with Accordion Inline Expansion */}
         <LayoutGroup>
           <motion.div
             layout={!isReduced}
@@ -139,15 +111,19 @@ export const ProjectsSection = () => {
           </motion.div>
         </LayoutGroup>
 
-        {/* Bottom GitHub CTA */}
-        <Reveal delay={0.2} className="text-center mt-10 sm:mt-12">
+        <Reveal delay={0.15} className="text-center mt-12">
           <a
-            className="cosmic-button inline-flex items-center gap-2 mx-auto"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              border: "1px solid var(--border-card)",
+              background: "var(--bg-card)",
+              color: "var(--text-heading)",
+            }}
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/test-Ois"
           >
-            Explore All 15+ Repositories on GitHub <ArrowRight size={15} />
+            <Github size={16} /> View More on GitHub <ArrowRight size={14} />
           </a>
         </Reveal>
       </div>

@@ -11,9 +11,9 @@ export const PORTFOLIO_CONTEXT = {
       "React & Next.js Engineer",
       "MERN Stack Developer",
     ],
-    positioning: "Full Stack Engineer building modern full-stack and AI-integrated web applications.",
-    experienceSummary: "Full Stack Engineer with 6+ months of experience building production web and AI-integrated applications combining React/Next.js frontends with Node.js/Express backends, LLM/RAG integrations, and scalable databases.",
-    status: "Looking for Opportunities / Available for Full-Time Opportunities",
+    positioning: "Full Stack Engineer building web applications and practical AI systems.",
+    experienceSummary: "Full Stack Engineer with experience building web applications combining React/Next.js frontends with Node.js/Express backends, Prisma/PostgreSQL databases, and LLM retrieval pipelines.",
+    status: "Available for full-time engineering opportunities",
     stats: {
       projectsBuilt: "20+",
       experience: "8+ months",

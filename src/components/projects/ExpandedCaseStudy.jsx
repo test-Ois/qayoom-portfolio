@@ -158,15 +158,10 @@ export const ExpandedCaseStudy = ({ project, onCollapse }) => {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="gold-button text-xs sm:text-sm font-semibold inline-flex items-center gap-2"
-                style={{
-                  background: `linear-gradient(135deg, ${project.accent}, #3b82f6)`,
-                  color: "#ffffff",
-                  boxShadow: `0 0 20px ${project.accent}40`,
-                }}
+                className="gold-button text-xs sm:text-sm font-medium inline-flex items-center gap-2"
               >
-                <span>Live Production Demo</span>
-                <ExternalLink size={15} />
+                <span>Live Demo</span>
+                <ExternalLink size={14} />
               </a>
             )}
 

@@ -1,140 +1,78 @@
-# Qayoom Akhtar - Professional Portfolio Website
+# Qayoom Akhtar - Software Engineer Portfolio
 
-Welcome to my portfolio! This is a modern, responsive, and visually interactive single-page application showcasing my projects, skills, and background as a Full Stack Developer & AI Enthusiast. It features a space-themed stellar background, custom dark/light theme options, categorized metrics progress bars, and a direct EmailJS-connected contact channel.
+Personal developer portfolio showcasing full-stack applications, system architecture case studies, and engineering background.
+
+Live deployment: [qayoom-portfolio.vercel.app](https://qayoom-portfolio.vercel.app/)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18, Next.js, TypeScript, Tailwind CSS, Framer Motion
+- **Backend / APIs**: Node.js, Express, NestJS, RESTful APIs, Server-Sent Events (SSE), Socket.IO
+- **Databases**: PostgreSQL, Prisma ORM, MongoDB, Qdrant Vector DB
+- **Deployment**: Vercel Serverless Functions
 
 ---
 
 ## 🚀 Featured Projects
 
-### 1. InboxIQ AI – AI-Powered Email Intelligence Platform
-
-#### Overview
-InboxIQ AI is a production-ready email productivity platform that automates inbox organization. By leveraging LLM integration, it reads, analyzes, and highlights critical emails, providing the user with actionable intelligence.
-
-#### Features
-- **AI Email Analysis**: Automatically parses email contents to rank priority and summarize key action items.
-- **Categorization**: Groups messages dynamically based on context (Work, Personal, Newsletter, Social).
-- **Spam & Fraud Protection**: Identifies phishing, spam indicators, and fraudulent content.
-- **Scalable REST APIs**: Clean database schema management and swift CRUD routes.
-
-#### Tech Stack
-- **Frontend**: Next.js (React), Tailwind CSS
-- **Backend**: NestJS, Node.js
-- **Database**: PostgreSQL (Prisma ORM)
-- **AI Integrations**: Gemini AI
-
-#### Architecture Summary
-Features a split frontend-backend design. The Next.js client interacts with a NestJS REST API, which handles authorization, talks to PostgreSQL via Prisma ORM for storage, and invokes Gemini AI API routes for text classification.
-
-#### Links
-- **GitHub Repository**: [inboxiq-ai](https://github.com/test-Ois/inboxiq-ai)
-- **Live Demo**: [Live Link (Not Deployed)](#)
-
----
-
-### 2. Game Galaxy Hub – Real-Time Multiplayer Gaming Platform
-
-#### Overview
-Game Galaxy Hub is a real-time multiplayer gaming hub supporting classic board games. Players can form rooms, invite friends, and play matches with immediate state synchronization.
-
-#### Features
-- **Real-Time Board Games**: Multiplayer matches for Tic-Tac-Toe and Ludo.
-- **Room Management**: Generate lobby invite codes, join lobbies, and track online match status.
-- **Live In-game Chat**: Chat with lobby players instantly using socket connection paths.
-- **AI Opponents**: Supports standalone singleplayer matching against computer bots.
-
-#### Tech Stack
+### 1. InboxIQ AI – Email Intelligence & Triage Platform
+Full-stack platform that normalizes incoming email threads, extracts action items and deadlines using Google Gemini, classifies message urgency, and cross-references sender domains to flag potential phishing.
 - **Frontend**: Next.js, TypeScript, Tailwind CSS
-- **Backend**: Node.js, Express, Socket.io
-- **WebSockets**: Socket.io-client
+- **Backend**: NestJS, PostgreSQL, Prisma ORM
+- **Repository**: [InboxIQ-AI](https://github.com/test-Ois/InboxIQ-AI)
 
-#### Architecture Summary
-Utilizes a WebSocket-focused architecture. The client maintains an active Socket.io connection to a gaming server, which serializes room lists, handles match states, syncs moves, and dispatches chat events with low-latency delivery.
+### 2. AI Career Agent – Resume Parsing & Application Tracking
+Multi-model career management application that parses resumes into structured JSON, scores ATS keyword alignment, refines bullet points, and tracks job applications in a Kanban pipeline.
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Node.js, Express, PostgreSQL (Neon), Prisma ORM
+- **Repository**: [ai-career-agent](https://github.com/test-Ois/ai-career-agent)
 
-#### Links
-- **GitHub Repository**: [game-galaxy-hub](https://github.com/test-Ois/game-galaxy-hub)
-- **Live Demo**: [Live Link (Not Deployed)](#)
+### 3. Game Galaxy Hub – Real-Time Multiplayer Gaming Platform
+Real-time browser gaming platform for Tic-Tac-Toe and Ludo with server-authoritative move validation, sub-50ms WebSocket delivery via Socket.IO, and a Minimax AI fallback.
+- **Frontend**: Next.js, TypeScript, Tailwind CSS, Zustand
+- **Backend**: Node.js, Express, Socket.IO
+- **Live Demo**: [game-galaxy-hub.vercel.app](https://game-galaxy-hub.vercel.app/)
+- **Repository**: [Game-Galaxy-Hub](https://github.com/test-Ois/Game-Galaxy-Hub)
 
----
-
-## 🛠️ Portfolio Features
-
-- **Dynamic Theme Toggling**: Seamless light/dark modes backed by local storage persistence.
-- **Space Effect Starfield**: High-performance animated stars and falling meteors (accelerated via GPU properties).
-- **Categorized Skills Graph**: Filters metrics between Front-End, Back-End, and Development Tools.
-- **Interactive Contact Form**: Direct form submission utilizing EmailJS with validation checks and toasts.
-- **Responsive Layout**: Designed for optimal scaling on mobile, tablet, and desktop display screens.
-
----
-
-## 💻 Tech Stack
-
-- **Framework**: React v18 (Vite build bundler)
-- **Styling**: Tailwind CSS v4
-- **Routing**: React Router DOM v7
-- **Email Delivery**: EmailJS
-- **Toast Engine**: Radix UI Toast
-- **Icons**: Lucide React & React Icons
+### 4. Qyro – Full-Stack E-Commerce Application
+MERN-stack application featuring compound MongoDB text indexing for catalog search, cross-tab cart synchronization using browser storage events, and JWT-authenticated order tracking.
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Node.js, Express, MongoDB
+- **Repository**: [qyro-ecommerce](https://github.com/test-Ois/qyro-ecommerce)
 
 ---
 
-## ⚙️ Installation & Setup
+## 💻 Local Development
 
 ### Prerequisites
-Make sure you have Node.js (version 18 or above) installed on your system.
+Node.js (v18+) and npm/pnpm.
 
-### 1. Clone the Repository
 ```bash
+# 1. Clone the repository
 git clone https://github.com/test-Ois/portfolio-web.git
 cd portfolio-web
-```
 
-### 2. Install Dependencies
-```bash
+# 2. Install dependencies
 npm install
-```
 
-### 3. Setup Environment Variables
-Create a `.env` file in the project folder and configure your EmailJS credentials:
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id_here
-VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
-VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
-```
+# 3. Environment configuration
+cp .env.example .env
+# Provide your VITE_EMAILJS_* keys in .env
 
----
-
-## 运行 Locally (Run Locally)
-
-Start the local development server:
-```bash
+# 4. Start local development server
 npm run dev
 ```
-Open your browser and navigate to `http://localhost:5173/`.
 
----
+### Production Build & Linting
 
-## 📦 Production Build & Deployment
-
-To generate optimized static build files:
 ```bash
+npm run lint
 npm run build
 ```
-The output assets will be created in the `dist` directory. You can preview the production bundle locally:
-```bash
-npm run preview
-```
-
-### Deployment Configuration
-This portfolio can be hosted on static providers such as Vercel, Netlify, or GitHub Pages. Simply configure the build command to `npm run build` and the output directory to `dist`.
 
 ---
 
-## 📬 Contact Information
-
-- **Name**: Qayoom Akhtar
-- **Location**: Mohali, Punjab, India
-- **Email**: [qayoomakhtar72@gmail.com](mailto:qayoomakhtar72@gmail.com)
-- **Phone**: +91 9798413263
-- **LinkedIn**: [Qayoom Akhtar](https://www.linkedin.com/in/qayoom-akhtar)
-- **GitHub**: [test-Ois](https://github.com/test-Ois)
+## 📄 License
+MIT

@@ -14,7 +14,7 @@ const storeTheme = (theme) => {
   try {
     window.localStorage.setItem("theme", theme);
   } catch {
-    // The theme still works for this session when storage is unavailable.
+    // LocalStorage fallback
   }
 };
 
@@ -39,29 +39,20 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="fixed top-20 right-4 sm:top-5 sm:right-5 z-30 p-3 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 cursor-pointer"
+      className="fixed top-4 right-4 sm:top-4 sm:right-6 z-50 p-2.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 cursor-pointer"
       style={{
         background: "var(--bg-card)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
         border: "1px solid var(--border-card)",
+        color: "var(--text-heading)",
         boxShadow: "var(--shadow-toggle)",
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.4)";
-        e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "var(--shadow-toggle)";
-        e.currentTarget.style.borderColor = "var(--border-card)";
-      }}
-      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
+      title={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
     >
       {isDarkMode ? (
-        <Moon className="h-5 w-5" aria-hidden="true" style={{ color: "var(--color-blue)" }} />
+        <Sun className="h-4 w-4" aria-hidden="true" />
       ) : (
-        <Sun className="h-5 w-5" aria-hidden="true" style={{ color: "var(--color-purple)" }} />
+        <Moon className="h-4 w-4" aria-hidden="true" />
       )}
     </button>
   );

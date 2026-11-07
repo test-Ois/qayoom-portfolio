@@ -1,12 +1,12 @@
 // src/data/projectsData.js
-// Authoritative case-study data for Qayoom Akhtar's featured portfolio projects.
+// Technical case studies for Qayoom Akhtar's featured software projects.
 
 export const PROJECTS_DATA = [
   {
     id: 1,
     title: "InboxIQ AI",
-    subtitle: "AI-Powered Email Intelligence Platform",
-    category: "AI & Full-Stack",
+    subtitle: "Email Intelligence & Triage Platform",
+    category: "Full-Stack AI",
     status: "Completed",
     isOngoing: false,
     image: "/projects/inboxAI.png",
@@ -14,203 +14,208 @@ export const PROJECTS_DATA = [
     githubUrl: "https://github.com/test-Ois/InboxIQ-AI",
     demoUrl: null,
     summary:
-      "A full-stack email intelligence platform designed to eliminate inbox overload through automated thread summarization, priority scoring, semantic categorization, and real-time spam/fraud anomaly detection powered by Gemini AI and PostgreSQL/Prisma.",
+      "A full-stack email platform that extracts action items, classifies message urgency, and flags suspicious sender domains using Google Gemini, Next.js, and a NestJS/PostgreSQL backend.",
     overview: {
       about:
-        "InboxIQ AI transforms dense, disorganized email communications into clear, actionable intelligence. It analyzes incoming messages, generates concise thread executive summaries, extracts action items, classifies urgency, and highlights suspicious or phishing elements automatically.",
+        "InboxIQ AI parses incoming email messages into structured summaries, identifying action items, deadlines, and urgency levels before the reader opens the full thread.",
       problem:
-        "Knowledge workers waste hours daily triaging bloated email threads, missing urgent deadlines, and falling prey to sophisticated phishing attempts.",
+        "Long email threads bury actionable requests under quoted signatures and status chatter. Readers spend significant time identifying who owes what.",
       solution:
-        "Engineered an automated ingestion and analysis pipeline backed by Google Gemini AI that extracts sentiment, priority scores, and key deliverables, presenting them in a clean dashboard backed by a high-performance PostgreSQL database.",
+        "Built a text normalization and parsing pipeline that cleans thread content, extracts key dates and tasks with Google Gemini, and indexes records in PostgreSQL via Prisma ORM.",
       value:
-        "Reduces email triage time by up to 60%, flags suspicious emails before interaction, and ensures high-priority requests never slip through the cracks.",
+        "Extracts concrete to-do items from long conversation threads and highlights suspicious sender domains before users click links.",
     },
     keyFeatures: [
       {
-        title: "Thread Summarization & Action Extraction",
+        title: "Thread Parsing & Task Extraction",
         description:
-          "Converts multi-email conversation chains into 3-bullet executive summaries with assigned owners and deadlines.",
+          "Normalizes raw message content to extract assignees, action items, and stated deadlines into structured cards.",
         icon: "Sparkles",
       },
       {
-        title: "Semantic Categorization & Priority Scoring",
+        title: "Priority Classification",
         description:
-          "Automatically sorts incoming emails into VIP, Action Required, Newsletters, and Transactional categories.",
+          "Categorizes incoming messages into Action Required, Newsletters, and Transactional buckets.",
         icon: "Layers",
       },
       {
-        title: "Spam & Phishing Anomaly Detection",
+        title: "Suspicious Domain Flagging",
         description:
-          "Analyzes email body context, links, and sender domains to flag potential security risks and impersonation attempts.",
+          "Cross-references sender headers, mismatched domains, and body links to highlight potential phishing attempts.",
         icon: "ShieldCheck",
       },
       {
-        title: "Type-Safe REST APIs with NestJS",
+        title: "Modular NestJS Backend",
         description:
-          "Modular backend architecture built with NestJS and Prisma ORM ensuring strict compile-time type safety.",
+          "Separated controllers, validation pipes, and Prisma repositories to keep data access isolated and testable.",
         icon: "Cpu",
       },
       {
-        title: "Productivity Insights Dashboard",
+        title: "Triage Metrics Dashboard",
         description:
-          "Visual metrics tracking email volume, response velocity, and pending action items with dark-mode charts.",
+          "Tracks volume, pending action items, and response turnarounds in a responsive Next.js view.",
         icon: "Database",
       },
       {
-        title: "Responsive Next.js Frontend",
+        title: "Client-Side Search & Filtering",
         description:
-          "Built with Next.js App Router, Tailwind CSS, and optimized server/client component boundaries.",
+          "Provides instantaneous keyword filtering across parsed email metadata without server re-fetching.",
         icon: "Zap",
       },
     ],
     techStack: {
-      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
-      backend: ["NestJS", "Node.js", "TypeScript", "RESTful APIs", "Dependency Injection"],
-      aiMl: ["Google Gemini AI API", "NLP Prompt Engineering", "Text Classification"],
-      database: ["PostgreSQL", "Prisma ORM", "Relational Indexing"],
-      authSecurity: ["JWT Authentication", "CORS Protection", "Validation Pipes"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      backend: ["NestJS", "Node.js", "TypeScript", "RESTful APIs", "Class Validator"],
+      aiMl: ["Google Gemini AI API", "Prompt Engineering", "Structured Output Parsing"],
+      database: ["PostgreSQL", "Prisma ORM", "Relational Indexes"],
+      authSecurity: ["JWT Authentication", "CORS Protection", "HTML Sanitization"],
       deployment: ["Docker", "Vercel", "Git & GitHub"],
     },
     architecture: {
       client:
-        "Next.js App Router frontend featuring an interactive split-pane inbox, real-time message filter state, and dynamic AI summary modals.",
+        "Next.js App Router client with a split-pane inbox, client-side category filters, and modal views for parsed thread summaries.",
       backend:
-        "NestJS backend following clean architectural patterns with decoupled controllers, business logic services, DTO validation pipes, and Prisma repositories.",
+        "NestJS REST API organized into feature modules with decoupled services, DTO validation pipes, and Prisma repositories.",
       dataAndAi:
-        "PostgreSQL relational database with foreign-key constraints across Users, MailThreads, Messages, and AIInsights. Gemini AI processing runs asynchronously with cached results.",
+        "PostgreSQL database linking Users, Threads, Messages, and ExtractedTasks. Gemini calls run asynchronously with cached results for repeated thread queries.",
       realtimeOrSecurity:
-        "Cryptographic token verification, sanitized HTML message parsers to neutralize XSS attacks, and rate-limited API gateways.",
+        "Bearer token validation on protected endpoints, DOMPurify sanitization to block malicious HTML payloads, and request rate limiting.",
     },
     challenges: [
       {
-        title: "Context Window Limits on Lengthy Email Chains",
+        title: "Context Window Limits on Large Email Chains",
         challenge:
-          "Massive email threads with redundant quoted replies exceeded token budgets and increased API processing costs.",
+          "Lengthy back-and-forth threads with repetitive quoted headers quickly exhausted model token budgets.",
         solution:
-          "Engineered a pre-processing normalization filter that strips repeated signature blocks and quoted text before passing content to Gemini AI.",
+          "Implemented a regex pre-processing step that strips quoted historical text and signature blocks before sending the payload to Gemini.",
       },
       {
-        title: "Schema Evolution & Migration Integrity",
+        title: "Schema Migrations Under Changing Requirements",
         challenge:
-          "Rapidly evolving features required frequent schema additions without risking corruption of existing email relational metadata.",
+          "Adding task extraction fields required schema updates without breaking existing message relationships.",
         solution:
-          "Leveraged Prisma Migrate with strict schema declarations and automated database seeders for repeatable development environments.",
+          "Managed schema changes through versioned Prisma migrations with automated rollback scripts and test seeders.",
       },
     ],
     highlights: [
-      "Enterprise NestJS + Prisma ORM + PostgreSQL architecture",
-      "Integrated Gemini AI for automated email triage and fraud detection",
-      "100% end-to-end type safety with TypeScript",
-      "Sanitized email rendering pipeline preventing XSS vulnerabilities",
+      "NestJS + Prisma + PostgreSQL backend with type-safe DTOs",
+      "Automated action item and deadline extraction via Gemini AI",
+      "Sanitized email rendering pipeline to protect against XSS",
+      "End-to-end TypeScript coverage from client components to database queries",
     ],
   },
   {
     id: 2,
-    title: "Qyro",
-    subtitle: "Full Stack E-Commerce Platform",
-    category: "Full-Stack",
-    status: "Completed",
-    isOngoing: false,
-    image: "/projects/Qyro.png",
+    title: "AI Career Agent",
+    subtitle: "Resume Parsing & Application Tracking System",
+    category: "Full-Stack AI",
+    status: "Active Project",
+    isOngoing: true,
+    image: "/projects/inboxAI.png",
     accent: "#8254EE",
-    githubUrl: "https://github.com/test-Ois/qyro-ecommerce",
+    githubUrl: "https://github.com/test-Ois/ai-career-agent",
     demoUrl: null,
     summary:
-      "A modern full-stack e-commerce web application featuring intelligent product search, personalized recommendations, comprehensive cart & order workflows, and a scalable MERN architecture.",
+      "A career platform that parses resumes into structured JSON, evaluates keyword alignment against job descriptions, and tracks applications in a unified Kanban pipeline.",
     overview: {
       about:
-        "Qyro is a feature-rich online shopping platform built with a high-performance MERN stack. It provides shoppers with an intuitive catalog browsing experience, smart product filtering, responsive shopping cart workflows, and secure user profile and order tracking management.",
+        "AI Career Agent combines multi-format resume parsing, ATS keyword comparison, tailored bullet point generation, and application status tracking in one interface.",
       problem:
-        "Online shoppers often encounter rigid keyword search interfaces, clunky checkout flows, and cart synchronization errors across tabs and mobile devices.",
+        "Applicants submit generic resumes that fail automated ATS keyword checks, while juggling spreadsheets to track dozens of job applications.",
       solution:
-        "Engineered an optimized MERN architecture with indexed MongoDB product collections, centralized cart state persistence, and a responsive Next.js frontend.",
+        "Built a multi-model processing pipeline using specialized LLMs: GLM for structured entity extraction, NVIDIA endpoints for text tailoring, and Gemini for conversational interview prep.",
       value:
-        "Delivers a fast, seamless shopping and checkout experience with reliable cart persistence and modern responsive interfaces.",
+        "Centralizes job applications in a Kanban board while pinpointing missing technical skills and quantifying resume keyword alignment.",
     },
     keyFeatures: [
       {
-        title: "Smart Product Search & Filtering",
+        title: "Resume Parsing & Keyword Scoring",
         description:
-          "Fast catalog discovery with multi-parameter filtering by categories, price ranges, ratings, and instant text search.",
-        icon: "Sparkles",
-      },
-      {
-        title: "Dynamic Recommendation Engine",
-        description:
-          "Suggests relevant accessories and complementary items based on viewing history and current cart composition.",
-        icon: "Zap",
-      },
-      {
-        title: "Full Cart & Checkout State Management",
-        description:
-          "Optimistic cart updates, local storage synchronization, quantity validation, and order history tracking.",
-        icon: "Layers",
-      },
-      {
-        title: "Secure Authentication & Profiles",
-        description:
-          "JWT-based user sessions, encrypted passwords via bcrypt, and customer order management dashboards.",
+          "Extracts work history, skills, and education into structured JSON and compares content against job requirements.",
         icon: "ShieldCheck",
       },
       {
-        title: "Scalable MongoDB Catalog",
+        title: "Bullet Point Refinement",
         description:
-          "Indexed product schemas supporting categories, dynamic attributes, stock counts, and customer reviews.",
-        icon: "Database",
+          "Generates targeted, action-oriented bullet points tailored to specific job postings.",
+        icon: "Sparkles",
       },
       {
-        title: "Responsive Glassmorphic UI",
+        title: "Job Description Analysis",
         description:
-          "Crafted with Tailwind CSS, animated interactive product cards, quick-view modals, and mobile drawer navigation.",
+          "Identifies key technical requirements from job listings and generates draft cover letters aligned to those criteria.",
+        icon: "Workflow",
+      },
+      {
+        title: "Interactive Interview Coach",
+        description:
+          "Conversational assistant powered by Gemini for behavioral practice and technical question preparation.",
         icon: "Cpu",
+      },
+      {
+        title: "Kanban Application Tracker",
+        description:
+          "Organizes jobs by stage (Applied, Screening, Interview, Offer, Rejected) with follow-up reminders.",
+        icon: "Layers",
+      },
+      {
+        title: "Google OAuth Authentication",
+        description:
+          "Single sign-on via Google OAuth with persistent user sessions and isolated account storage.",
+        icon: "Database",
       },
     ],
     techStack: {
-      frontend: ["Next.js", "React.js", "Tailwind CSS", "Lucide React", "Framer Motion"],
-      backend: ["Node.js", "Express.js", "RESTful APIs", "MVC Architecture"],
-      aiMl: ["Smart Search Expansion", "Recommendation Heuristics"],
-      database: ["MongoDB", "Mongoose ODM", "Text Indexing"],
-      authSecurity: ["JWT Authentication", "bcryptjs", "CORS Middleware"],
-      deployment: ["Vercel", "Render", "Git & GitHub"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      backend: ["Node.js", "Express.js", "TypeScript", "Prisma ORM", "RESTful APIs"],
+      aiMl: [
+        "NVIDIA API (Resume Tailoring)",
+        "GLM (Structured Extraction)",
+        "Google Gemini (Interview Prep)",
+        "Prompt Engineering",
+      ],
+      database: ["PostgreSQL (Neon)", "Prisma ORM", "JSONB Schemas"],
+      authSecurity: ["Google OAuth", "JWT Token Handling", "CORS Middleware"],
+      deployment: ["Vercel", "Git & GitHub"],
     },
     architecture: {
       client:
-        "Next.js client interface with client-side state providers for cart persistence, instant search debouncing, and responsive product grids.",
+        "Next.js App Router frontend with drag-and-drop Kanban tracking, markdown editors, and live scorecards.",
       backend:
-        "Express.js REST API with organized controllers, middleware authentication guards, and validation handlers for product and order routes.",
+        "Express.js backend structured around `/api/v1` routes with separated controllers, service layers, and Prisma query handlers.",
       dataAndAi:
-        "MongoDB cluster with compound text indexes on product titles, descriptions, and categories supporting fast indexed aggregation queries.",
+        "PostgreSQL on Neon with relational tables for Users, Resumes, TargetJobs, and Applications, plus JSONB columns for varied resume structures.",
       realtimeOrSecurity:
-        "Secure HTTP-only cookie handling, hashed user passwords with bcrypt, and parameterized Mongoose queries to prevent injection.",
+        "OAuth 2.0 session tokens, payload size restrictions for document uploads, and input sanitization.",
     },
     challenges: [
       {
-        title: "Cart State Desynchronization Across Tabs",
+        title: "Latency and Failure Isolation in Multi-Model AI Routing",
         challenge:
-          "Users modifying their cart in multiple browser tabs experienced stale totals and incorrect inventory checkout requests.",
+          "Relying on a single AI endpoint caused slow responses for quick queries and formatted-output errors on complex extractions.",
         solution:
-          "Implemented cross-tab storage event listeners and optimistic server validation prior to order confirmation.",
+          "Delegated specific tasks to specialized models: fast chat to Gemini, structured JSON extraction to GLM, and resume tailoring to NVIDIA endpoints.",
       },
       {
-        title: "Catalog Search Latency Under Load",
+        title: "Variable Resume Formats",
         challenge:
-          "Complex regex text searches on MongoDB slowed catalog filtering as the number of items increased.",
+          "Resumes feature unpredictable sections, custom headers, and differing date formats.",
         solution:
-          "Created compound MongoDB text indexes and optimized projection fields, dropping average query times below 40ms.",
+          "Designed a normalized PostgreSQL schema with JSONB fallbacks to store custom sections without database migration bottlenecks.",
       },
     ],
     highlights: [
-      "Production-ready MERN e-commerce architecture",
-      "Dynamic product discovery and recommendation system",
-      "Optimistic UI updates with resilient local cart synchronization",
-      "Responsive design optimized across mobile, tablet, and desktop",
+      "Task-specific AI routing across multiple model providers",
+      "PostgreSQL on Neon with Prisma ORM data modeling",
+      "Full application lifecycle tracking with an interactive Kanban interface",
+      "Google OAuth authentication and secure user data isolation",
     ],
   },
   {
     id: 3,
     title: "Game Galaxy Hub",
     subtitle: "Real-Time Multiplayer Gaming Platform",
-    category: "Full-Stack & WebSockets",
+    category: "Full-Stack WebSockets",
     status: "Completed",
     isOngoing: false,
     image: "/projects/gameGalaxy.png",
@@ -218,202 +223,196 @@ export const PROJECTS_DATA = [
     githubUrl: "https://github.com/test-Ois/Game-Galaxy-Hub",
     demoUrl: "https://game-galaxy-hub.vercel.app/",
     summary:
-      "A high-octane real-time multiplayer gaming hub for Tic-Tac-Toe and Ludo with low-latency WebSocket rooms, live state synchronization, interactive in-game chat using Socket.io, and smart fallback AI logic.",
+      "A real-time multiplayer gaming hub for Tic-Tac-Toe and Ludo built with Socket.IO, Next.js, and an authoritative server-side state machine with an algorithmic AI fallback.",
     overview: {
       about:
-        "Game Galaxy Hub brings friends together for instant, real-time multiplayer gaming in the browser. Players can create private game rooms, share instant invite codes, make synchronized game moves with sub-50ms latency, chat in real-time, or test their skills against intelligent algorithmic AI bots.",
+        "Game Galaxy Hub lets players create private rooms, invite peers with 6-character room codes, play multiplayer board games with immediate state synchronization, or practice against an algorithmic bot.",
       problem:
-        "Traditional web games often rely on clumsy polling mechanisms or slow turn updates, resulting in poor responsiveness, desynchronized board states, and frustrating disconnections.",
+        "Browser-based games that rely on HTTP polling suffer from high latency, out-of-order move execution, and desynchronized board states.",
       solution:
-        "Built a full-duplex WebSocket communication architecture using Socket.io and Next.js. State is validated authoritatively on the server, guaranteeing that both players always share an identical, tamper-proof game state.",
+        "Built a bidirectional WebSocket architecture with Socket.IO where game rules and turn states are validated strictly on the server before broadcasting updates to clients.",
       value:
-        "Provides seamless zero-lag multiplayer gaming directly from the browser with no installation required, complete with a live production deployment.",
+        "Eliminates out-of-order moves and game state conflicts with sub-50ms event delivery and automatic reconnection handling.",
     },
     keyFeatures: [
       {
-        title: "Instant WebSocket Room Creation",
+        title: "Socket.IO Room Management",
         description:
-          "Generate unique 6-character room codes for quick 1-click sharing and instant peer-to-peer game matchmaking.",
+          "Generates short room codes for matchmaking, managing player join/leave cycles and active lobby state.",
         icon: "Zap",
       },
       {
-        title: "Authoritative Board State Sync",
+        title: "Server-Authoritative State Machine",
         description:
-          "Server-side move validation and win condition checks prevent cheated or out-of-turn moves across clients.",
+          "Validates moves and evaluates win conditions on the backend, preventing invalid or out-of-turn actions.",
         icon: "ShieldCheck",
       },
       {
-        title: "Real-Time In-Game Chat",
+        title: "In-Game Chat",
         description:
-          "Low-latency messaging channel within active game rooms with instant delivery notifications and system event logs.",
+          "Bidirectional messaging within active rooms with delivery receipts and room event logging.",
         icon: "Sparkles",
       },
       {
-        title: "Algorithmic AI Bot Fallback",
+        title: "Minimax Bot Opponent",
         description:
-          "Built-in Minimax and heuristic AI logic allows solo players to practice against intelligent computer opponents.",
+          "Provides a solo singleplayer mode powered by a Minimax decision algorithm for offline practice.",
         icon: "Cpu",
       },
       {
-        title: "Turn Indicators & Sound Feedback",
+        title: "Turn Clocks & Move Feedback",
         description:
-          "Visual turn clocks, responsive interactive board highlights, and audio cues for moves, wins, and draws.",
+          "Displays active turn timers, board highlight transitions, and audio cues for game events.",
         icon: "Layers",
       },
       {
         title: "Live Production Deployment",
         description:
-          "Fully deployed on Vercel with high availability and optimized WebSocket transport negotiation.",
+          "Hosted on Vercel with optimized WebSocket transport negotiation and HTTP fallback.",
         icon: "Database",
       },
     ],
     techStack: {
-      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
-      backend: ["Node.js", "Express.js", "Socket.io", "WebSockets"],
-      aiMl: ["Minimax Algorithm", "Heuristic Decision Engine"],
+      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Zustand"],
+      backend: ["Node.js", "Express.js", "Socket.IO", "WebSockets"],
+      aiMl: ["Minimax Algorithm", "Game State Decision Trees"],
       database: ["In-Memory Room State Map", "Session Store"],
-      authSecurity: ["Sanitized Socket Event Payloads", "Room Code Validation"],
+      authSecurity: ["Event Payload Validation", "Room Code Sanitization"],
       deployment: ["Vercel", "Git & GitHub"],
     },
     architecture: {
       client:
-        "TypeScript Next.js application handling client-side socket event subscriptions, optimistic board rendering, and reactive turn state.",
+        "TypeScript Next.js application managing socket event listeners, local board rendering, and reactive turn indicators.",
       backend:
-        "Socket.io event gateway managing room lifecycles, player disconnections, ping/pong heartbeats, and room broadcast namespaces.",
+        "Socket.IO event gateway running on Node.js/Express, managing rooms, player heartbeats, and namespace broadcasts.",
       dataAndAi:
-        "High-speed in-memory state engine tracking active board matrices, player turn pointers, and move history with O(1) state lookup.",
+        "In-memory state map storing active room matrices, turn counters, and player mappings with O(1) lookups.",
       realtimeOrSecurity:
-        "Full-duplex WebSocket connection with automatic HTTP long-polling fallback, strict payload size verification, and disconnect recovery.",
+        "WebSocket transport with automatic polling fallback, payload validation on every event, and reconnection tokens.",
     },
     challenges: [
       {
-        title: "Client Disconnects & Mid-Game Reconnection",
+        title: "Handling Network Dropouts",
         challenge:
-          "Temporary mobile network dropouts previously caused matches to immediately abort, frustrating active players.",
+          "Brief mobile network interruptions originally dropped players and destroyed active match sessions.",
         solution:
-          "Built a 30-second reconnection grace period with session token resumption, restoring the board state seamlessly upon reconnect.",
+          "Built a 30-second reconnection window backed by session tokens, allowing players to reconnect and restore exact board state.",
       },
       {
-        title: "Simultaneous Move Race Conditions",
+        title: "Concurrent Move Race Conditions",
         challenge:
-          "High-frequency simultaneous client clicks could trigger double moves before the state updated across the network.",
+          "Rapid clicks from both players could trigger simultaneous move attempts before the UI updated.",
         solution:
-          "Enforced strict server-side turn locks and client move blocking until the server acknowledges and broadcasts state diffs.",
+          "Enforced server-side turn locks that discard subsequent inputs until the first move is validated and acknowledged.",
       },
     ],
     highlights: [
-      "Sub-50ms WebSocket multiplayer latency using Socket.io",
-      "Authoritative server state validation preventing game desynchronization",
-      "Solo AI mode powered by Minimax algorithmic decision engine",
-      "Active live production deployment at game-galaxy-hub.vercel.app",
+      "Sub-50ms WebSocket multiplayer latency with Socket.IO",
+      "Server-authoritative state logic preventing cheated moves",
+      "Minimax algorithm for solo AI gameplay",
+      "Live production deployment accessible at game-galaxy-hub.vercel.app",
     ],
   },
   {
     id: 4,
-    title: "AI Career Agent",
-    subtitle: "AI-Powered Career & Resume Intelligence Platform",
-    category: "AI Career Platform",
-    status: "Ongoing Project",
-    isOngoing: true,
-    image: "/projects/inboxAI.png",
+    title: "Qyro",
+    subtitle: "Full-Stack E-Commerce Application",
+    category: "Full-Stack MERN",
+    status: "Completed",
+    isOngoing: false,
+    image: "/projects/Qyro.png",
     accent: "#8254EE",
-    githubUrl: "https://github.com/test-Ois/ai-career-agent",
+    githubUrl: "https://github.com/test-Ois/qyro-ecommerce",
     demoUrl: null,
     summary:
-      "A full-stack AI-powered career platform designed to help users improve their resumes, analyze job descriptions, optimize applications, generate tailored career documents, manage job applications, and streamline their job-search workflow.",
+      "A MERN-stack e-commerce web application featuring compound text indexing for product discovery, synchronized multi-tab shopping cart state, and JWT-authenticated order tracking.",
     overview: {
       about:
-        "AI Career Agent is an end-to-end career intelligence and application management platform. It combines resume parsing, visual and semantic ATS analysis, AI-powered bullet point recommendations, job description matching, AI-generated cover letters, and an interactive career assistant into one unified dashboard.",
+        "Qyro is an online shopping platform with category filtering, real-time cart state management, and user order history tracking.",
       problem:
-        "Job seekers face low application response rates due to generic resumes, non-ATS-compliant formatting, tedious manual tailoring for every individual job posting, and chaotic application tracking across dozens of job boards.",
+        "Many simple e-commerce apps suffer from sluggish keyword searching and lost cart updates when users open multiple tabs.",
       solution:
-        "Engineered a specialized multi-model AI architecture utilizing dedicated LLMs for distinct tasks: NVIDIA Muse Glimmer 30B for deep resume optimization and tailoring, GLM 5.2 for structured data extraction, Google Gemini for interactive career coaching, and Inkling v1 for visual ATS analysis.",
+        "Designed a MERN architecture featuring MongoDB compound text indexes for search, browser storage synchronization events for multi-tab cart consistency, and JWT authentication.",
       value:
-        "Dramatically improves interview conversion rates by ensuring resumes beat ATS parsers, cuts tailoring time from hours to seconds, and centralizes the entire job application lifecycle.",
+        "Provides fast product discovery, reliable cart state persistence across tabs, and authenticated customer checkout workflows.",
     },
     keyFeatures: [
       {
-        title: "Resume Parsing & ATS Scoring",
+        title: "Product Search & Faceted Filtering",
         description:
-          "Extracts structured data from multi-format resumes and evaluates them against industry ATS criteria with actionable visual scorecards.",
-        icon: "ShieldCheck",
-      },
-      {
-        title: "AI Resume Optimization & Tailoring",
-        description:
-          "Powered by NVIDIA meta/muse-glimmer-30b to refine bullet points, integrate impactful action verbs, and dynamically align skills to specific job descriptions.",
+          "Multi-parameter search filtering by categories, price ranges, and text matches using MongoDB text indexes.",
         icon: "Sparkles",
       },
       {
-        title: "Job Description Analysis & Cover Letters",
+        title: "Cross-Tab Cart Synchronization",
         description:
-          "Extracts core requirements and candidate gaps from job postings and generates targeted, role-specific cover letters.",
-        icon: "Workflow",
-      },
-      {
-        title: "Ask AI Career Assistant",
-        description:
-          "Interactive conversational career coach powered by Gemini 1.5 Flash for salary negotiation tips, mock interview prep, and career strategy.",
-        icon: "Cpu",
-      },
-      {
-        title: "Job & Application Tracking Pipeline",
-        description:
-          "Kanban-style job management system tracking application statuses, interviews, offer letters, follow-up deadlines, and company notes.",
+          "Maintains synchronized cart quantities and totals across multiple open browser tabs via storage events.",
         icon: "Layers",
       },
       {
-        title: "Dashboard & Google Authentication",
+        title: "Authentication & Order History",
         description:
-          "Secure Google OAuth session management with responsive dashboard views for Resumes, Jobs, Applications, Automation, and Settings.",
+          "JWT-based session authentication with bcrypt password hashing and persistent customer order records.",
+        icon: "ShieldCheck",
+      },
+      {
+        title: "Document Schema with Mongoose",
+        description:
+          "Indexed schemas for products, user profiles, inventory counts, and customer orders.",
         icon: "Database",
+      },
+      {
+        title: "Responsive Catalog Layout",
+        description:
+          "Grid views, responsive mobile drawers, and quick-view modals built with Tailwind CSS.",
+        icon: "Cpu",
+      },
+      {
+        title: "Server-Side Validation",
+        description:
+          "Validates cart prices and inventory on the server before completing order creation.",
+        icon: "Zap",
       },
     ],
     techStack: {
-      frontend: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Lucide React", "Framer Motion"],
-      backend: ["Node.js", "Express.js", "Prisma ORM", "/api/v1 REST Architecture", "TypeScript"],
-      aiMl: [
-        "NVIDIA meta/muse-glimmer-30b (Optimization & Tailoring)",
-        "GLM glm-5.2 (Structured Extraction)",
-        "Google Gemini gemini-1.5-flash (Ask AI Chat)",
-        "Inkling inkling-v1 (Visual ATS Analysis)",
-        "Prompt Engineering",
-      ],
-      database: ["PostgreSQL", "Neon PostgreSQL", "Prisma ORM", "Relational Indexing"],
-      authSecurity: ["Google OAuth", "JWT Token Verification", "CORS Protection", "Validation Middleware"],
-      deployment: ["Vercel", "Git & GitHub"],
+      frontend: ["Next.js", "React.js", "Tailwind CSS", "Lucide React", "Framer Motion"],
+      backend: ["Node.js", "Express.js", "RESTful APIs", "MVC Pattern"],
+      aiMl: ["Search Query Expansion", "Recommendation Heuristics"],
+      database: ["MongoDB", "Mongoose ODM", "Compound Text Indexes"],
+      authSecurity: ["JWT Authentication", "bcryptjs", "CORS Middleware"],
+      deployment: ["Vercel", "Render", "Git & GitHub"],
     },
     architecture: {
       client:
-        "Next.js frontend featuring dedicated product modules for Dashboard, Resumes, Jobs, Applications, AI Assistant, Automation Workflows, Companies, Profile, and Settings.",
+        "Next.js client interface with debounced search inputs, global cart context, and responsive product grids.",
       backend:
-        "Modular Node.js and Express backend structured around clean `/api/v1` routes with controller/service decoupling and Prisma ORM data access layers.",
+        "Express.js REST API with controller-service architecture, authentication middleware, and input validation.",
       dataAndAi:
-        "PostgreSQL on Neon with relational schemas linking Users, Resumes, TargetJobs, Applications, and AISuggestions. Asynchronous task queue routes specific tasks to 4 dedicated AI models.",
+        "MongoDB database with compound indexes on product titles, categories, and tags for rapid querying.",
       realtimeOrSecurity:
-        "Google OAuth session verification, strict payload validation pipes, and sanitized HTML sanitization for resume rendering.",
+        "HTTP-only session cookies, bcrypt password salting, and parameterized queries to prevent injection attacks.",
     },
     challenges: [
       {
-        title: "Multi-Model AI Task Routing & Orchestration",
+        title: "Cart State Desynchronization Across Tabs",
         challenge:
-          "Using a single LLM for all tasks caused high latency for simple chat and inconsistent JSON formatting during complex resume extraction.",
+          "Modifying cart items in one tab left other open tabs displaying stale quantities and pricing totals.",
         solution:
-          "Separated responsibilities: routed deep reasoning and tailoring to NVIDIA Muse Glimmer 30B, structured extraction to GLM 5.2, fast chat to Gemini 1.5 Flash, and visual ATS checks to Inkling v1.",
+          "Connected client state to `window.storage` event listeners, automatically reconciling cart data across all active tabs.",
       },
       {
-        title: "Complex Multi-Section Resume Schema Evolution",
+        title: "Search Query Latency",
         challenge:
-          "Varying user resume formats (experience, education, projects, skills, certifications) required flexible yet strictly typed database modeling.",
+          "Unindexed regular expression queries degraded response times as sample inventory expanded.",
         solution:
-          "Designed a normalized PostgreSQL schema with Prisma ORM migrations and JSONB flexibility for custom user-defined sections.",
+          "Replaced regex matching with compound MongoDB text indexes and optimized projection fields, keeping query times below 40ms.",
       },
     ],
     highlights: [
-      "Multi-model AI architecture routing 4 specialized LLMs (NVIDIA, GLM, Gemini, Inkling)",
-      "Full-stack Next.js + Express + PostgreSQL (Neon) + Prisma ORM",
-      "End-to-end career suite: Resumes, ATS Scoring, Job Tracker & AI Coach",
-      "Enterprise Google OAuth authentication with `/api/v1` architecture",
+      "Production-ready MERN e-commerce architecture",
+      "Compound MongoDB text indexes for sub-40ms catalog search",
+      "Resilient cross-tab cart state synchronization",
+      "Strict server-side validation on prices and inventory during checkout",
     ],
   },
 ];

@@ -1,14 +1,10 @@
 // src/components/HeroSection.jsx
-import { useRef, useState } from "react";
-import PropTypes from "prop-types";
-import { ArrowDown, ArrowRight, ExternalLink } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
+import { ArrowDown, ArrowRight, FileText, Github, Linkedin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal, revealItemVariants } from "./Reveal";
 import {
   SiReact,
   SiTailwindcss,
-  SiVercel,
   SiGithub,
   SiMongodb,
   SiExpress,
@@ -16,57 +12,27 @@ import {
   SiTypescript,
   SiNextdotjs,
   SiPostgresql,
+  SiPrisma,
 } from "react-icons/si";
 
 const techStack = [
-  { name: "React", Icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#a8adba" },
-  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
-  { name: "Node.js", Icon: SiNodedotjs, color: "#68A063" },
-  { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
-  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
-  { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
-  { name: "Express", Icon: SiExpress, color: "#a8adba" },
-  { name: "Vercel", Icon: SiVercel, color: "#a8adba" },
-  { name: "GitHub", Icon: SiGithub, color: "#a8adba" },
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "React", Icon: SiReact },
+  { name: "TypeScript", Icon: SiTypescript },
+  { name: "Node.js", Icon: SiNodedotjs },
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "Prisma", Icon: SiPrisma },
+  { name: "Express", Icon: SiExpress },
+  { name: "MongoDB", Icon: SiMongodb },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+  { name: "GitHub", Icon: SiGithub },
 ];
 
-const stats = [
-  { value: "15+", label: "Projects Built" },
-  { value: "5+", label: "AI Integrations" },
-  { value: "Full Stack", label: "Development" },
+const highlights = [
+  { value: "4", label: "Production Case Studies" },
+  { value: "Intern", label: "Infotech Service (Full Stack)" },
+  { value: "B.Tech CSE", label: "Chandigarh University ('26)" },
 ];
-
-const MagneticButton = ({ children }) => {
-  const ref = useRef(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const move = (e) => {
-    if (window.innerWidth < 768) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    setPos({
-      x: (e.clientX - (left + width / 2)) * 0.3,
-      y: (e.clientY - (top + height / 2)) * 0.3,
-    });
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={move}
-      onMouseLeave={() => setPos({ x: 0, y: 0 })}
-      animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className="inline-block"
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-MagneticButton.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export const HeroSection = () => {
   const isReduced = useReducedMotion();
@@ -75,83 +41,40 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-8 sm:pb-10 overflow-hidden"
+      className="relative min-h-[92vh] flex flex-col justify-between items-center px-4 sm:px-6 pt-28 sm:pt-32 pb-10 sm:pb-12"
     >
-      {/* ── Ambient Orbs ── */}
-      <motion.div
-        className="absolute top-[5%] left-[3%] w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--orb-purple) 0%, transparent 70%)",
-          filter: "blur(70px)",
-          zIndex: 0,
-        }}
-        animate={{ x: [0, 50, -30, 0], y: [0, -50, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[10%] right-[3%] w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)",
-          filter: "blur(70px)",
-          zIndex: 0,
-        }}
-        animate={{ x: [0, -40, 30, 0], y: [0, 40, -30, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       <div className="w-full flex-1 flex flex-col items-center justify-center">
         <Reveal
           triggerOnLoad
-          staggerChildren={0.1}
-          className="container mx-auto flex flex-col items-center justify-center text-center z-10 max-w-5xl space-y-6 sm:space-y-8 md:space-y-9"
+          staggerChildren={0.08}
+          className="container mx-auto flex flex-col items-center justify-center text-center max-w-4xl space-y-7 sm:space-y-8"
         >
-          {/* ── Status Indicator: LOOKING FOR OPPORTUNITIES ── */}
+          {/* Status badge */}
           <motion.div variants={itemVariants}>
             <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium"
               style={{
-                border: "1px solid rgba(var(--purple-rgb), 0.35)",
-                background: "rgba(var(--purple-rgb), 0.08)",
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 0 16px rgba(var(--purple-rgb), 0.15)",
+                border: "1px solid var(--border-card)",
+                background: "var(--bg-card)",
+                color: "var(--text-muted)",
               }}
             >
-              <span className="relative flex h-2 w-2">
-                <span
-                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-                  style={{ background: "var(--color-green)" }}
-                />
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ background: "var(--color-green)" }}
-                />
-              </span>
-              <span
-                className="text-xs font-mono font-bold tracking-wider uppercase"
-                style={{ color: "var(--color-purple)" }}
-              >
-                Looking for opportunities
-              </span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span>Available for engineering roles</span>
             </div>
           </motion.div>
 
-          {/* ── Greeting + Name + Animated Role + Description ── */}
-          <div className="flex flex-col items-center space-y-3 sm:space-y-4 max-w-4xl">
-            <motion.p
-              variants={itemVariants}
-              className="text-xs sm:text-sm tracking-[0.25em] uppercase font-mono font-medium"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Hello, I&apos;m
-            </motion.p>
-
+          {/* Headline + Lead */}
+          <div className="space-y-4 max-w-3xl">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none"
+              className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08]"
+              style={{ color: "var(--text-heading)" }}
             >
+              Hi, I&apos;m{" "}
               <span
                 style={{
-                  background: "var(--grad-name)",
+                  background: "var(--grad-heading)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -159,167 +82,131 @@ export const HeroSection = () => {
               >
                 Qayoom Akhtar
               </span>
+              .
             </motion.h1>
 
-            {/* ── Smooth Rotating Role ── */}
-            <motion.div
+            <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-2xl md:text-3xl font-semibold flex items-center justify-center flex-wrap gap-1.5 sm:gap-3 pt-1"
+              className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight"
+              style={{ color: "var(--text-body)" }}
             >
-              <span style={{ color: "var(--text-muted)", fontWeight: 300 }}>I&apos;m a</span>
-              <span
-                className="font-bold min-w-[210px] sm:min-w-[340px] md:min-w-[390px] text-left"
-                style={{
-                  background: "var(--grad-role)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                <TypeAnimation
-                  sequence={[
-                    "Full Stack Engineer",
-                    2400,
-                    "AI Application Engineer",
-                    2400,
-                    "React & Next.js Engineer",
-                    2400,
-                    "MERN Stack Developer",
-                    2400,
-                  ]}
-                  speed={52}
-                  repeat={Infinity}
-                />
-              </span>
-            </motion.div>
+              Full Stack Engineer building web applications and practical AI systems.
+            </motion.p>
 
-            {/* ── Focused Professional Description ── */}
             <motion.p
               variants={itemVariants}
               className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed pt-2"
-              style={{ color: "var(--text-body)" }}
+              style={{ color: "var(--text-muted)" }}
             >
-              Building production-grade full-stack applications with{" "}
-              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>React</span>,{" "}
-              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>Next.js</span>,{" "}
-              <span style={{ color: "var(--text-strong)", fontWeight: 500 }}>Node.js</span>, and{" "}
-              <span style={{ color: "var(--text-accent-blue)", fontWeight: 500 }}>AI/LLM systems</span>.
-              Focused on scalable architecture, intelligent products, and polished user experiences.
+              I build scalable frontend and backend architectures with TypeScript, React, Next.js, and Node.js.
+              Experienced in type-safe database schemas, real-time communication, and grounded LLM integrations.
             </motion.p>
-
-            {/* ── Main Hero CTAs ── */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap justify-center gap-3.5 pt-3"
-            >
-              <MagneticButton>
-                <a
-                  href="#projects"
-                  className="group inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 rounded-full font-semibold text-white text-xs sm:text-sm transition-all duration-300"
-                  style={{
-                    background: "var(--grad-primary)",
-                    boxShadow: "0 0 24px rgba(var(--purple-rgb), 0.35)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = "0 0 40px rgba(var(--purple-rgb), 0.6)";
-                    e.currentTarget.style.transform = "scale(1.02)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = "0 0 24px rgba(var(--purple-rgb), 0.35)";
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                >
-                  Explore My Work <ArrowRight size={15} />
-                </a>
-              </MagneticButton>
-
-              <MagneticButton>
-                <a
-                  href="https://drive.google.com/drive/u/0/folders/1WayKbomGqVUlmhQbi9Y2GgXN-Q2V1IDL"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300"
-                  style={{
-                    border: "1px solid rgba(var(--blue-rgb), 0.35)",
-                    background: "rgba(var(--blue-rgb), 0.07)",
-                    color: "var(--color-blue)",
-                    backdropFilter: "blur(10px)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(var(--blue-rgb), 0.15)";
-                    e.currentTarget.style.boxShadow = "0 0 24px rgba(var(--blue-rgb), 0.25)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(var(--blue-rgb), 0.07)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  Download Resume <ExternalLink size={13} className="opacity-80" />
-                </a>
-              </MagneticButton>
-            </motion.div>
           </div>
 
-          {/* ── Defensible Portfolio Stats ── */}
+          {/* Actions */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center gap-7 sm:gap-12 pt-2"
+            className="flex flex-wrap items-center justify-center gap-3 pt-2"
           >
-            {stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center gap-1">
-                <span
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-mono"
-                  style={{
-                    background: "var(--grad-stats)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-white text-sm transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                background: "var(--color-purple)",
+                boxShadow: "0 2px 10px rgba(124, 58, 237, 0.25)",
+              }}
+            >
+              View Case Studies <ArrowRight size={15} />
+            </a>
+
+            <a
+              href="https://drive.google.com/drive/u/0/folders/1WayKbomGqVUlmhQbi9Y2GgXN-Q2V1IDL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                border: "1px solid var(--border-card)",
+                background: "var(--bg-card)",
+                color: "var(--text-heading)",
+              }}
+            >
+              <FileText size={15} /> Download CV
+            </a>
+
+            <div className="flex items-center gap-2 ml-1">
+              <a
+                href="https://github.com/test-Ois"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-3 rounded-lg transition-colors duration-200"
+                style={{
+                  border: "1px solid var(--border-card)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-muted)",
+                }}
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/qayoom-akhtar"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-3 rounded-lg transition-colors duration-200"
+                style={{
+                  border: "1px solid var(--border-card)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-muted)",
+                }}
+              >
+                <Linkedin size={16} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Highlights / Credentials */}
+          <motion.div
+            variants={itemVariants}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl pt-4"
+          >
+            {highlights.map((h, i) => (
+              <div
+                key={i}
+                className="p-3.5 rounded-lg text-center"
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-card)",
+                }}
+              >
+                <div
+                  className="text-base sm:text-lg font-bold font-mono tracking-tight"
+                  style={{ color: "var(--text-heading)" }}
                 >
-                  {s.value}
-                </span>
-                <span className="text-xs tracking-wide" style={{ color: "var(--text-muted)" }}>
-                  {s.label}
-                </span>
+                  {h.value}
+                </div>
+                <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                  {h.label}
+                </div>
               </div>
             ))}
           </motion.div>
 
-          {/* ── Bottom Tech Pills Marquee ── */}
-          <motion.div variants={itemVariants} className="w-full relative overflow-hidden py-3">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
-              style={{ background: "var(--grad-fade-l)" }}
-            />
-            <div
-              className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
-              style={{ background: "var(--grad-fade-r)" }}
-            />
-            <div className="marquee-track flex gap-3 sm:gap-4 whitespace-nowrap">
-              {[...techStack, ...techStack].map((tech, idx) => (
+          {/* Tech Stack Pills */}
+          <motion.div variants={itemVariants} className="w-full pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
+              {techStack.map((tech) => (
                 <div
-                  key={idx}
-                  className="flex items-center gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shrink-0 transition-all duration-300"
+                  key={tech.name}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium"
                   style={{
                     background: "var(--bg-card)",
                     border: "1px solid var(--border-card)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--bg-card-hover)";
-                    e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.4)";
-                    e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "var(--bg-card)";
-                    e.currentTarget.style.borderColor = "var(--border-card)";
-                    e.currentTarget.style.boxShadow = "none";
+                    color: "var(--text-body)",
                   }}
                 >
-                  <tech.Icon size={15} style={{ color: tech.color, opacity: 0.9 }} />
-                  <span className="text-xs sm:text-sm font-medium" style={{ color: "var(--text-body)" }}>
-                    {tech.name}
-                  </span>
+                  <tech.Icon size={14} className="opacity-80" />
+                  <span>{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -327,27 +214,20 @@ export const HeroSection = () => {
         </Reveal>
       </div>
 
-      {/* ── Scroll Indicator (Safely Positioned Below Tech Row with Zero Overlap) ── */}
-      <div className="mt-6 sm:mt-10 flex flex-col items-center gap-1.5 z-10 select-none">
-        <span
-          className="text-[10px] sm:text-xs tracking-[0.25em] uppercase font-mono font-semibold"
-          style={{ color: "var(--text-muted)" }}
+      {/* Scroll indicator */}
+      <div className="mt-8 flex flex-col items-center gap-1.5 select-none">
+        <a
+          href="#about"
+          aria-label="Scroll to about section"
+          className="flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-200 hover:opacity-80"
+          style={{
+            border: "1px solid var(--border-card)",
+            background: "var(--bg-card)",
+            color: "var(--text-muted)",
+          }}
         >
-          Scroll
-        </span>
-        <div className="relative flex items-center justify-center">
-          <motion.div
-            className="flex items-center justify-center w-8 h-8 rounded-full"
-            style={{
-              border: "1px solid rgba(var(--purple-rgb), 0.3)",
-              background: "rgba(var(--purple-rgb), 0.06)",
-            }}
-            animate={isReduced ? {} : { opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="h-3.5 w-3.5" style={{ color: "var(--color-purple)" }} />
-          </motion.div>
-        </div>
+          <ArrowDown className="h-3.5 w-3.5" />
+        </a>
       </div>
     </section>
   );

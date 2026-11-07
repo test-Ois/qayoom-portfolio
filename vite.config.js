@@ -63,4 +63,16 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-framer": ["framer-motion"],
+          "vendor-markdown": ["react-markdown", "remark-gfm"],
+          "vendor-icons": ["lucide-react", "react-icons"],
+        },
+      },
+    },
+  },
 });

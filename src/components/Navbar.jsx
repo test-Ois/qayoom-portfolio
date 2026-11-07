@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
@@ -16,7 +16,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,64 +24,48 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-500",
+        "fixed w-full z-40 transition-all duration-300",
         isScrolled
-          ? "py-3 border-b"
+          ? "py-3.5 border-b backdrop-blur-md"
           : "py-5 bg-transparent"
       )}
       style={
         isScrolled
           ? {
               background: "var(--bg-nav)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              borderBottomColor: "rgba(var(--purple-rgb), 0.18)",
+              borderBottomColor: "var(--border-card)",
             }
           : {}
       }
     >
       <div className="container flex items-center justify-between">
-        {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2 group">
+        {/* Brand / Logo */}
+        <a href="#hero" className="flex items-center gap-1.5 group">
           <span
-            className="text-xl font-bold tracking-tight"
+            className="text-lg font-bold tracking-tight"
             style={{ fontFamily: "var(--font-space)" }}
           >
-            <span
-              className="text-glow"
-              style={{
-                background: "var(--grad-heading)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Qayoom
-            </span>
-            <span className="text-white"> Akhtar</span>
+            <span style={{ color: "var(--color-purple)" }}>Qayoom</span>
+            <span style={{ color: "var(--text-heading)" }}> Akhtar</span>
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-2">
-          {navItems.map((item, key) => (
+        <div className="hidden md:flex items-center space-x-1">
+          {navItems.map((item) => (
             <a
-              key={key}
+              key={item.name}
               href={item.href}
-              className="relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group"
-              style={{ color: "var(--text-body)" }}
+              className="px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 rounded-md"
+              style={{ color: "var(--text-muted)" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--color-purple)";
+                e.currentTarget.style.color = "var(--text-heading)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--text-body)";
+                e.currentTarget.style.color = "var(--text-muted)";
               }}
             >
               {item.name}
-              <span
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-3/4 transition-all duration-300 rounded-full"
-                style={{ background: "linear-gradient(90deg, var(--color-purple), var(--color-blue))" }}
-              />
             </a>
           ))}
         </div>
@@ -89,54 +73,37 @@ export const Navbar = () => {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 z-50 transition-colors duration-300 cursor-pointer"
-          style={{ color: isMenuOpen ? "var(--color-purple)" : "var(--text-body)" }}
+          className="md:hidden p-2 z-50 transition-colors duration-200 cursor-pointer"
+          style={{ color: "var(--text-heading)" }}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         {/* Mobile Drawer */}
         <div
           className={cn(
-            "fixed inset-0 z-40 flex flex-col items-center justify-center md:hidden transition-all duration-400",
-            isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            "fixed inset-0 top-0 left-0 w-full h-screen flex flex-col justify-center items-center gap-6 md:hidden transition-all duration-300 z-40",
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           )}
           style={{
-            background: "var(--bg-nav-opaque)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
+            background: "var(--bg-overlay)",
+            backdropFilter: "blur(20px)",
           }}
         >
-          {/* Ambient purple glow */}
-          <div
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, var(--orb-purple), transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
-          <div className="flex flex-col space-y-8 text-center relative z-10">
-            {navItems.map((item, key) => (
-              <a
-                key={key}
-                href={item.href}
-                className="text-2xl font-bold transition-all duration-300"
-                style={{ color: "var(--text-body)", fontFamily: "var(--font-space)" }}
-                onClick={() => setIsMenuOpen(false)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--color-purple)";
-                  e.currentTarget.style.textShadow = "0 0 20px rgba(var(--purple-rgb), 0.6)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--text-body)";
-                  e.currentTarget.style.textShadow = "none";
-                }}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-lg font-semibold tracking-tight transition-colors"
+              style={{ color: "var(--text-heading)" }}
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
       </div>
     </nav>

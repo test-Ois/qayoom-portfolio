@@ -18,7 +18,6 @@ import {
   Workflow,
   Activity,
   Radio,
-  Wifi,
   Database,
   Layers,
   Boxes,
@@ -30,147 +29,75 @@ import {
   ShieldCheck,
   Send,
   Sparkles,
-  ChevronDown,
-  ChevronUp,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
-import {
-  SKILLS_DATA,
-  SKILL_CATEGORIES,
-  CURRENTLY_WORKING_WITH_PRIMARY,
-  CURRENTLY_WORKING_WITH_ALL,
-  CURATED_ALL_SKILL_NAMES,
-} from "../data/skillsData";
+import { SKILLS_DATA, SKILL_CATEGORIES } from "../data/skillsData";
 
-// Dynamic Icon Resolver
-const getSkillIcon = (iconName) => {
-  const iconMap = {
-    Bot,
-    BrainCircuit,
-    Binary,
-    Network,
-    Terminal,
-    Atom,
-    Globe,
-    FileCode2,
-    FileCode,
-    Palette,
-    Layout,
-    Server,
-    Workflow,
-    Activity,
-    Radio,
-    Wifi,
-    Database,
-    Layers,
-    Boxes,
-    Compass,
-    Zap,
-    GitBranch,
-    Box,
-    Cloud,
-    ShieldCheck,
-    Send,
-  };
-  const IconComponent = iconMap[iconName] || Sparkles;
-  return <IconComponent className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />;
+const iconMap = {
+  Bot,
+  BrainCircuit,
+  Binary,
+  Network,
+  Terminal,
+  Atom,
+  Globe,
+  FileCode2,
+  FileCode,
+  Palette,
+  Layout,
+  Server,
+  Workflow,
+  Activity,
+  Radio,
+  Database,
+  Layers,
+  Boxes,
+  Compass,
+  Zap,
+  GitBranch,
+  Box,
+  Cloud,
+  ShieldCheck,
+  Send,
 };
 
-// Dot color and style by realistic proficiency level
-const getLevelDotColor = (level) => {
-  switch (level) {
-    case "Advanced":
-      return "bg-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]";
-    case "Proficient":
-      return "bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]";
-    case "Intermediate":
-      return "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]";
-    default:
-      return "bg-gray-400";
-  }
+const getSkillIcon = (iconName) => {
+  const IconComponent = iconMap[iconName] || Sparkles;
+  return <IconComponent className="w-4 h-4" />;
 };
 
 const SkillCard = ({ skill, isReduced }) => {
   return (
     <motion.div
       layout={!isReduced}
-      initial={{ opacity: 0, scale: isReduced ? 1 : 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: isReduced ? 1 : 0.96 }}
-      transition={{ duration: isReduced ? 0.1 : 0.22, ease: "easeOut" }}
-      className="h-full min-w-0"
+      initial={{ opacity: 0, y: isReduced ? 0 : 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: isReduced ? 0 : -8 }}
+      transition={{ duration: isReduced ? 0.1 : 0.2, ease: "easeOut" }}
+      className="p-4 rounded-xl text-left transition-all duration-200"
+      style={{
+        background: "var(--bg-card)",
+        border: "1px solid var(--border-card)",
+      }}
     >
-      <div
-        className="h-full flex flex-col justify-between p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 select-none text-left group min-w-0"
-        style={{
-          background: "var(--bg-card)",
-          border: "1px solid var(--border-card)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          boxShadow: "var(--shadow-card)",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = `${skill.accent}55`;
-          e.currentTarget.style.background = "var(--bg-card-hover)";
-          e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
-          e.currentTarget.style.transform = "translateY(-3px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "var(--border-card)";
-          e.currentTarget.style.background = "var(--bg-card)";
-          e.currentTarget.style.boxShadow = "var(--shadow-card)";
-          e.currentTarget.style.transform = "translateY(0)";
-        }}
-      >
-        <div>
-          {/* Top Row: Icon Container & Realistic Proficiency Badge */}
-          <div className="flex items-center justify-between mb-2 sm:mb-3.5 gap-1">
-            <div
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
-              style={{
-                background: `${skill.accent}15`,
-                border: `1px solid ${skill.accent}33`,
-                color: skill.accent,
-              }}
-            >
-              {getSkillIcon(skill.icon)}
-            </div>
-
-            {/* Realistic Level Indicator */}
-            <span
-              className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[11px] font-mono font-medium rounded-full shrink-0"
-              style={{
-                background: "rgba(var(--purple-rgb), 0.12)",
-                border: "1px solid rgba(var(--purple-rgb), 0.25)",
-                color: "var(--text-body)",
-              }}
-            >
-              <span className={`w-1.5 h-1.5 rounded-full ${getLevelDotColor(skill.level)}`} />
-              {skill.level}
-            </span>
-          </div>
-
-          {/* Title & Role */}
-          <h3 className="text-xs sm:text-base font-bold text-white mb-0.5 sm:mb-1 tracking-tight leading-snug break-words group-hover:text-white transition-colors">
-            {skill.name}
-          </h3>
-          <p className="text-[10px] sm:text-xs mb-2 sm:mb-3.5 font-medium leading-tight sm:leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            {skill.role}
-          </p>
+      <div className="flex items-center gap-2.5 mb-1.5">
+        <div
+          className="p-1.5 rounded-md"
+          style={{
+            background: "var(--bg-pill)",
+            color: "var(--color-purple)",
+            border: "1px solid var(--border-tag)",
+          }}
+        >
+          {getSkillIcon(skill.icon)}
         </div>
-
-        {/* Footer: Keywords */}
-        <div className="pt-2 sm:pt-3 border-t border-purple-900/20 flex flex-wrap gap-1 sm:gap-1.5">
-          {skill.keywords.map((kw, i) => (
-            <span
-              key={i}
-              className="text-[8.5px] sm:text-[10px] font-mono px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded sm:rounded-md bg-white/5 text-gray-300 border border-white/5"
-            >
-              {kw}
-            </span>
-          ))}
-        </div>
+        <h4 className="font-semibold text-sm tracking-tight" style={{ color: "var(--text-heading)" }}>
+          {skill.name}
+        </h4>
       </div>
+      <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+        {skill.context}
+      </p>
     </motion.div>
   );
 };
@@ -179,259 +106,74 @@ SkillCard.propTypes = {
   skill: PropTypes.shape({
     name: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-    level: PropTypes.string.isRequired,
-    keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+    context: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
-    accent: PropTypes.string.isRequired,
   }).isRequired,
   isReduced: PropTypes.bool,
 };
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [isWorkingWithExpanded, setIsWorkingWithExpanded] = useState(false);
-  const [isAllExpanded, setIsAllExpanded] = useState(false);
   const isReduced = useReducedMotion();
 
-  // Determine which skills to display
-  const displayedSkills = useMemo(() => {
-    if (activeCategory === "all") {
-      if (isAllExpanded) {
-        return SKILLS_DATA;
-      }
-      // Curated initial smart mix (2 AI/LLM, 3 Frontend, 1 Backend, 1 Database, 1 Tools)
-      return SKILLS_DATA.filter((s) => CURATED_ALL_SKILL_NAMES.includes(s.name));
-    }
-    // Specific category selected
+  const filteredSkills = useMemo(() => {
+    if (activeCategory === "all") return SKILLS_DATA;
     return SKILLS_DATA.filter((s) => s.category === activeCategory);
-  }, [activeCategory, isAllExpanded]);
-
-  const activeWorkingWithList = isWorkingWithExpanded
-    ? CURRENTLY_WORKING_WITH_ALL
-    : CURRENTLY_WORKING_WITH_PRIMARY;
+  }, [activeCategory]);
 
   return (
-    <section id="skills" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div
-        className="absolute top-1/2 right-0 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--orb-blue), transparent 70%)",
-          filter: "blur(70px)",
-          transform: "translateY(-50%)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--orb-purple), transparent 70%)",
-          filter: "blur(70px)",
-        }}
-      />
+    <section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 relative">
+      <Reveal className="container mx-auto max-w-5xl">
+        <div className="flex justify-center mb-3">
+          <span className="section-label">Capabilities</span>
+        </div>
+        <h2
+          className="text-3xl md:text-4xl font-bold mb-4 text-center tracking-tight"
+          style={{ color: "var(--text-heading)" }}
+        >
+          Technical Competencies
+        </h2>
+        <p
+          className="text-center mb-9 sm:mb-11 max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Technologies, frameworks, and tools I use to build production web systems.
+        </p>
 
-      <div className="container mx-auto max-w-5xl">
-        <Reveal>
-          {/* Badge */}
-          <div className="flex justify-center mb-4">
-            <span className="section-label">Skills</span>
-          </div>
-
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center tracking-tight text-white">
-            My{" "}
-            <span
-              style={{
-                background: "var(--grad-heading)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Tech Stack
-            </span>
-          </h2>
-
-          {/* Supporting Subtitle */}
-          <p
-            className="text-center mb-6 sm:mb-7 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base"
-            style={{ color: "var(--text-muted)" }}
-          >
-            Technologies I use to build modern full-stack applications.
-          </p>
-
-          {/* Compact, Expandable "Currently working with" Bar (Max 2 rows collapsed) */}
-          <div
-            className="max-w-3xl mx-auto mb-8 sm:mb-10 p-3.5 sm:p-4 rounded-2xl backdrop-blur-md transition-all duration-300"
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border-card)",
-              boxShadow: "var(--shadow-card)",
-            }}
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5">
-              {/* Header Label */}
-              <div
-                className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider font-semibold shrink-0"
-                style={{ color: "var(--color-purple)" }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "var(--color-blue)" }} />
-                Currently working with:
-              </div>
-
-              {/* Technologies Pills */}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
-                <AnimatePresence initial={false}>
-                  {activeWorkingWithList.map((tech) => (
-                    <motion.span
-                      key={tech}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.18 }}
-                      className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium"
-                      style={{
-                        background: "rgba(var(--purple-rgb), 0.12)",
-                        border: "1px solid rgba(var(--purple-rgb), 0.25)",
-                        color: "var(--color-purple)",
-                      }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </AnimatePresence>
-              </div>
-
-              {/* Expand / Collapse Button */}
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          {SKILL_CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
               <button
+                key={cat.id}
                 type="button"
-                onClick={() => setIsWorkingWithExpanded(!isWorkingWithExpanded)}
-                aria-expanded={isWorkingWithExpanded}
-                aria-label={isWorkingWithExpanded ? "Show fewer active technologies" : "Show all active technologies"}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono transition-all duration-200 cursor-pointer shrink-0"
+                onClick={() => setActiveCategory(cat.id)}
+                className="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer"
                 style={{
-                  background: "rgba(var(--blue-rgb), 0.10)",
-                  border: "1px solid rgba(var(--blue-rgb), 0.25)",
-                  color: "var(--color-blue)",
+                  background: isActive ? "var(--color-purple)" : "var(--bg-card)",
+                  color: isActive ? "#ffffff" : "var(--text-body)",
+                  border: `1px solid ${isActive ? "var(--color-purple)" : "var(--border-card)"}`,
                 }}
               >
-                <span>{isWorkingWithExpanded ? "Less" : `+${CURRENTLY_WORKING_WITH_ALL.length - CURRENTLY_WORKING_WITH_PRIMARY.length}`}</span>
-                {isWorkingWithExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                {cat.label}
               </button>
-            </div>
-          </div>
-
-          {/* Filter tabs */}
-          <div
-            role="tablist"
-            aria-label="Technology Categories"
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10"
-          >
-            {SKILL_CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => {
-                    setActiveCategory(cat.id);
-                    // If switching to a category other than 'all', reset isAllExpanded
-                    if (cat.id !== "all") {
-                      setIsAllExpanded(false);
-                    }
-                  }}
-                  className="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500/40"
-                  style={
-                    isActive
-                      ? {
-                          background: "linear-gradient(135deg, var(--color-purple), #7c3aed)",
-                          color: "#ffffff",
-                          boxShadow: "0 0 16px rgba(var(--purple-rgb), 0.35)",
-                          border: "1px solid rgba(var(--purple-rgb), 0.5)",
-                        }
-                      : {
-                          background: "var(--bg-card)",
-                          color: "var(--text-muted)",
-                          border: "1px solid var(--border-card)",
-                          backdropFilter: "blur(8px)",
-                        }
-                  }
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.color = "var(--text-body)";
-                      e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.3)";
-                      e.currentTarget.style.background = "var(--bg-card-hover)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.color = "var(--text-muted)";
-                      e.currentTarget.style.borderColor = "var(--border-card)";
-                      e.currentTarget.style.background = "var(--bg-card)";
-                    }
-                  }}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
+            );
+          })}
+        </div>
 
         {/* Skills Grid */}
         <motion.div
           layout={!isReduced}
-          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"
         >
           <AnimatePresence mode="popLayout">
-            {displayedSkills.map((skill) => (
-              <SkillCard
-                key={skill.name}
-                skill={skill}
-                isReduced={isReduced}
-              />
+            {filteredSkills.map((skill) => (
+              <SkillCard key={skill.name} skill={skill} isReduced={isReduced} />
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {/* Show More / Show Less Button for "All" Category */}
-        {activeCategory === "all" && (
-          <Reveal delay={0.1} className="flex justify-center mt-10">
-            <button
-              type="button"
-              onClick={() => {
-                if (isAllExpanded) {
-                  // If collapsing, smoothly bring section header into view
-                  const skillsEl = document.getElementById("skills");
-                  if (skillsEl) {
-                    const targetY = skillsEl.getBoundingClientRect().top + window.scrollY - 85;
-                    window.scrollTo({
-                      top: Math.max(0, targetY),
-                      behavior: isReduced ? "auto" : "smooth",
-                    });
-                  }
-                }
-                setIsAllExpanded(!isAllExpanded);
-              }}
-              className="px-6 py-2.5 rounded-full text-xs font-semibold font-mono tracking-wide transition-all duration-300 flex items-center gap-2 shadow-lg backdrop-blur-md cursor-pointer"
-              style={{
-                background: "var(--bg-tag)",
-                border: "1px solid var(--border-tag)",
-                color: "var(--tag-text)",
-                boxShadow: "var(--shadow-card)",
-              }}
-            >
-              <span>
-                {isAllExpanded
-                  ? "Show Less (Curated View)"
-                  : `Show All Skills (${SKILLS_DATA.length - CURATED_ALL_SKILL_NAMES.length} more)`}
-              </span>
-              {isAllExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </button>
-          </Reveal>
-        )}
-      </div>
+      </Reveal>
     </section>
   );
 };

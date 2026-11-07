@@ -1,93 +1,112 @@
 // src/components/AboutSection.jsx
-import { Briefcase, Code, User } from "lucide-react";
+import { Code2, Database, Sparkles } from "lucide-react";
 import { Reveal } from "./Reveal";
 
-const cards = [
+const focusAreas = [
   {
-    Icon: Code,
-    title: "Full Stack AI Development",
-    body: "Building production AI-integrated web applications with React, Next.js, Node.js, Express, and modern DBs.",
+    Icon: Code2,
+    title: "Full-Stack Web Development",
+    body: "Building responsive, component-driven client applications with Next.js, React, and TypeScript. Connecting frontends to structured Node.js/Express APIs with strict schema validation.",
   },
   {
-    Icon: User,
-    title: "RAG & LLM Integration",
-    body: "Developing RAG pipelines using Qdrant vector database, multi-provider LLM routing (Groq, NVIDIA, Cerebras, Gemini, OpenAI), and SSE streaming.",
+    Icon: Sparkles,
+    title: "LLM Integration & Retrieval",
+    body: "Implementing RAG pipelines, chunking strategies, vector search with Qdrant, and real-time Server-Sent Events (SSE) streaming for fast generative responses.",
   },
   {
-    Icon: Briefcase,
-    title: "System Design & Architecture",
-    body: "Designing scalable REST APIs, secure JWT/Firebase authentication, and production-ready system architectures.",
+    Icon: Database,
+    title: "Data Modeling & Architecture",
+    body: "Designing normalized schemas with PostgreSQL and Prisma ORM, indexing document stores in MongoDB, and implementing secure JWT and OAuth session handling.",
   },
 ];
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--orb-purple), transparent 70%)", filter: "blur(60px)", transform: "translateY(-50%)" }}
-      />
-
+    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 relative">
       <Reveal className="container mx-auto max-w-5xl">
-        {/* Section label */}
-        <div className="flex justify-center mb-4">
-          <span className="section-label">About Me</span>
+        <div className="flex justify-center mb-3">
+          <span className="section-label">Background</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 sm:mb-12 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
-          Who I <span style={{ background: "var(--grad-heading)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Am</span>
+        <h2
+          className="text-3xl md:text-4xl font-bold mb-10 sm:mb-12 text-center tracking-tight"
+          style={{ color: "var(--text-heading)" }}
+        >
+          Engineering Approach &amp; Focus
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left text */}
-          <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-bold tracking-tight" style={{ color: "#f5f5f7" }}>
-              Passionate Full Stack AI Engineer
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left: Background prose */}
+          <div className="md:col-span-6 space-y-5 text-left">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight" style={{ color: "var(--text-heading)" }}>
+              Building software that solves practical problems.
             </h3>
 
-            <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>
-              Full Stack AI Engineer with{" "}
-              <span style={{ color: "var(--text-heading)" }}>6+ months of experience</span> building production
-              AI-integrated web applications combining React/Next.js frontends with Node.js/Express backends,
-              multi-provider LLM integration, and RAG pipelines.
+            <p className="leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-body)" }}>
+              I am a Full Stack Engineer pursuing my B.Tech in Computer Science at Chandigarh University
+              (2022–2026). My work centers on building production web applications that combine clean
+              client interfaces with reliable backend services and practical AI integrations.
             </p>
 
-            <p className="leading-relaxed" style={{ color: "var(--text-body)" }}>
-              Experienced in designing{" "}
-              <span style={{ color: "var(--color-purple)", fontWeight: 500 }}>real-time streaming interfaces (SSE)</span>,{" "}
-              <span style={{ color: "var(--color-blue)", fontWeight: 500 }}>Qdrant vector databases</span>, and secure REST APIs
-              while pursuing B.Tech in Computer Science Engineering at Chandigarh University.
+            <p className="leading-relaxed text-sm sm:text-base" style={{ color: "var(--text-body)" }}>
+              During my internship at Infotech Service, I built reusable React components and integrated RESTful
+              APIs, reducing server response times by 15–20% through targeted query and state optimizations.
+              I treat AI as an engineering layer rather than a gimmick: evaluating prompts, grounding responses
+              in vector stores, and handling streaming data gracefully.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a href="#contact" className="cosmic-button text-center">
-                Get In Touch
+            <div className="pt-2 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200"
+                style={{
+                  background: "var(--color-purple)",
+                  color: "#ffffff",
+                }}
+              >
+                View Projects
               </a>
               <a
-                href="https://drive.google.com/drive/u/0/folders/1WayKbomGqVUlmhQbi9Y2GgXN-Q2V1IDL"
-                target="_blank" rel="noopener noreferrer"
-                className="ghost-button text-center"
+                href="#contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200"
+                style={{
+                  border: "1px solid var(--border-card)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-heading)",
+                }}
               >
-                Download CV
+                Get In Touch
               </a>
             </div>
           </div>
 
-          {/* Right cards */}
-          <div className="grid grid-cols-1 gap-4 sm:gap-5">
-            {cards.map(({ Icon, title, body }, i) => (
+          {/* Right: Technical focus cards */}
+          <div className="md:col-span-6 grid grid-cols-1 gap-4">
+            {focusAreas.map(({ Icon, title, body }, idx) => (
               <div
-                key={i}
-                className="glass-card glass-card-hover p-6 flex items-start gap-4 group"
+                key={idx}
+                className="p-5 rounded-xl text-left transition-all duration-200"
+                style={{
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-card)",
+                }}
               >
-                <div className="p-3 rounded-xl shrink-0 transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(var(--purple-rgb), 0.12)", border: "1px solid rgba(var(--purple-rgb), 0.2)" }}
-                >
-                  <Icon className="h-5 w-5" style={{ color: "var(--color-purple)" }} />
+                <div className="flex items-center gap-3 mb-2">
+                  <div
+                    className="p-2 rounded-lg"
+                    style={{
+                      background: "var(--bg-pill)",
+                      color: "var(--color-purple)",
+                    }}
+                  >
+                    <Icon size={18} />
+                  </div>
+                  <h4 className="font-semibold text-sm sm:text-base" style={{ color: "var(--text-heading)" }}>
+                    {title}
+                  </h4>
                 </div>
-                <div className="text-left">
-                  <h4 className="font-bold text-base mb-1" style={{ color: "var(--text-heading)" }}>{title}</h4>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-body)" }}>{body}</p>
-                </div>
+                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {body}
+                </p>
               </div>
             ))}
           </div>

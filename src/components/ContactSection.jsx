@@ -1,5 +1,5 @@
 // src/components/ContactSection.jsx
-import { Instagram, Linkedin, Mail, MapPin, Phone, Send, Github, CheckCircle2, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Send, CheckCircle2, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl text-sm font-sans tracking-wide transition-all duration-200 resize-none outline-none border focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500";
+  "w-full px-3.5 py-2.5 rounded-lg text-sm font-sans transition-all duration-200 outline-none border focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -21,7 +21,7 @@ export const ContactSection = () => {
     setFormValues({ ...formValues, message: e.target.value });
     const ta = e.target;
     ta.style.height = "auto";
-    ta.style.height = `${Math.max(ta.scrollHeight, 120)}px`;
+    ta.style.height = `${Math.max(ta.scrollHeight, 110)}px`;
   };
 
   const handleSubmit = async (e) => {
@@ -31,8 +31,8 @@ export const ContactSection = () => {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
       toast({
-        title: "Validation Error",
-        description: "Please fill in all fields before sending.",
+        title: "Missing Fields",
+        description: "Please complete all fields before sending.",
         variant: "destructive",
       });
       return;
@@ -48,8 +48,8 @@ export const ContactSection = () => {
       );
       setIsSuccess(true);
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you shortly.",
+        title: "Message delivered",
+        description: "Thanks for reaching out. I will reply shortly.",
       });
       setFormValues({ name: "", email: "", message: "" });
       if (formRef.current) formRef.current.reset();
@@ -57,8 +57,8 @@ export const ContactSection = () => {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
       toast({
-        title: "Failed to send message",
-        description: error?.text || error?.message || "Please check your connection and try again.",
+        title: "Delivery error",
+        description: error?.text || error?.message || "Please email directly at qayoomakhtar72@gmail.com.",
         variant: "destructive",
       });
     } finally {
@@ -78,60 +78,39 @@ export const ContactSection = () => {
       label: "GitHub",
     },
     {
-      href: "https://www.instagram.com/entropy404x/",
-      Icon: Instagram,
-      label: "Instagram",
+      href: "mailto:qayoomakhtar72@gmail.com",
+      Icon: Mail,
+      label: "Email",
     },
   ];
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 relative overflow-hidden">
-      {/* Ambient glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(168,85,247,0.08), transparent)",
-        }}
-      />
-
-      <div className="container mx-auto max-w-5xl relative z-10">
+    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-6 relative">
+      <div className="container mx-auto max-w-5xl">
         <Reveal>
-          {/* Section badge */}
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-3">
             <span className="section-label">Contact</span>
           </div>
-
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center tracking-tight">
-            Get In{" "}
-            <span
-              style={{
-                background: "var(--grad-heading)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Touch
-            </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center tracking-tight" style={{ color: "var(--text-heading)" }}>
+            Get In Touch
           </h2>
-          <p className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Full Stack Engineer passionate about scalable applications, AI solutions, and modern web development.
+          <p className="text-center mb-10 sm:mb-12 max-w-xl mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Available for full-time software engineering roles, internships, and technical discussions.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* ── Left Column: Contact Information ── */}
-          <Reveal className="md:col-span-5 space-y-6 sm:space-y-8 flex flex-col justify-between h-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Direct Contact Info */}
+          <Reveal className="md:col-span-5 space-y-6 text-left">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-left tracking-tight">
-                Contact Information
+              <h3 className="text-xl font-bold mb-3 tracking-tight" style={{ color: "var(--text-heading)" }}>
+                Contact Details
               </h3>
-              <p className="text-sm leading-relaxed mb-8 text-left" style={{ color: "var(--text-body)" }}>
-                Whether you have a question about a project, a full-time engineering opportunity, or just want to connect, feel free to reach out.
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-muted)" }}>
+                Feel free to email me directly or send a message through the form. I typically respond within 24 hours.
               </p>
 
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {[
                   {
                     Icon: Mail,
@@ -152,29 +131,39 @@ export const ContactSection = () => {
                     href: null,
                   },
                 ].map(({ Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start space-x-4">
+                  <div
+                    key={label}
+                    className="flex items-center gap-3.5 p-3 rounded-lg"
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border-card)",
+                    }}
+                  >
                     <div
-                      className="p-3 rounded-xl shrink-0"
+                      className="p-2 rounded-md shrink-0"
                       style={{
-                        background: "rgba(var(--purple-rgb), 0.12)",
-                        border: "1px solid rgba(var(--purple-rgb), 0.2)",
+                        background: "var(--bg-pill)",
+                        color: "var(--color-purple)",
                       }}
                     >
-                      <Icon className="h-6 w-6" style={{ color: "var(--color-purple)" }} />
+                      <Icon size={16} />
                     </div>
-                    <div className="text-left">
-                      <h4 className="font-semibold text-xs tracking-wider uppercase mb-0.5" style={{ color: "var(--text-muted)" }}>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[11px] font-mono uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
                         {label}
-                      </h4>
+                      </div>
                       {href ? (
                         <a
                           href={href}
-                          className="text-sm font-medium transition-colors duration-200 hover:text-purple-400 break-all"
+                          className="text-xs sm:text-sm font-medium transition-colors hover:underline truncate block"
+                          style={{ color: "var(--text-heading)" }}
                         >
                           {value}
                         </a>
                       ) : (
-                        <p className="text-sm font-medium">{value}</p>
+                        <div className="text-xs sm:text-sm font-medium" style={{ color: "var(--text-heading)" }}>
+                          {value}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -182,12 +171,11 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="pt-6 text-left border-t border-purple-900/15">
-              <h4 className="font-semibold text-xs uppercase tracking-wider mb-4" style={{ color: "var(--text-muted)" }}>
-                Connect With Me
+            <div className="pt-2">
+              <h4 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--text-muted)" }}>
+                Profiles
               </h4>
-              <div className="flex space-x-3">
+              <div className="flex gap-2.5">
                 {socials.map(({ href, Icon, label }) => (
                   <a
                     key={label}
@@ -195,66 +183,44 @@ export const ContactSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="p-3 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
+                    className="p-2.5 rounded-lg transition-colors flex items-center justify-center cursor-pointer"
                     style={{
-                      background: "var(--bg-input)",
-                      border: "1px solid var(--border-input)",
-                      color: "var(--text-heading)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(var(--purple-rgb), 0.5)";
-                      e.currentTarget.style.boxShadow = "0 0 16px rgba(var(--purple-rgb), 0.2)";
-                      e.currentTarget.style.background = "var(--bg-body)";
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "var(--border-input)";
-                      e.currentTarget.style.boxShadow = "none";
-                      e.currentTarget.style.background = "var(--bg-input)";
-                      e.currentTarget.style.transform = "translateY(0)";
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border-card)",
+                      color: "var(--text-muted)",
                     }}
                   >
-                    <Icon size={18} style={{ color: "#a855f7" }} />
+                    <Icon size={16} />
                   </a>
                 ))}
               </div>
             </div>
           </Reveal>
 
-          {/* ── Right Column: Clean Professional Contact Form Card ── */}
-          <Reveal delay={0.1} className="md:col-span-7">
+          {/* Right Column: Contact Form */}
+          <Reveal delay={0.08} className="md:col-span-7">
             <motion.div
-              animate={
-                isShaking ? { x: [-5, 5, -5, 5, -2, 2, 0] } : {}
-              }
-              transition={{ duration: 0.4 }}
-              className="relative rounded-2xl p-6 sm:p-8 text-left transition-all duration-300"
+              animate={isShaking ? { x: [-4, 4, -4, 4, 0] } : {}}
+              transition={{ duration: 0.35 }}
+              className="relative rounded-xl p-6 sm:p-7 text-left"
               style={{
                 background: "var(--bg-card)",
-                border: "1px solid rgba(var(--purple-rgb), 0.18)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                boxShadow: "var(--shadow-card)",
+                border: "1px solid var(--border-card)",
               }}
             >
-              {/* Form Card Header */}
-              <div className="mb-6">
-                <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1.5">
-                  Send a Message
-                </h3>
-                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Have a project, opportunity, or question? I&apos;d love to hear from you.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold tracking-tight mb-1" style={{ color: "var(--text-heading)" }}>
+                Send a Message
+              </h3>
+              <p className="text-xs sm:text-sm mb-5 leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                I will get back to you directly via email.
+              </p>
 
-              {/* Form Fields */}
-              <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} noValidate>
-                {/* Name */}
+              <form ref={formRef} className="space-y-4" onSubmit={handleSubmit} noValidate>
                 <div>
                   <label
                     htmlFor="contact-name"
-                    className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#71717a" }}
+                    className="block text-xs font-medium mb-1.5"
+                    style={{ color: "var(--text-body)" }}
                   >
                     Name
                   </label>
@@ -269,17 +235,17 @@ export const ContactSection = () => {
                     placeholder="Your name"
                     style={{
                       background: "var(--bg-input)",
-                      borderColor: "rgba(var(--purple-rgb), 0.18)",
+                      borderColor: "var(--border-input)",
+                      color: "var(--text-heading)",
                     }}
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#71717a" }}
+                    className="block text-xs font-medium mb-1.5"
+                    style={{ color: "var(--text-body)" }}
                   >
                     Email
                   </label>
@@ -291,20 +257,20 @@ export const ContactSection = () => {
                     value={formValues.email}
                     onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
                     className={inputClass}
-                    placeholder="your@email.com"
+                    placeholder="you@domain.com"
                     style={{
                       background: "var(--bg-input)",
-                      borderColor: "rgba(var(--purple-rgb), 0.18)",
+                      borderColor: "var(--border-input)",
+                      color: "var(--text-heading)",
                     }}
                   />
                 </div>
 
-                {/* Message */}
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-xs font-mono font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: "#71717a" }}
+                    className="block text-xs font-medium mb-1.5"
+                    style={{ color: "var(--text-body)" }}
                   >
                     Message
                   </label>
@@ -312,68 +278,68 @@ export const ContactSection = () => {
                     id="contact-message"
                     name="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formValues.message}
                     onChange={handleTextareaChange}
                     className={inputClass}
-                    placeholder="Tell me about your project..."
+                    placeholder="Your message..."
                     style={{
                       background: "var(--bg-input)",
-                      borderColor: "rgba(var(--purple-rgb), 0.18)",
+                      borderColor: "var(--border-input)",
+                      color: "var(--text-heading)",
                     }}
                   />
                 </div>
 
-                {/* Submit Action */}
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm tracking-wide text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:shadow-purple-500/20 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{
-                      background: "var(--grad-primary)",
-                    }}
+                    className="w-full py-2.5 px-4 rounded-lg font-medium text-sm text-white transition-opacity flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    style={{ background: "var(--color-purple)" }}
                   >
                     <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                     {isSubmitting ? (
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
-                      <Send size={15} />
+                      <Send size={14} />
                     )}
                   </button>
                 </div>
               </form>
 
-              {/* Success Confirmation Modal/Overlay */}
               {isSuccess && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 flex flex-col items-center justify-center p-8 z-20 text-center rounded-2xl"
+                <div
+                  className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center rounded-xl z-20"
                   style={{
-                    background: "var(--bg-overlay)",
-                    backdropFilter: "blur(20px)",
+                    background: "var(--bg-card)",
                   }}
                 >
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-purple-500/10 border border-purple-500/30 text-purple-400">
-                    <CheckCircle2 size={32} />
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-3"
+                    style={{
+                      background: "var(--bg-pill)",
+                      color: "var(--color-green)",
+                    }}
+                  >
+                    <CheckCircle2 size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    Message Sent Successfully!
-                  </h3>
-                  <p className="text-xs sm:text-sm max-w-xs mb-6 leading-relaxed" style={{ color: "var(--text-body)" }}>
-                    Thank you for reaching out. Your message has been delivered, and I will get back to you as soon as possible.
+                  <h4 className="text-base font-bold mb-1" style={{ color: "var(--text-heading)" }}>
+                    Message Sent
+                  </h4>
+                  <p className="text-xs max-w-xs mb-5" style={{ color: "var(--text-muted)" }}>
+                    Thank you for reaching out. I will get back to you shortly.
                   </p>
                   <button
                     type="button"
                     onClick={() => setIsSuccess(false)}
-                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-purple-600 hover:bg-purple-500 transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium text-white transition-opacity cursor-pointer"
+                    style={{ background: "var(--color-purple)" }}
                   >
-                    <span>Send Another Message</span>
+                    <span>Send Another</span>
                     <ArrowRight size={13} />
                   </button>
-                </motion.div>
+                </div>
               )}
             </motion.div>
           </Reveal>
